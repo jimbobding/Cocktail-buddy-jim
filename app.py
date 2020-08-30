@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 
 if os.path.exists("env.py"):
     import env
@@ -29,6 +30,11 @@ def home():
 def drinks_card():
     drinks = drinks_db.find()
     return render_template("drinks.html", drinks=drinks)
+
+
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    return render_template("register.html")
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
