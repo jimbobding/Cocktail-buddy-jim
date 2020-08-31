@@ -16,7 +16,7 @@
 
 <body>
 	<header>
-		<!-- Top Nav -->
+		<!-- top nav -->
 		<nav class="nav-extended text-shadow grey darken-4">
 			<div class="nav-wrapper">
 				<a href="#!" class="brand-logo">Logo</a>
@@ -25,19 +25,35 @@
 					<li><a href="{{url_for('home')}}">Home</a></li>
 					<li><a href="#">Cocktails</a></li>
 					<li><a href="#">Login</a></li>
-                    <li><a href="{{url_for('register')}}">Register</a></li>
+					<li><a href="{{url_for('register')}}">Register</a></li>
 					<li><a href="#">Profile</a></li>
 				</ul>
+				<!-- mobile sidenav -->
 				<ul class="side-nav" id="mobile-demo">
 					<li><a href="{{url_for('home')}}">Home</a></li>
 					<li><a href="#">Cocktails</a></li>
 					<li><a href="#">Login</a></li>
-                     <li><a href="{{url_for('register')}}">Register</a></li>
+					<li><a href="{{url_for('register')}}">Register</a></li>
 					<li><a href="#">Profile</a></li>
 				</ul>
 			</div>
 		</nav>
 	</header>
+
+	<section>
+		<!-- flash messages -->
+		{% with messages = get_flashed_messages() %}
+            {% if messages %}
+		        {% for message in messages %}
+                <div class="row flashes">
+                <h4 class="center-align light-blue">{{ message }}</h4>
+                </div>
+		        {% endfor %}
+		    {% endif %}
+		{% endwith %}
+
+	</section>
+
 	{% block content %}{% endblock %}
 
 
@@ -45,7 +61,7 @@
 		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	<script src="{{ url_for ('static', filename='js/script.js') }}">
-		
+
 	</script>
 
 </body>

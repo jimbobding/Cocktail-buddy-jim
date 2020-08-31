@@ -19,6 +19,7 @@ mongo = PyMongo(app)
 # ---- Collection Variables ----- #
 
 drinks_db = mongo.db.drinks
+users_db = mongo.db.users
 
 @app.route('/')
 @app.route('/home')
@@ -32,9 +33,30 @@ def drinks_card():
     return render_template("drinks.html", drinks=drinks)
 
 
-@app.route('/register', methods=['POST', 'GET'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
+    if request.method == "POST":
+        # check if username exists in database
+        existing_user = users_db.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            flash("Sorry username already exists")
+            return redirect(url_for("register"))
+
+        register = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password").lower())
+        }
+
+        mongo.db.users.insert_one(register)
+
+        #put user into 'session' cookie
+        session["user"] = request.form.get("username").lower()
+        flash("Registration Succesfull")
+
     return render_template("register.html")
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
