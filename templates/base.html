@@ -24,7 +24,7 @@
 				<ul class="right hide-on-med-and-down">
 					<li><a href="{{url_for('home')}}">Home</a></li>
 					<li><a href="#">Cocktails</a></li>
-					<li><a href="#">Login</a></li>
+					<li><a href="{{url_for('login')}}">Login</a></li>
 					<li><a href="{{url_for('register')}}">Register</a></li>
 					<li><a href="#">Profile</a></li>
 				</ul>
@@ -32,7 +32,7 @@
 				<ul class="side-nav" id="mobile-demo">
 					<li><a href="{{url_for('home')}}">Home</a></li>
 					<li><a href="#">Cocktails</a></li>
-					<li><a href="#">Login</a></li>
+					<li><a href="{{url_for('login')}}">Login</a></li>
 					<li><a href="{{url_for('register')}}">Register</a></li>
 					<li><a href="#">Profile</a></li>
 				</ul>
@@ -46,7 +46,7 @@
             {% if messages %}
 		        {% for message in messages %}
                 <div class="row flashes">
-                <h4 class="center-align light-blue">{{ message }}</h4>
+                <h4 class="center-align red darken-2">{{ message }}</h4>
                 </div>
 		        {% endfor %}
 		    {% endif %}

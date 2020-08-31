@@ -58,6 +58,32 @@ def register():
     return render_template("register.html")
 
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == "POST":
+        # check if username exists in database
+        existing_user = users_db.find_one(
+            {"username": request.form.get("username").lower()})
+  
+        if existing_user:
+        # check hashed password matches user input 
+            if check_password_hash(
+                existing_user["password"], request.form.get("password")):
+                    session["user"] = request.form.get("username").lower()
+                    flash("Welcome, {}".format(request.form.get("username")))
+
+            else:
+                # invalid match 
+                flash("Incorect password and/or username")
+                return redirect(url_for("login"))
+
+        else: 
+            flash("Incorect password and/or username")
+            return redirect(url_for("login")) 
+             
+    return render_template("login.html")
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
