@@ -93,7 +93,19 @@ def profile(username):
     # gets session username from the database
     username = users_db.find_one(
        {"username": session["user"]}) ["username"]
-    return render_template("profile.html", username=username)
+
+    if session["user"]:
+        return render_template("profile.html", username=username)
+
+    return redirect(url_for("login")) 
+
+
+@app.route('/logout')
+def logout():
+    # Remove user session cookies
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("login")) 
 
 
 if __name__ == '__main__':
