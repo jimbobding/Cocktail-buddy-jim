@@ -33,6 +33,12 @@ def drinks_card():
     return render_template("drinks.html", drinks=drinks)
 
 
+@app.route('/spirit_selection')
+def spirit_selection():
+    return render_template("spirit_selection.html")
+
+
+# ---------- Register----------- #
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == "POST":
@@ -59,6 +65,7 @@ def register():
     return render_template("register.html")
 
 
+# ---------- Login ----------- #
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
@@ -88,6 +95,7 @@ def login():
     return render_template("login.html")
 
 
+# ---------- Profile ----------- #
 @app.route("/profile/<username>", methods=['GET', 'POST'])
 def profile(username):
     # gets session username from the database
@@ -100,6 +108,7 @@ def profile(username):
     return redirect(url_for("login")) 
 
 
+# ---------- Logout ----------- #
 @app.route('/logout')
 def logout():
     # Remove user session cookies
