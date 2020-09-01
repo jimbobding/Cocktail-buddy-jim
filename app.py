@@ -95,6 +95,27 @@ def add_cocktails():
                               )
 
 
+@app.route('/edit_cocktail/<drink_id>', methods=['GET', 'POST'])
+def edit_cocktail(drink_id):
+    selected_cocktail = drinks_db.find_one({"_id": ObjectId(drink_id)})
+    alcohol = alcohol_db.find()
+    alcohol_measurements = alcohol_measurements_db.find()
+    alcohol_measurements_2 = alcohol_measurements_2_db.find()
+    citrus_measurements = citrus_measurements_db.find()
+    citrus_type = citrus_db.find()
+    sweet_measurements = sweet_measurements_db.find()
+    glassware = glassware_db.find()
+    return render_template("edit_cocktail.html",
+                           alcohol=alcohol, alcohol_measurements=alcohol_measurements,
+                            alcohol_measurements_2=alcohol_measurements_2, 
+                            citrus_type=citrus_type,citrus_measurements=citrus_measurements,
+                            sweet_measurements=sweet_measurements, glassware=glassware,
+                              selected_cocktail=selected_cocktail)
+
+
+
+
+
 # ---------- Register----------- #
 @app.route('/register', methods=['GET', 'POST'])
 def register():

@@ -1,7 +1,5 @@
 {% extends 'base.html'%} {% block content %}
 
-
-
 <div class="container">
   <div class="row">
     <h2 class="cocktail-header">{{selected_cocktail.drink_name}}</h2>
@@ -21,9 +19,9 @@
         />
         {% endif %}
       </div>
-<!-- nested columns in order to get the instructions to lne up next to the picture. -->
+      <!-- nested columns in order to get the instructions to lne up next to the picture. -->
       <div class="col s12 l9 instructions-col">
-         <div class="row">
+        <div class="row">
           <div class="col l6 s12 recipe-center-items">
             <h3 class="ingredient-heading">Ingredients</h3>
             <i class="fas fa-list"></i>
@@ -60,29 +58,28 @@
               <li>{{selected_cocktail.method}}</li>
             </ul>
           </div>
-      
-      </div>
-      <div class="row">
-        <div class="col l6 s12 recipe-center-items">
-          <h3 class="glassware-heading">Glassware</h3>
-          <i class="fas fa-glass-whiskey"></i>
-          <hr class="hr-cocktail-recipe" />
-          <ul>
-            <li class="glassware-list">{{selected_cocktail.glass_type}}</li>
-          </ul>
         </div>
-        <div class="col l6 s12 recipe-center-items">
-          <h3 class="garnish-heading">Garnish</h3>
-          <i class="fas fa-bone"></i>
-          <hr class="hr-cocktail-recipe" />
-          <ul>
-            <li class="garnish-list">{{selected_cocktail.garnish}}</li>
-          </ul>
+        <div class="row">
+          <div class="col l6 s12 recipe-center-items">
+            <h3 class="glassware-heading">Glassware</h3>
+            <i class="fas fa-glass-whiskey"></i>
+            <hr class="hr-cocktail-recipe" />
+            <ul>
+              <li class="glassware-list">{{selected_cocktail.glass_type}}</li>
+            </ul>
+          </div>
+          <div class="col l6 s12 recipe-center-items">
+            <h3 class="garnish-heading">Garnish</h3>
+            <i class="fas fa-bone"></i>
+            <hr class="hr-cocktail-recipe" />
+            <ul>
+              <li class="garnish-list">{{selected_cocktail.garnish}}</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   </div>
-    </div>
   <div class="row">
     <div class="col s12">
       <h3 class="garnish-heading">Notes</h3>
@@ -102,6 +99,14 @@
     </div>
   </div>
 
+  <div class="row">
+    <div class="col s12 btns center-align drink-recipe-btns">
+      <a href="{{url_for('edit_cocktail', drink_id=selected_cocktail._id)}}" class="waves-effect waves-light btn blue drink-recipe-btns"
+        >Edit</a
+      >
+      <a href="" class="waves-effect waves-light btn drink-recipe-btns">Del</a>
+    </div>
+  </div>
 </div>
 
 {% endblock %}
