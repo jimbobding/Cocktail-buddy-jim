@@ -24,6 +24,13 @@
     height: 300px;
 }
 
+
+
+.cocktail-card {
+    height: 150px;
+    width: auto;
+}
+
 /* ----------------------------------------images */
 .recipe-img {
   height: 300px;
@@ -69,3 +76,5 @@
 .section-heading {
     text-align: center;
 }
+
+/* ----------------------------------------Btns */

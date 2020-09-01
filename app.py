@@ -37,10 +37,12 @@ def home():
 
 @app.route('/cocktail_recipe/<drink_id>')
 def cocktail_recipe(drink_id):
-    
+    created_by = session['user']
     selected_cocktail = drinks_db.find_one({"_id": ObjectId(drink_id)})
+    print(created_by)
+    print(selected_cocktail)
     return render_template("cocktail_recipe.html",
-                           selected_cocktail=selected_cocktail, 
+                           selected_cocktail=selected_cocktail, created_by=created_by
                            )
 
 
@@ -58,6 +60,8 @@ def spirit_selection():
 @app.route('/add_cocktails', methods=['GET', 'POST'])
 def add_cocktails():
     if request.method == 'POST':
+
+        # Dict with fields for new cocktail
         new_cocktail = {
             'alcohol_type': request.form.get('alcohol_type'),
             'drink_name': request.form.get('drink_name'),
@@ -79,7 +83,7 @@ def add_cocktails():
         drinks_db.insert_one(new_cocktail)
         flash("Drink has been successfully created")
         return redirect(url_for("drinks_card"))
-
+  
     alcohol = alcohol_db.find()
     alcohol_measurements = alcohol_measurements_db.find()
     alcohol_measurements_2 = alcohol_measurements_2_db.find()
@@ -97,6 +101,31 @@ def add_cocktails():
 
 @app.route('/edit_cocktail/<drink_id>', methods=['GET', 'POST'])
 def edit_cocktail(drink_id):
+    if request.method == 'POST':
+        
+        edit_cocktail = {
+            'alcohol_type': request.form.get('alcohol_type'),
+            'drink_name': request.form.get('drink_name'),
+            'alcohol_element': request.form.get('alcohol_element'),
+            'alcohol_measure': request.form.get('alcohol_measure'),
+            'alcohol_element_2': request.form.get('alcohol_element_2'),
+            'alcohol_measure_2': request.form.get('alcohol_measure_2'),
+            'citrus_element': request.form.get('citrus_element'),
+            'citrus_measure': request.form.get('citrus_measure'),
+            'sweet_element': request.form.get('sweet_element'),
+            'sweet_measure': request.form.get('sweet_measure'),
+            'garnish': request.form.get('garnish'),
+            'glass_type': request.form.get('glass_type'),
+            'method': request.form.get('method'),
+            'notes': request.form.get('notes'),
+            'history': request.form.get('history'),
+            'image': request.form.get('image'),
+            'created_by': session['user']
+
+        }
+        drinks_db.update({"_id": ObjectId(drink_id)}, edit_cocktail)
+        flash("Drink has been successfully edited")
+    
     selected_cocktail = drinks_db.find_one({"_id": ObjectId(drink_id)})
     alcohol = alcohol_db.find()
     alcohol_measurements = alcohol_measurements_db.find()
@@ -110,10 +139,15 @@ def edit_cocktail(drink_id):
                             alcohol_measurements_2=alcohol_measurements_2, 
                             citrus_type=citrus_type,citrus_measurements=citrus_measurements,
                             sweet_measurements=sweet_measurements, glassware=glassware,
-                              selected_cocktail=selected_cocktail)
+                            selected_cocktail=selected_cocktail)
 
 
-
+# ---------- Delete ----------- #
+@app.route('/delete_cocktail/<drink_id>')
+def delete_cocktail(drink_id):
+    drinks_db.remove({"_id": ObjectId(drink_id)})
+    flash("Your cocktail has been deleted")
+    return redirect(url_for("drinks_card"))
 
 
 # ---------- Register----------- #

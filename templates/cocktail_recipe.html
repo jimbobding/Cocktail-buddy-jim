@@ -99,12 +99,14 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row">  
     <div class="col s12 btns center-align drink-recipe-btns">
+            {% if session.user == selected_cocktail.created_by %}
       <a href="{{url_for('edit_cocktail', drink_id=selected_cocktail._id)}}" class="waves-effect waves-light btn blue drink-recipe-btns"
         >Edit</a
       >
-      <a href="" class="waves-effect waves-light btn drink-recipe-btns">Del</a>
+      <a href="{{url_for('delete_cocktail', drink_id=selected_cocktail._id)}}" class="waves-effect waves-light btn drink-recipe-btns">Del</a>
+            {% endif %} 
     </div>
   </div>
 </div>
