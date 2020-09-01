@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block content %}
-    
+
 <h1>Drinks</h1>
 <div class="row">
   {% for drink in drinks %}
@@ -24,11 +24,11 @@
         </a>
       </div>
 
-      <div class="card-content">
-      </div>
+      <div class="card-content"></div>
       <div class="card-action">
         <a href=""></a>
         <p>{{drink.drink_name}}</p>
+        <p>{{drink.created_by}}</p>
       </div>
     </div>
   </div>
@@ -36,4 +36,3 @@
 </div>
 
 {% endblock %}
-
