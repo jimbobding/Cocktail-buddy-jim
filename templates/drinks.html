@@ -6,7 +6,7 @@
   <div class="col s12 m6 l3">
     <div class="card cocktaiil-card">
       <div class="card-image">
-        <a href="">
+          <a href="{{  url_for('cocktail_recipe', drink_id=drink._id) }}">
           {% if drink.image %}
           <img
             class="image cocktail-card-img"
@@ -32,6 +32,7 @@
       </div>
     </div>
   </div>
+
   {% endfor %}
 </div>
 

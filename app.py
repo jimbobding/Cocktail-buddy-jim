@@ -35,6 +35,15 @@ def home():
     return render_template("home.html")
 
 
+@app.route('/cocktail_recipe/<drink_id>')
+def cocktail_recipe(drink_id):
+    
+    selected_cocktail = drinks_db.find_one({"_id": ObjectId(drink_id)})
+    return render_template("cocktail_recipe.html",
+                           selected_cocktail=selected_cocktail, 
+                           )
+
+
 @app.route('/drinks')
 def drinks_card():
     drinks = drinks_db.find()

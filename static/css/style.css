@@ -5,3 +5,67 @@
 .flashes {
     line-height: 2;
 }
+
+/* ----------------------------------------drink cards */
+
+.cocktail-card {
+    height: 500px;
+    width: 200px;
+}
+
+.card-image-size {
+    height: 200px;
+    width: 150px;
+}
+
+.cocktail-card-img {
+    border: 1px solid red;
+    width: 300px;
+    height: 300px;
+}
+
+/* ----------------------------------------images */
+.recipe-img {
+  height: 300px;
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hr-cocktail-recipe {
+    width: 50%;
+}
+
+/* ----------------------------------------Headings */
+.spirit-headings {
+  font-family: "Fredericka the Great", cursive;
+  text-align: center;
+}
+
+.glassware-heading, .garnish-heading, .method-heading, .ingredient-heading {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.cocktail-header {
+    text-align: center;
+    font-family: 'Courgette', cursive;
+}
+
+.drinkcard-heading {
+  font-size: 18px;
+}
+
+.drinkcard-title {
+  text-align: center;
+}
+
+.recipe-center-items, .ingredients-list, .method-instructions, .cocktail-history {
+    text-align: center;
+}
+
+.section-heading {
+    text-align: center;
+}

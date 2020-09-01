@@ -1,0 +1,107 @@
+{% extends 'base.html'%} {% block content %}
+
+
+
+<div class="container">
+  <div class="row">
+    <h2 class="cocktail-header">{{selected_cocktail.drink_name}}</h2>
+    <div class="row">
+      <div class="col s12 l3">
+        {% if selected_cocktail.image %}
+        <img
+          class="image recipe-img"
+          src="{{selected_cocktail.image}}"
+          alt="cocktail image"
+        />
+        {% else %}
+        <img
+          src="{{ url_for('static', filename='images/bartender-shaking-drink.jpg') }}"
+          class="recipe-image responsive-img z-depth-2"
+          alt="Image placeholder"
+        />
+        {% endif %}
+      </div>
+<!-- nested columns in order to get the instructions to lne up next to the picture. -->
+      <div class="col s12 l9 instructions-col">
+         <div class="row">
+          <div class="col l6 s12 recipe-center-items">
+            <h3 class="ingredient-heading">Ingredients</h3>
+            <i class="fas fa-list"></i>
+            <hr class="hr-cocktail-recipe" />
+            <ul>
+              <li class="ingredients-list">
+                {{selected_cocktail.alcohol_element}}
+                {{selected_cocktail.alcohol_measure}}
+                {{selected_cocktail.alcohol_measurement}}
+              </li>
+              <li class="ingredients-list">
+                {{selected_cocktail.alcohol_element_2}}
+                {{selected_cocktail.alcohol_measure_2}}
+                {{selected_cocktail.alcohol_measurement_2}}
+              </li>
+              <li class="ingredients-list">
+                {{selected_cocktail.citrus_element}}
+                {{selected_cocktail.citrus_measure}}
+                {{selected_cocktail.citrus_measurement}}
+              </li>
+              <li class="ingredients-list">
+                {{selected_cocktail.sweet_element}}
+                {{selected_cocktail.sweet_measure}}
+                {{selected_cocktail.sweet_measurement}}
+              </li>
+            </ul>
+          </div>
+
+          <div class="col l6 s12 recipe-center-items">
+            <h3 class="method-heading">Method</h3>
+            <i class="fas fa-blender"></i>
+            <hr class="hr-cocktail-recipe" />
+            <ul class="method-instructions">
+              <li>{{selected_cocktail.method}}</li>
+            </ul>
+          </div>
+      
+      </div>
+      <div class="row">
+        <div class="col l6 s12 recipe-center-items">
+          <h3 class="glassware-heading">Glassware</h3>
+          <i class="fas fa-glass-whiskey"></i>
+          <hr class="hr-cocktail-recipe" />
+          <ul>
+            <li class="glassware-list">{{selected_cocktail.glass_type}}</li>
+          </ul>
+        </div>
+        <div class="col l6 s12 recipe-center-items">
+          <h3 class="garnish-heading">Garnish</h3>
+          <i class="fas fa-bone"></i>
+          <hr class="hr-cocktail-recipe" />
+          <ul>
+            <li class="garnish-list">{{selected_cocktail.garnish}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+  <div class="row">
+    <div class="col s12">
+      <h3 class="garnish-heading">Notes</h3>
+      {{selected_cocktail.notes}}
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row">
+    <div class="col s12">
+      <div class="cocktail-history">
+        <h4 class="cocktail-history-header">History</h4>
+        <hr class="hr-cocktail-recipe" />
+        {{selected_cocktail.history}}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
