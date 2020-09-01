@@ -150,6 +150,13 @@ def delete_cocktail(drink_id):
     return redirect(url_for("drinks_card"))
 
 
+# ---------- Delete ----------- #
+@app.route('/get_categories')
+def get_categories():
+    alcohol = list(alcohol_db.find().sort("alcohol_type", 1))
+    return render_template("categories.html", alcohol=alcohol)
+
+
 # ---------- Register----------- #
 @app.route('/register', methods=['GET', 'POST'])
 def register():

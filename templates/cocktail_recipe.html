@@ -101,7 +101,7 @@
 
   <div class="row">  
     <div class="col s12 btns center-align drink-recipe-btns">
-            {% if session.user == selected_cocktail.created_by %}
+            {% if session.user|lower == selected_cocktail.created_by|lower %}
       <a href="{{url_for('edit_cocktail', drink_id=selected_cocktail._id)}}" class="waves-effect waves-light btn blue drink-recipe-btns"
         >Edit</a
       >

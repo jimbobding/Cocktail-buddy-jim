@@ -47,6 +47,9 @@
                 <li><a href="{{url_for('logout')}}">Logout</a></li>
                 <li><a href="{{url_for('spirit_selection')}}">Cocktails</a></li>
                 <li><a href="{{url_for('add_cocktails')}}">Add Cocktails</a></li>
+                  {% if session.user|lower == "admin"|lower %}
+                <li><a href="{{url_for('get_categories')}}">Manage Categories</a></li>
+                {% endif %}
             {% else %}
                 <li><a href="{{url_for('login')}}">Login</a></li>
                 <li><a href="{{url_for('register')}}">Register</a></li>
@@ -60,6 +63,9 @@
                 <li><a href="{{url_for('logout')}}">Logout</a></li>
                 <li><a href="{{url_for('spirit_selection')}}">Cocktails</a></li>
                 <li><a href="{{url_for('add_cocktails')}}">Add Cocktails</a></li>
+                 {% if session.user|lower == "admin"|lower %}
+                <li><a href="{{url_for('get_categories')}}">Manage Categories</a></li>
+                {% endif %}
             {% else %}
                 <li><a href="{{url_for('login')}}">Login</a></li>
                 <li><a href="{{url_for('register')}}">Register</a></li>
