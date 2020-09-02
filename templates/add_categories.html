@@ -1,0 +1,42 @@
+{% extends 'base.html'%} {% block content %}
+
+
+<h3>Add category</h3>
+<div class="row container addcocktail-container  z-depth-1">
+  <form class="col s12" method="Post" action="{{url_for('add_categories')}}">
+    
+  <i class="material-icons prefix">local_bar</i>
+    <!-- Drink Name -->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">account_circle</i>
+        <input
+          id="alcohol_type"
+          name="alcohol_type"
+          type="text"
+          class="validate"
+          required
+        />
+        <label for="alcohol_type">Alcohol</label>
+      </div>
+    </div>
+
+    
+    <!-- Button -->
+    <div class="row">
+      <div class="col s12 center-align">
+        <button
+          class="btn waves-effect waves-light addcocktail-btn"
+          type="submit"
+          name="action"
+        >
+        <i class="far fa-edit right prefix"></i>
+          Add Category
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </div>
+
+    {% endblock %}
+  </form>
+</div>

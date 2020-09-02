@@ -24,11 +24,18 @@
     height: 300px;
 }
 
-
+.pic {
+  object-fit: cover;
+  border-radius: 15px;
+}
 
 .cocktail-card {
     height: 150px;
     width: auto;
+}
+
+.spirit-card {
+    box-shadow: 5px 10px 8px grey;
 }
 
 /* ----------------------------------------images */
