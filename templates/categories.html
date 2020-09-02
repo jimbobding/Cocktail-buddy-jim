@@ -15,7 +15,7 @@
         <span class="card-title">{{ alc.alcohol_type }}</span>
       </div>
       <div class="card-action">
-        <a href="#" class="btn-large red text-shadow">Edit</a>
+        <a href="{{url_for('edit_categories', alc_id=alc._id)}}" class="btn-large red text-shadow">Edit</a>
         <a href="#" class="btn-large black text-shadow">Delete</a>
       </div>
     </div>

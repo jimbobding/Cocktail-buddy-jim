@@ -161,14 +161,28 @@ def get_categories():
 @app.route('/add_categories', methods=['GET', 'POST'])
 def add_categories():
     if request.method == "POST":
-        alc = {
+        alcohol = {
             "alcohol_type": request.form.get("alcohol_type")
         }
-        alcohol_db.insert_one(alc)
+        alcohol_db.insert_one(alcohol)
         flash("New alcohol added")
         return redirect(url_for("get_categories"))
 
     return render_template("add_categories.html")
+
+
+# ---------- Edit Categories----------- #
+@app.route('/edit_categories/<alc_id>', methods=['GET', 'POST'])
+def edit_categories(alc_id):
+    if request.method == "POST":
+        submit = {
+            "alcohol_type":request.form.get("alcohol_type")
+                 }
+        alcohol_db.update({"_id": ObjectId(alc_id)}, submit)
+        flash("category Updated")
+        return redirect(url_for("get_categories"))
+    alc = alcohol_db.find_one({"_id": ObjectId(alc_id)})
+    return render_template("edit_categories.html", alc=alc)
 
 # ---------- Register----------- #
 @app.route('/register', methods=['GET', 'POST'])
