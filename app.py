@@ -48,15 +48,17 @@ def cocktail_recipe(drink_id):
 
 @app.route('/drinks')
 def drinks_card():
-    drinks = drinks_db.find()
+    drinks = list(drinks_db.find())
     return render_template("drinks.html", drinks=drinks)
 
 
+# ---------- Calls Spirit Selection ----------- #
 @app.route('/spirit_selection')
 def spirit_selection():
     return render_template("spirit_selection.html")
 
 
+# ---------- Add Cocktail  ----------- #
 @app.route('/add_cocktails', methods=['GET', 'POST'])
 def add_cocktails():
     if request.method == 'POST':
@@ -83,7 +85,7 @@ def add_cocktails():
         drinks_db.insert_one(new_cocktail)
         flash("Drink has been successfully created")
         return redirect(url_for("drinks_card"))
-  
+
     alcohol = alcohol_db.find()
     alcohol_measurements = alcohol_measurements_db.find()
     alcohol_measurements_2 = alcohol_measurements_2_db.find()
@@ -94,15 +96,16 @@ def add_cocktails():
     return render_template("add_cocktails.html",
                            alcohol=alcohol, alcohol_measurements=alcohol_measurements,
                             alcohol_measurements_2=alcohol_measurements_2, 
-                            citrus_type=citrus_type,citrus_measurements=citrus_measurements,
+                            citrus_type=citrus_type, citrus_measurements=citrus_measurements,
                             sweet_measurements=sweet_measurements, glassware=glassware
                               )
 
 
+# ---------- Edit Cocktail----------- #
 @app.route('/edit_cocktail/<drink_id>', methods=['GET', 'POST'])
 def edit_cocktail(drink_id):
     if request.method == 'POST':
-        
+
         edit_cocktail = {
             'alcohol_type': request.form.get('alcohol_type'),
             'drink_name': request.form.get('drink_name'),
@@ -125,7 +128,7 @@ def edit_cocktail(drink_id):
         }
         drinks_db.update({"_id": ObjectId(drink_id)}, edit_cocktail)
         flash("Drink has been successfully edited")
-    
+
     selected_cocktail = drinks_db.find_one({"_id": ObjectId(drink_id)})
     alcohol = alcohol_db.find()
     alcohol_measurements = alcohol_measurements_db.find()
@@ -142,7 +145,7 @@ def edit_cocktail(drink_id):
                             selected_cocktail=selected_cocktail)
 
 
-# ---------- Delete ----------- #
+# ---------- Delete Cocktail ----------- #
 @app.route('/delete_cocktail/<drink_id>')
 def delete_cocktail(drink_id):
     drinks_db.remove({"_id": ObjectId(drink_id)})
@@ -155,6 +158,14 @@ def delete_cocktail(drink_id):
 def get_categories():
     alcohol = list(alcohol_db.find().sort("alcohol_type", 1))
     return render_template("categories.html", alcohol=alcohol)
+
+
+# ---------- Search/indexing ----------- #
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    query = request.form.get("query")
+    drinks = list(drinks_db.find({"$text": {"$search": query}}))
+    return render_template("drinks.html", drinks=drinks)
 
 
 # ---------- Add Categories----------- #
@@ -176,13 +187,22 @@ def add_categories():
 def edit_categories(alc_id):
     if request.method == "POST":
         submit = {
-            "alcohol_type":request.form.get("alcohol_type")
+            "alcohol_type": request.form.get("alcohol_type")
                  }
         alcohol_db.update({"_id": ObjectId(alc_id)}, submit)
         flash("category Updated")
         return redirect(url_for("get_categories"))
     alc = alcohol_db.find_one({"_id": ObjectId(alc_id)})
     return render_template("edit_categories.html", alc=alc)
+
+
+# ---------- Dlete Categories----------- #
+@app.route('/delete_categories/<alc_id>')
+def delete_categories(alc_id):
+    alcohol_db.remove({"_id": ObjectId(alc_id)})
+    flash("category successfully deleted")
+    return redirect(url_for("get_categories"))
+
 
 # ---------- Register----------- #
 @app.route('/register', methods=['GET', 'POST'])

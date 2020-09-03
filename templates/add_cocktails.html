@@ -52,6 +52,7 @@
           name="alcohol_measure"
           type="number"
           class="validate"
+          required
           
         />
         <label for="alcohol_measuret">Alcohol Measure</label>
@@ -60,7 +61,7 @@
       <!-- Alcohol Measurement  -->
       <div class="input-field col s4">
         <i class="fas fa-weight prefix"></i>
-        <select id="alcohol_measurement" name="alcohol_measurement">
+        <select id="alcohol_measurement" name="alcohol_measurement" required>
           <option value="" disabled selected>Choose measurment</option>
           {% for alc_measure in alcohol_measurements %}
           <option value="{{alc_measure.alcohol_measurement}}"
@@ -198,10 +199,10 @@
           <div class="row">
           <div class="input-field col s6">
           <i class="fas fa-glass-whiskey prefix"></i>
-            <select id="glass_type" name="glass_type">
+            <select id="glass_type" name="glass_type" required >
                <option value="" disabled selected>Choose Glassware</option>
               {% for glass in glassware %}
-              <option value="{{glass.glass_type}}">{{glass.glass_type}}</option>
+              <option value="{{glass.glass_type}}">{{glass.glass_type}}  </option>
               {% endfor %}
             </select>
             <label>Glasswarare</label>
