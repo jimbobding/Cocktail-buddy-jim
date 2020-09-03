@@ -39,8 +39,7 @@ def home():
 def cocktail_recipe(drink_id):
     created_by = session['user']
     selected_cocktail = drinks_db.find_one({"_id": ObjectId(drink_id)})
-    print(created_by)
-    print(selected_cocktail)
+   
     return render_template("cocktail_recipe.html",
                            selected_cocktail=selected_cocktail, created_by=created_by
                            )
@@ -52,10 +51,21 @@ def drinks_card():
     return render_template("drinks.html", drinks=drinks)
 
 
+@app.route('/show_categories/<name>')
+def show_categories(name):
+    drinks = list(drinks_db.find({'alcohol_type': name}))
+    return render_template('my_bar.html',
+                           drinks=drinks,
+                           name=name)
+
+
 # ---------- Calls Spirit Selection ----------- #
 @app.route('/spirit_selection')
 def spirit_selection():
-    return render_template("spirit_selection.html")
+    selected_alcohol = drinks_db.find_one('alcohol_type')
+    drinks = mongo.db.drinks.find()
+    return render_template("spirit_selection.html",
+                           drinks=drinks, selected_alcohol=selected_alcohol)
 
 
 # ---------- Add Cocktail  ----------- #
@@ -265,11 +275,12 @@ def login():
 @app.route("/profile/<username>", methods=['GET', 'POST'])
 def profile(username):
     # gets session username from the database
+    drink = drinks_db.find()
     username = users_db.find_one(
         {"username": session["user"]})["username"]
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username, drink=drink)
 
     return redirect(url_for("login"))
 
