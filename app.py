@@ -37,11 +37,11 @@ def home():
 
 @app.route('/cocktail_recipe/<drink_id>')
 def cocktail_recipe(drink_id):
-    created_by = session['user']
+    
     selected_cocktail = drinks_db.find_one({"_id": ObjectId(drink_id)})
    
     return render_template("cocktail_recipe.html",
-                           selected_cocktail=selected_cocktail, created_by=created_by
+                           selected_cocktail=selected_cocktail
                            )
 
 

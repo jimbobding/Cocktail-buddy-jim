@@ -1,3 +1,35 @@
+@import url("https://fonts.googleapis.com/css?family=Fredericka+the+Great:100,300,400,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette:100,300,400,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Slabo+27px:100,300,400,700&display=swap");
+
+
+body{
+
+min-height: 100vh;
+flex-direction: column;
+margin: 0;
+padding: 0; 
+color:var(--lightblack);
+font-family: 'Slabo 27px', serif;
+font-weight: 400;
+line-height: 1.7rem;
+overflow-x: hidden;
+}
+
+.imgage {
+background-image: radial-gradient(rgba(249, 238, 238, 0.91), rgba(152, 142, 142, 0.04)), url(../images/vodka.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+}
+
+/* ----------------------------------------nav bar */
+
+.navabar-logo {
+    height: 65px;
+    margin-left: 10px;
+}
+
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5)
 }
@@ -24,18 +56,43 @@
     height: 300px;
 }
 
+.cocktail-card-title {
+    font-size: 20px;
+}
+
+.sub-heading {
+    font-size: 15px;
+}
+
 .pic {
   object-fit: cover;
   border-radius: 15px;
 }
 
-.cocktail-card {
-    height: 150px;
-    width: auto;
-}
-
 .spirit-card {
     box-shadow: 5px 10px 8px grey;
+}
+
+.card .card-image img {
+border-radius: 25px;
+}
+
+.card {
+border-radius: 25px;
+}
+
+.drink-card {
+transition: .5s;
+background: #eee;
+box-shadow:  5px 10px 8px grey;
+}
+
+.drink-card:hover h3, i {
+color: #c21;
+}
+
+.drink-card:hover {
+    transform: scale(1.03);
 }
 
 /* ----------------------------------------images */
@@ -48,6 +105,11 @@
 }
 
 .hr-cocktail-recipe {
+    width: 50%;
+}
+
+hr {
+    height: 1px;
     width: 50%;
 }
 
@@ -85,3 +147,20 @@
 }
 
 /* ----------------------------------------Btns */
+
+.addcocktail-container {
+    
+padding:1px;
+border-radius: 20px;
+margin-bottom: 2rem;
+padding-left: 20px;
+padding-right: 20px;
+}
+
+.margin-top-large {
+    margin-top: 5rem;
+}
+
+.alcohol-input {
+    margin-top: 3rem;
+}

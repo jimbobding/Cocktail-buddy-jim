@@ -35,7 +35,11 @@
       <!-- top nav -->
       <nav class="nav-extended text-shadow grey darken-4">
         <div class="nav-wrapper">
-          <a href="#!" class="brand-logo">Logo</a>
+          			<a href="{{url_for('drinks_card')}}" class="brand-logo"><img
+              src="{{ url_for('static', filename='images/cocktail-buddy logo.png') }}"
+              class="navabar-logo"
+              alt="Cocktail Buddy Logo"
+          /></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"
             ><i class="material-icons">menu</i></a
           >
@@ -76,6 +80,14 @@
         </div>
       </nav>
     </header>
+  <main>
+    {% if request.endpoint == 'login' %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/background_pics.css') }}" />
+    {% endif %}
+  </main>
+  
+    
+  
 
     <section>
       <!-- flash messages -->

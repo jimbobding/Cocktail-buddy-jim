@@ -1,9 +1,11 @@
 {% extends 'base.html'%} {% block content %}
 
-<div class="row container addcocktail-container  z-depth-1">
+<div class="row container addcocktail-container  z-depth-1 margin-top-large">
   <form class="col s12" method="Post" action="{{url_for('add_cocktails')}}">
+
+  <!-- Alcohol Type -->
     <div class="row">
-      <div class="input-field col s12">
+      <div class="input-field alcohol-input col s12">
         <i class="material-icons prefix">local_bar</i>
         <select id="alcohol_type" name="alcohol_type" class="validate" required>
           <option value="" disabled selected>Choose Alcohol</option>
@@ -18,7 +20,7 @@
     <!-- Drink Name -->
     <div class="row">
       <div class="input-field col s12">
-        <i class="material-icons prefix">account_circle</i>
+        <i class="material-icons prefix tooltipped">account_circle</i>
         <input
           id="drink_name"
           name="drink_name"
