@@ -5,21 +5,7 @@
  
     <h2 class="cocktail-header">{{selected_cocktail.drink_name}}</h2>
     <div class="row">
-      <div class="col s12 l3">
-        {% if selected_cocktail.image %}
-        <img
-          class="image recipe-img"
-          src="{{selected_cocktail.image}}"
-          alt="cocktail image"
-        />
-        {% else %}
-        <img
-          src="{{ url_for('static', filename='images/bartender-shaking-drink.jpg') }}"
-          class="recipe-image responsive-img z-depth-2"
-          alt="Image placeholder"
-        />
-        {% endif %}
-      </div>
+    
       <!-- nested columns in order to get the instructions to lne up next to the picture. -->
       <div class="col s12 l9 instructions-col">
         <div class="row">
@@ -47,6 +33,8 @@
                 {{selected_cocktail.sweet_element}}
                 {{selected_cocktail.sweet_measure}}
                 {{selected_cocktail.sweet_measurement}}
+              </li>
+              <li>{{selected_cocktail.other_ingredients}}
               </li>
             </ul>
           </div>
@@ -102,6 +90,9 @@
 
   <div class="row">  
     <div class="col s12 btns center-align drink-recipe-btns">
+       <a href="{{url_for('drinks_card', drink_id=selected_cocktail._id)}}" class="waves-effect waves-light btn grey drink-recipe-btns"
+        >Back</a
+      >
             {% if session.user|lower == selected_cocktail.created_by|lower %}
       <a href="{{url_for('edit_cocktail', drink_id=selected_cocktail._id)}}" class="waves-effect waves-light btn blue drink-recipe-btns"
         >Edit</a

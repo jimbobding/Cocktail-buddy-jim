@@ -38,6 +38,7 @@ background-position: center;
     line-height: 2;
 }
 
+
 /* ----------------------------------------drink cards */
 
 .cocktail-card {
@@ -87,7 +88,7 @@ background: #eee;
 box-shadow:  5px 10px 8px grey;
 }
 
-.drink-card:hover h3, i {
+.drink-card:hover h3 {
 color: #c21;
 }
 
@@ -163,4 +164,8 @@ padding-right: 20px;
 
 .alcohol-input {
     margin-top: 3rem;
+}
+
+.footer-container {
+    
 }

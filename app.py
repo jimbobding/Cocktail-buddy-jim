@@ -1,8 +1,9 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for, flash, session
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+import math
 
 
 if os.path.exists("env.py"):
@@ -22,12 +23,9 @@ mongo = PyMongo(app)
 drinks_db = mongo.db.drinks
 users_db = mongo.db.users
 alcohol_db = mongo.db.alcohol
-alcohol_measurements_db = mongo.db.alcohol_measurements
-alcohol_measurements_2_db = mongo.db.alcohol_measurements_2
-citrus_db = mongo.db.citrus
-citrus_measurements_db = mongo.db.citrus_measurements
-sweet_measurements_db = mongo.db.sweet_measurements
 glassware_db = mongo.db.glassware
+measurements_db = mongo.db.measurements
+
 
 @app.route('/')
 @app.route('/home')
@@ -37,9 +35,8 @@ def home():
 
 @app.route('/cocktail_recipe/<drink_id>')
 def cocktail_recipe(drink_id):
-    
+
     selected_cocktail = drinks_db.find_one({"_id": ObjectId(drink_id)})
-   
     return render_template("cocktail_recipe.html",
                            selected_cocktail=selected_cocktail
                            )
@@ -48,7 +45,16 @@ def cocktail_recipe(drink_id):
 @app.route('/drinks')
 def drinks_card():
     drinks = list(drinks_db.find())
-    return render_template("drinks.html", drinks=drinks)
+    limit_per_page = 8
+    current_page = int(request.args.get('current_page', 1))
+    # get total of all the recipes in db
+    number_of_all_rec = drinks_db.count()
+    pages = range(1, int(math.ceil(number_of_all_rec / limit_per_page)) + 1)
+    drink = drinks_db.find().sort('_id', pymongo.ASCENDING).skip ((current_page - 1)*limit_per_page).limit(limit_per_page)
+    print(current_page)
+    return render_template("drinks.html", drinks=drinks,
+                          current_page=current_page,
+                            pages=pages, number_of_all_rec=number_of_all_rec, drink=drink)
 
 
 @app.route('/show_categories/<name>')
@@ -72,23 +78,30 @@ def spirit_selection():
 @app.route('/add_cocktails', methods=['GET', 'POST'])
 def add_cocktails():
     if request.method == 'POST':
+        if request.form.get("image"):
+            image = request.form.get("image")
+        else:
+            image = "static/images/Tom-cruise.jpeg"
 
         # Dict with fields for new cocktail
         new_cocktail = {
             'alcohol_type': request.form.get('alcohol_type'),
             'drink_name': request.form.get('drink_name'),
             'alcohol_element': request.form.get('alcohol_element'),
-            'alcohol_measure': request.form.get('alcohol_measure'),
+            'alcohol_measure': int(request.form.get('alcohol_measure')),
+            'alcohol_element_2': request.form.get('alcohol_element_2'),
+            'alcohol_measure_2': int(request.form.get('alcohol_measure_2')),
             'citrus_element': request.form.get('citrus_element'),
-            'citrus_measure': request.form.get('citrus_measure'),
+            'citrus_measure': int(request.form.get('citrus_measure')),
             'sweet_element': request.form.get('sweet_element'),
-            'sweet_measure': request.form.get('sweet_measure'),
+            'sweet_measure': int(request.form.get('sweet_measure')),
+            'other_ingredients': request.form.get('other_ingredients'),
             'garnish': request.form.get('garnish'),
             'glass_type': request.form.get('glass_type'),
             'method': request.form.get('method'),
             'notes': request.form.get('notes'),
             'history': request.form.get('history'),
-            'image': request.form.get('image'),
+            'image': image,
             'created_by': session['user']
 
         }
@@ -96,19 +109,17 @@ def add_cocktails():
         flash("Drink has been successfully created")
         return redirect(url_for("drinks_card"))
 
+    """I turned the measurements coleection in to a 
+   list so it could be used multiple times in the dropdowns on the
+   add cocktail form  """ 
+   
+    measurements = list(measurements_db.find())
     alcohol = alcohol_db.find()
-    alcohol_measurements = alcohol_measurements_db.find()
-    alcohol_measurements_2 = alcohol_measurements_2_db.find()
-    citrus_measurements = citrus_measurements_db.find()
-    citrus_type = citrus_db.find()
-    sweet_measurements = sweet_measurements_db.find()
     glassware = glassware_db.find()
     return render_template("add_cocktails.html",
-                           alcohol=alcohol, alcohol_measurements=alcohol_measurements,
-                            alcohol_measurements_2=alcohol_measurements_2, 
-                            citrus_type=citrus_type, citrus_measurements=citrus_measurements,
-                            sweet_measurements=sweet_measurements, glassware=glassware
-                              )
+                           alcohol=alcohol, glassware=glassware,
+                           measurements=measurements)
+                             
 
 
 # ---------- Edit Cocktail----------- #
@@ -120,13 +131,13 @@ def edit_cocktail(drink_id):
             'alcohol_type': request.form.get('alcohol_type'),
             'drink_name': request.form.get('drink_name'),
             'alcohol_element': request.form.get('alcohol_element'),
-            'alcohol_measure': request.form.get('alcohol_measure'),
+            'alcohol_measure': int(request.form.get('alcohol_measure')),
             'alcohol_element_2': request.form.get('alcohol_element_2'),
-            'alcohol_measure_2': request.form.get('alcohol_measure_2'),
-            'citrus_element': request.form.get('citrus_element'),
-            'citrus_measure': request.form.get('citrus_measure'),
+            'alcohol_measure_2': int(request.form.get('alcohol_measure_2')),
+            'citrus_measure': int(request.form.get('citrus_measure')),
             'sweet_element': request.form.get('sweet_element'),
-            'sweet_measure': request.form.get('sweet_measure'),
+            'sweet_measure': int(request.form.get('sweet_measure')),
+            'other_ingredients': request.form.get('other_ingredients'),
             'garnish': request.form.get('garnish'),
             'glass_type': request.form.get('glass_type'),
             'method': request.form.get('method'),
@@ -139,20 +150,15 @@ def edit_cocktail(drink_id):
         drinks_db.update({"_id": ObjectId(drink_id)}, edit_cocktail)
         flash("Drink has been successfully edited")
 
+
+
+    glassware = glassware_db.find()
+    measurements = list(measurements_db.find())
     selected_cocktail = drinks_db.find_one({"_id": ObjectId(drink_id)})
     alcohol = alcohol_db.find()
-    alcohol_measurements = alcohol_measurements_db.find()
-    alcohol_measurements_2 = alcohol_measurements_2_db.find()
-    citrus_measurements = citrus_measurements_db.find()
-    citrus_type = citrus_db.find()
-    sweet_measurements = sweet_measurements_db.find()
-    glassware = glassware_db.find()
     return render_template("edit_cocktail.html",
-                           alcohol=alcohol, alcohol_measurements=alcohol_measurements,
-                            alcohol_measurements_2=alcohol_measurements_2, 
-                            citrus_type=citrus_type,citrus_measurements=citrus_measurements,
-                            sweet_measurements=sweet_measurements, glassware=glassware,
-                            selected_cocktail=selected_cocktail)
+                           alcohol=alcohol, glassware=glassware,
+                            selected_cocktail=selected_cocktail, measurements=measurements)
 
 
 # ---------- Delete Cocktail ----------- #
@@ -167,6 +173,7 @@ def delete_cocktail(drink_id):
 @app.route('/get_categories')
 def get_categories():
     alcohol = list(alcohol_db.find().sort("alcohol_type", 1))
+    
     return render_template("categories.html", alcohol=alcohol)
 
 
@@ -275,14 +282,17 @@ def login():
 @app.route("/profile/<username>", methods=['GET', 'POST'])
 def profile(username):
     # gets session username from the database
-    drink = drinks_db.find()
-    username = users_db.find_one(
-        {"username": session["user"]})["username"]
+    drinks = drinks_db.find({"created_by": username})
 
+    username = users_db.find_one(
+    {"username": session["user"]})["username"]
+        
     if session["user"]:
-        return render_template("profile.html", username=username, drink=drink)
+        print(drinks)
+        return render_template("profile.html", username=username, drinks=drinks)
 
     return redirect(url_for("login"))
+
 
 
 # ---------- Logout ----------- #
@@ -292,6 +302,7 @@ def logout():
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("login"))
+
 
 
 if __name__ == '__main__':

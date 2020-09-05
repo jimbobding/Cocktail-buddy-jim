@@ -9,4 +9,40 @@
 </div>
 
 
+
+<div class="row">
+	{% for drink in drinks %}
+
+	<div class="col s12 m6 l3">
+		<div class="card cocktaiil-card">
+			<div class="card-image">
+				<a href="{{  url_for('cocktail_recipe', drink_id=drink._id) }}">
+					{% if drink.image %}
+
+					<img
+            class="image cocktail-card-img "
+            src="{{drink.image}}"
+            alt="cocktail image"
+          />
+          {% else %}
+					<img
+            src=""
+            class="cocktail-card-img z-depth-2"
+            alt="Image placeholder"
+          />
+          {% endif %}
+					<span class="card-title">{{drink.alcohol_type}}</span>
+				</a>
+			</div>
+			<div class="card-content">
+				<a href="">
+					<p>{{drink.drink_name}}</p>
+				</a>
+				<p>{{drink.created_by}}</p>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+
 	{% endblock %}

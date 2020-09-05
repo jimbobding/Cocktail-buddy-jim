@@ -75,4 +75,17 @@
 <h3>No drinks match you search</h3>
 {% endif %}
 
+
+  <ul class="pagination center-align">
+    {% for page_num in pages %} 
+        {% if page_num == current_page %}
+        <li class="active"><a>{{ page_num }}</a></li>
+        {% else %}
+        <li class="waves-effect">
+        <a href="{{ url_for('drinks_card', current_page=page_num) }}">{{ page_num }}</a>
+        </li>
+        {% endif %} 
+    {% endfor %}
+  </ul>
+
 {% endblock %}

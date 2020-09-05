@@ -1,299 +1,285 @@
 {% extends 'base.html'%} {% block content %}
 
-<div class="row container addcocktail-container  z-depth-1 margin-top-large">
-  <form class="col s12" method="Post" action="{{url_for('add_cocktails')}}">
+<div class="row container addcocktail-container z-depth-1 margin-top-large">
+	<form class="col s12" method="Post" action="{{url_for('add_cocktails')}}">
 
-  <!-- Alcohol Type -->
-    <div class="row">
-      <div class="input-field alcohol-input col s12">
-        <i class="material-icons prefix">local_bar</i>
-        <select id="alcohol_type" name="alcohol_type" class="validate" required>
+		<h3 class="center-align">Add Cocktail</h3>
+
+		<!-- Alcohol Type -->
+		<div class="row">
+			<div class="input-field alcohol-input col s12">
+				<i class="material-icons prefix">local_bar</i>
+				<select id="alcohol_type" name="alcohol_type" class="validate" required>
           <option value="" disabled selected>Choose Alcohol</option>
           {% for type in alcohol %}
           <option value="{{type.alcohol_type}}">{{type.alcohol_type}}</option>
           {% endfor %}
         </select>
-        <label for="alcohol_type">Alcohol</label>
-      </div>
-    </div>
+				<label for="alcohol_type">Alcohol</label>
+			</div>
+		</div>
 
-    <!-- Drink Name -->
-    <div class="row">
-      <div class="input-field col s12">
-        <i class="material-icons prefix tooltipped">account_circle</i>
-        <input
+		<!-- Drink Name -->
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="material-icons prefix tooltipped">account_circle</i>
+				<input
           id="drink_name"
           name="drink_name"
           type="text"
           class="validate"
           required
         />
-        <label for="drink_name">Drink Name</label>
-      </div>
-    </div>
+				<label for="drink_name"> <i class="fas fa-asterisk asterisk"></i> Drink Name</label>
+			</div>
+		</div>
 
-    <!-- Alcohol Element -->
-    <div class="row">
-      <div class="input-field col s4">
-        <i class="material-icons prefix">local_bar</i>
-        <input
+		<!-- Alcohol Element -->
+		<div class="row">
+			<div class="input-field col s4">
+				<i class="material-icons prefix">local_bar</i>
+				<input
           id="alcohol_element"
           name="alcohol_element"
           type="text"
           class="validate"
           required
         />
-        <label for="alcohol_element">Alcohol</label>
-      </div>
+				<label for="alcohol_element"> <i class="fas fa-asterisk asterisk"></i> Alcohol </label>
+			</div>
 
-      <!-- Alcohol Measure -->
-      <div class="input-field col s4">
-        <i class="fas fa-sort-numeric-up-alt prefix"></i>
-        <input
+			<!-- Alcohol Measure -->
+			<div class="input-field col s4">
+				<i class="fas fa-sort-numeric-up-alt prefix"></i>
+				<input
           id="alcohol_measure"
           name="alcohol_measure"
           type="number"
           class="validate"
           required
-          
         />
-        <label for="alcohol_measuret">Alcohol Measure</label>
-      </div>
+				<label for="alcohol_measuret"> <i class="fas fa-asterisk asterisk"></i> Alcohol Measure</label>
+			</div>
 
-      <!-- Alcohol Measurement  -->
-      <div class="input-field col s4">
-        <i class="fas fa-weight prefix"></i>
-        <select id="alcohol_measurement" name="alcohol_measurement" required>
+			<!-- Alcohol Measurement  -->
+			<div class="input-field col s4">
+				<i class="fas fa-weight prefix"></i>
+				<select id="measurement" name="measurement" required>
           <option value="" disabled selected>Choose measurment</option>
-          {% for alc_measure in alcohol_measurements %}
-          <option value="{{alc_measure.alcohol_measurement}}"
-            >{{alc_measure.alcohol_measurement}}</option
+          {% for measure in measurements %}
+          <option value="{{measure.measurement}}"
+            >{{measure.measurement}}</option
           >
           {% endfor %}
         </select>
-        <label for="alcohol_measure">Measurment</label>
-      </div>
-    </div>
+				<label for="measurement"><i class="fas fa-asterisk asterisk"></i>Measurment</label>
+			</div>
+		</div>
 
-    <!-- Alcohol Element 2 -->
-    <div class="row">
-      <div class="input-field col s4">
-        <i class="material-icons prefix">local_bar</i>
-        <input
+		<!-- Alcohol Element 2 -->
+		<div class="row">
+			<div class="input-field col s4">
+				<i class="material-icons prefix tooltipped ">local_bar</i>
+				<input
           id="alcohol_element_2"
           name="alcohol_element_2"
           type="text"
           class="validate"
-          
         />
-        <label for="alcohol_element_2">Alcohol</label>
-      </div>
+				<label for="alcohol_element_2">Alcohol</label>
+			</div>
 
-      <!-- Alcohol Measure 2 -->
-      <div class="input-field col s4">
-        <i class="fas fa-sort-numeric-up-alt prefix"></i>
-        <input
+			<!-- Alcohol Measure 2 -->
+			<div class="input-field col s4">
+				<i class="fas fa-sort-numeric-up-alt prefix"></i>
+				<input
           id="alcohol_measure_2"
           name="alcohol_measure_2"
           type="number"
           class="validate"
-          
         />
-        <label for="alcohol_measure">Alcohol Measure</label>
-      </div>
+				<label for="alcohol_measure">Alcohol Measure</label>
+			</div>
 
-      <!-- Alcohol Measurement 2 -->
-      <div class="input-field col s4">
-        <i class="fas fa-weight prefix"></i>
-        <select id="alcohol_measurement_2" name="alcohol_measurement_2">
+			<!-- Alcohol Measurement 2 -->
+			<div class="input-field col s4">
+				<i class="fas fa-weight prefix"></i>
+				<select id="measurement2" name="measurement" >
           <option value="" disabled selected>Choose measurment</option>
-          {% for alc_measure_2 in alcohol_measurements_2 %}
-          <option value="{{alc_measure_2.alcohol_measurement_2}}"
-            >{{alc_measure_2.alcohol_measurement_2}}</option
+          {% for measure in measurements %}
+          <option value="{{measure.measurement}}"
+            >{{measure.measurement}}</option
           >
           {% endfor %}
         </select>
-        <label for="alcohol_measure_2">Measurment</label>
-      </div>
-    </div>
-    <!-- Citrus Element -->
-    <div class="row">
-      <div class="input-field col s4">
-        <i class="fas fa-lemon prefix"></i>
-        <select id="citrus_type" name="citrus_type" class=" ">
-          <option value="" disabled selected>Choose Citrus</option>
-          {% for sour in citrus %}
-          <option value="{{sour.citrus_type}}">{{sour.citrus_type}}</option>
-          {% endfor %}
-        </select>
-        <label>Citrus</label>
-      </div>
-      <!-- Citrus Measure -->
-      <div class="input-field col s4">
-        <i class="fas fa-sort-numeric-up-alt prefix"></i>
-        <input
+				<label for="measurement"><i class="fas fa-asterisk asterisk"></i>Measurment</label>
+			</div>
+		</div>
+
+		<!-- Citrus Element -->
+		<div class="row">
+			<div class="input-field col s4">
+				<i class="fas fa-lemon prefix"></i>
+				<input
+          id="citrus_element"
+          name="citrus_element"
+          type="text"
+          class="validate"
+        />
+				<label for="citrus_element">Citrus</label>
+			</div>
+
+			<!-- Citrus Measure -->
+			<div class="input-field col s4">
+				<i class="fas fa-sort-numeric-up-alt prefix"></i>
+				<input
           id="citrus_measure"
           name="citrus_measure"
           type="number"
           class="validate"
-         
         />
-        <label for="citrus_measure">citrus_measure</label>
-      </div>
-      <!-- Citrus Measurement -->
-      <div class="input-field col s4">
-        <i class="fas fa-weight prefix"></i>
-        <select id="citrus_measurement" name="citrus_measurement">
+				<label for="citrus_measure">citrus_measure</label>
+			</div>
+
+			<!-- Citrus Measurement -->
+			<div class="input-field col s4">
+				<i class="fas fa-weight prefix"></i>
+				<select id="measurement-cit" name="measurement" >
           <option value="" disabled selected>Choose measurment</option>
-          {% for cit_measure in citrus_measurements%}
-          <option value="{{cit_measure.citrus_measurement}}"
-            >{{cit_measure.citrus_measurement}}</option
+          {% for measure in measurements %}
+          <option value="{{measure.measurement}}"
+            >{{measure.measurement}}</option
           >
           {% endfor %}
         </select>
-        <label>Measurment</label>
-      </div>
-    </div>
+				<label>Measurment</label>
+			</div>
+		</div>
 
-    <!-- Sweet Element-->
-    <div class="row">
-      <div class="input-field col s4">
-        <i class="material-icons prefix">account_circle</i>
-        <input
+		<!-- Sweet Element-->
+		<div class="row">
+			<div class="input-field col s4">
+				<i class="fas fa-candy-cane prefix"></i>
+				<input
           id="sweet_element"
           name="sweet_element"
           type="text"
           class="validate"
-          
         />
-        <label for="sweet_element">sweet_element</label>
-      </div>
+				<label for="sweet_element">sweet_element</label>
+			</div>
 
-      <!-- Sweet Measure -->
-      <div class="input-field col s4">
-        <i class="material-icons prefix">account_circle</i>
-        <input
+			<!-- Sweet Measure -->
+			<div class="input-field col s4">
+				<i class="fas fa-sort-numeric-up-alt prefix"></i>
+				<input
           id="sweet_measure"
           name="sweet_measure"
           type="text"
           class="validate"
-         
         />
-        <label for="sweet_measure">Sweet Measuret</label>
-      </div>
+				<label for="sweet_measure">Sweet Measure</label>
+			</div>
 
-      <!-- Sweet Measurment-->
-      <div class="input-field col s4">
-        <i class="fas fa-weight prefix"></i>
-        <select id="sweet_measurement" name="sweet_measurement">
+			<!-- Sweet Measurment-->
+			<div class="input-field col s4">
+				<i class="fas fa-weight prefix"></i>
+				<select id="measurement-sweet" name="measurement" >
           <option value="" disabled selected>Choose measurment</option>
-          {% for measure in sweet_measurements %}
-          <option value="{{measure.sweet_measurement}}"
-            >{{measure.sweet_measurement}}</option
+          {% for measure in measurements %}
+          <option value="{{measure.measurement}}"
+            >{{measure.measurement}}</option
           >
           {% endfor %}
         </select>
-        <label>Measurment</label>
-      </div>
-    </div>
+				<label>Measurment</label>
+			</div>
+		</div>
 
-             <!-- Glassware -->
-          <div class="row">
-          <div class="input-field col s6">
-          <i class="fas fa-glass-whiskey prefix"></i>
-            <select id="glass_type" name="glass_type" required >
-               <option value="" disabled selected>Choose Glassware</option>
-              {% for glass in glassware %}
-              <option value="{{glass.glass_type}}">{{glass.glass_type}}  </option>
-              {% endfor %}
-            </select>
-            <label>Glasswarare</label>
-          </div>
-
-           <!-- Garnish -->
-           <div class="input-field col s6">
-             <i class="fas fa-bone prefix"></i>
-        <input
-          id="garnish"
-          name="garnish"
+		<!-- Other Ingridients -->
+		<div class="row">
+			<div class="input-field col s12">
+				<i class="fas fa-th-list prefix"></i>
+				<input
+          id="other_ingredients"
+          name="other_ingredients"
           type="text"
           class="validate"
-          
         />
-        <label for="garnish">Garnish</label>
-      </div>
-      </div>
+				<label for="other_ingredients">Other Ingridients</label>
+			</div>
+		</div>
 
-            <!-- Method -->
-           <div class="input-field col s12">
-            <i class="fas fa-list-ol prefix"></i>
-        <input
-          id="method"
-          name="method"
-          type="text"
-          class="validate"
-          required
-         
-        />
-        <label for="method">Method</label>
-      </div>
+		<!-- Glassware -->
+		<div class="row">
+			<div class="input-field col s6">
+				<i class="fas fa-glass-whiskey prefix"></i>
+				<select id="glass_type" name="glass_type" >
+          <option value="" disabled selected>Choose Glassware</option>
+          {% for glass in glassware %}
+          <option value="{{glass.glass_type}}">{{glass.glass_type}} </option>
+          {% endfor %}
+        </select>
+				<label><i class="fas fa-asterisk asterisk"></i>Glasswarare</label>
+			</div>
 
-      <!-- History -->
- <div class="input-field col s12">
-             <i class="fas fa-clipboard-list prefix"></i>
-        <input
-          id="history"
-          name="history"
-          type="text"
-          class="validate"
-         
-        />
-        <label for="history">History</label>
-      </div>
+			<!-- Garnish -->
+			<div class="input-field col s6">
+				<i class="fas fa-bone prefix"></i>
+				<input id="garnish" name="garnish" type="text" class="validate" />
+				<label for="garnish">Garnish</label>
+			</div>
+		</div>
 
-<!-- Notes -->
-<div class="input-field col s12">
-            <i class="fas fa-sticky-note prefix"></i>
-        <input
-          id="notes"
-          name="notes"
-          type="text"
-          class="validate"
-          
-        />
-        <label for="notes">Notes</label>
-      </div>
+		<!-- Method -->
+		<div class="input-field col s12">
+			<i class="fas fa-list-ol prefix"></i>
+			<input id="method" name="method" type="text" class="validate" required />
+			<label for="method"><i class="fas fa-asterisk asterisk"></i>Method</label>
+		</div>
 
-      <!-- Image -->
-      <div class="input-field col s12">
-          <i class="far fa-images prefix"></i>
-        <input
-          id="image"
-          name="image"
-          type="text"
-          class="validate"
-          placeholder="Provide URL for your
+		<!-- History -->
+		<div class="input-field col s12">
+			<i class="fas fa-clipboard-list prefix"></i>
+			<input id="history" name="history" type="text" class="validate" />
+			<label for="history">History</label>
+		</div>
+
+		<!-- Notes -->
+		<div class="input-field col s12">
+			<i class="fas fa-sticky-note prefix"></i>
+			<input id="notes" name="notes" type="text" class="validate" />
+			<label for="notes">Notes</label>
+		</div>
+
+		<!-- Image -->
+		<div class="input-field col s12">
+			<i class="far fa-images prefix"></i>
+			<input
+        id="image"
+        name="image"
+        type="text"
+        class="validate"
+        placeholder="Provide URL for your
           cocktail image"
-          
-        />
-        <label for="image">Image</label>
-      </div>
+      />
+			<label for="image">Image</label>
+		</div>
 
-    <!-- Button -->
-    <div class="row">
-      <div class="col s12 center-align">
-        <button
+		<!-- Button -->
+		<div class="row">
+			<div class="col s12 center-align">
+				<button
           class="btn waves-effect waves-light addcocktail-btn"
           type="submit"
           name="action"
         >
-        <i class="far fa-edit right prefix"></i>
+          <i class="far fa-edit right prefix"></i>
           Add Cocktail
           <i class="material-icons right">send</i>
         </button>
-      </div>
-    </div>
-
-    {% endblock %}
-  </form>
+			</div>
+		</div>
+	</form>
 </div>
+{% endblock %}

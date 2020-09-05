@@ -9,18 +9,20 @@
 
 <div class="row">
   {% for alc in alcohol %}
-  <div class="col s12 m3">
-    <div class="card blue-grey darken-1">
-      <div class="card-content white-text">
-        <span class="card-title">{{ alc.alcohol_type }}</span>
-      </div>
-      <div class="card-action">
-        <a href="{{url_for('edit_categories', alc_id=alc._id)}}" class="btn-large red text-shadow">Edit</a>
-        <a href="{{url_for('delete_categories', alc_id=alc._id)}}" class="btn-large black text-shadow">Delete</a>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
+  <div class="col s12 m6">
+  <ul class="collapsible">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{ alc.alcohol_type }}</div>
+      <div class="collapsible-body"><span> <a href="{{url_for('edit_categories', alc_id=alc._id)}}" class="btn-large red text-shadow">Edit</a>
+      <a href="{{url_for('delete_categories', alc_id=alc._id)}}" class="btn-large black text-shadow">Delete</a>.</span></div>
+    </li>
+    </ul>
 </div>
+     {% endfor %}
+</div>
+
+
+
+
 
 {% endblock %}
