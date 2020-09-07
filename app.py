@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for, flash, session
 from flask_pymongo import PyMongo, pymongo
+from flask_paginate import Pagination, get_page_args
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 import math
@@ -45,16 +46,16 @@ def cocktail_recipe(drink_id):
 @app.route('/drinks')
 def drinks_card():
     drinks = list(drinks_db.find())
-    limit_per_page = 8
+    page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+    per_page = 8
+    offset = page * per_page
     current_page = int(request.args.get('current_page', 1))
+    total = drinks_db.find().count()
+    drink = drinks[offset: offset + per_page]
     # get total of all the recipes in db
-    number_of_all_rec = drinks_db.count()
-    pages = range(1, int(math.ceil(number_of_all_rec / limit_per_page)) + 1)
-    drink = drinks_db.find().sort('_id', pymongo.ASCENDING).skip ((current_page - 1)*limit_per_page).limit(limit_per_page)
-    print(current_page)
-    return render_template("drinks.html", drinks=drinks,
-                          current_page=current_page,
-                            pages=pages, number_of_all_rec=number_of_all_rec, drink=drink)
+    pagination = Pagination(page=page, per_page=per_page, total=total)
+    return render_template("drinks.html", drinks=drinks, page=page, per_page=per_page,  pagination=pagination,  drink=drink)
+
 
 
 @app.route('/show_categories/<name>')
@@ -88,6 +89,8 @@ def add_cocktails():
             'alcohol_type': request.form.get('alcohol_type'),
             'drink_name': request.form.get('drink_name'),
             'alcohol_element': request.form.get('alcohol_element'),
+            # Turned the numeric values into an integer so they could be 
+            # returned into a pre-populated field, pyhton seemd to be sending them to mongo as strings.
             'alcohol_measure': int(request.form.get('alcohol_measure')),
             'alcohol_element_2': request.form.get('alcohol_element_2'),
             'alcohol_measure_2': int(request.form.get('alcohol_measure_2')),
@@ -102,9 +105,9 @@ def add_cocktails():
             'notes': request.form.get('notes'),
             'history': request.form.get('history'),
             'image': image,
-            'created_by': session['user']
-
+            'created_by': session['user'],
         }
+
         drinks_db.insert_one(new_cocktail)
         flash("Drink has been successfully created")
         return redirect(url_for("drinks_card"))
@@ -119,7 +122,6 @@ def add_cocktails():
     return render_template("add_cocktails.html",
                            alcohol=alcohol, glassware=glassware,
                            measurements=measurements)
-                             
 
 
 # ---------- Edit Cocktail----------- #
@@ -149,8 +151,6 @@ def edit_cocktail(drink_id):
         }
         drinks_db.update({"_id": ObjectId(drink_id)}, edit_cocktail)
         flash("Drink has been successfully edited")
-
-
 
     glassware = glassware_db.find()
     measurements = list(measurements_db.find())
@@ -286,13 +286,12 @@ def profile(username):
 
     username = users_db.find_one(
     {"username": session["user"]})["username"]
-        
+
     if session["user"]:
         print(drinks)
         return render_template("profile.html", username=username, drinks=drinks)
 
     return redirect(url_for("login"))
-
 
 
 # ---------- Logout ----------- #
@@ -304,8 +303,26 @@ def logout():
     return redirect(url_for("login"))
 
 
+# ---------- Errors ----------- #
+@app.errorhandler(404)
+def error_404(e):
+    '''
+    Handles 404 error (page not found)
+    '''
+    return render_template('error-404.html', 
+                           title="Page not found"), 404
+
+
+@app.errorhandler(500)
+def error_500(e):
+    '''
+    Handles 404 error (page not found)
+    '''
+    return render_template('error-500.html', 
+                           title="Page not found"), 500
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=True)
+            debug=False)

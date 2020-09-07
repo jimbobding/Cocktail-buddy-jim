@@ -2,7 +2,7 @@
 
 <div class="row">
 	<div class="col s12 m8 offset-m2" >
-		<div class=" card-panel ">
+		<div class=" card-panel profile-card">
             <h3 class="center-align">{{ username }}'s profile</h3>
 	    </div>
     </div>
@@ -17,20 +17,14 @@
 		<div class="card cocktaiil-card">
 			<div class="card-image">
 				<a href="{{  url_for('cocktail_recipe', drink_id=drink._id) }}">
-					{% if drink.image %}
+					
 
 					<img
             class="image cocktail-card-img "
             src="{{drink.image}}"
             alt="cocktail image"
           />
-          {% else %}
-					<img
-            src=""
-            class="cocktail-card-img z-depth-2"
-            alt="Image placeholder"
-          />
-          {% endif %}
+
 					<span class="card-title">{{drink.alcohol_type}}</span>
 				</a>
 			</div>
@@ -45,4 +39,4 @@
 	{% endfor %}
 </div>
 
-	{% endblock %}
+	{% endblock %} {% block footer %} {% include 'includes/_footer.html' %} {% endblock %}

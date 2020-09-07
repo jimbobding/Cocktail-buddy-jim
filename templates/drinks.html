@@ -1,15 +1,32 @@
 {% extends "base.html" %} {% block content %}
 
-<h3 class="center-align">Drinks</h3>
-<hr class="bdbdbd grey lighten-1">
-
+<div class="container container-home">
+  <div class="home-image">
+    <div class="row">
+      <div class="col s21 center-align">
+        <div class="text-block-home">
+          <h1>Cocktail Buddy</h1>
+          {% if session.user %}
+          <a href="{{url_for('add_cocktails')}}" class="waves-effect waves-light btn red drink-recipe-btns">Start adding cocktails now</a>
+          {% else %}
+          <a href="{{url_for('login')}}" class="waves-effect waves-light btn red drink-recipe-btns">Sign up to start adding your own cocktails</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- Search query -->
-<div class="row card-panel lighten-5 grey">
-	<form action="{{url_for('search') }}" method="post" class="col s12">
-		<div class="row valign-wrapper center-align">
-			<div class="input-field col s12 m8Î">
-				<i class="fa fas serch prefix light-blue"></i>
-				<input
+<div class="row card-panel">
+  <form
+    action="{{url_for('search') }}"
+    method="post"
+    class="col s12 m8 offset-m2"
+  >
+    <div class="row valign-wrapper center-align">
+      <div class="input-field col s12 m8">
+        <i class="fa fas serch prefix light-blue"></i>
+        <input
           type="text"
           name="query"
           id="query"
@@ -17,58 +34,59 @@
           minlength="3"
           required
         />
-				<label for="query">Search</label>
-			</div>
-			<div class="col s12 m4">
-				<a href="{{ url_for('drinks_card') }}" class="red-button text-shadow "></a>
-				<button type="submit" class="light-blue.darken-1.btn">
+        <label for="query">Search</label>
+      </div>
+      <div class="col s12 m4">
+        <a
+          href="{{ url_for('drinks_card') }}"
+          class="red-button text-shadow"
+        ></a>
+        <button type="submit" class="light-blue.darken-1.btn">
           <i class="fa fas search left"></i> Search
         </button>
-			</div>
-		</div>
-	</form>
+      </div>
+    </div>
+  </form>
 </div>
 
 {% if drinks| length > 0 %}
-<div class="row">
-	{% for drink in drinks %}
-	<div class="col s12 m6 l3">
-		<div class="card drink-card" >
-			<div class="card-image  ">
-				<a href="{{  url_for('cocktail_recipe', drink_id=drink._id) }}">
-					{% if drink.image %}
-					<img
-            class="image cocktail-card-img "
+
+
+<div class="row">      
+{{ pagination.links }}
+  {% for drink in drinks %}
+      
+  <div class="col s12 m6 l3">
+    <div class="card drink-card">
+      <div class="card-image">
+        <a href="{{  url_for('cocktail_recipe', drink_id=drink._id) }}">
+          <img
+            class="image cocktail-card-img"
             src="{{drink.image}}"
             alt="cocktail image"
           />
-          {% else %}
-					<img
-            src=""
-            class="cocktail-card-img z-depth-2"
-            alt="Image placeholder"
-          />
-          {% endif %}
-
-				</a>
-			</div>
-			<div class="card-content">
-				<span class="cocktail-card-title center-align"><h3>
-                {{drink.drink_name}}</h3></span>
-				<div class="row">
-					<div class="col l6">
-						<p class="sub-heading">{{drink.alcohol_type}}</p>
-					</div>
-					<div class="col l6">
-						<p class="sub-heading right-align">Drink by {{drink.created_by}}</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	{% endfor %}
+        </a>
+      </div>
+      <div class="card-content cocktail-card-content">
+        <span class="cocktail-card-title center-align"
+          ><h3>
+            {{drink.drink_name}}
+          </h3></span
+        >
+        <div class="row">
+          <div class="col l6">
+            <p class="sub-heading">{{drink.alcohol_type}}</p>
+          </div>
+          <div class="col l6">
+            <p class="sub-heading right-align">Drink by {{drink.created_by}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {{ pagination.links }}
 </div>
-
 
 
 {% else %}
@@ -76,16 +94,5 @@
 {% endif %}
 
 
-  <ul class="pagination center-align">
-    {% for page_num in pages %} 
-        {% if page_num == current_page %}
-        <li class="active"><a>{{ page_num }}</a></li>
-        {% else %}
-        <li class="waves-effect">
-        <a href="{{ url_for('drinks_card', current_page=page_num) }}">{{ page_num }}</a>
-        </li>
-        {% endif %} 
-    {% endfor %}
-  </ul>
 
-{% endblock %}
+{% endblock %} {% block footer %} {% include 'includes/_footer.html' %} {% endblock %} 

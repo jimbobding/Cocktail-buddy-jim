@@ -1,6 +1,6 @@
 {% extends 'base.html'%} {% block content %}
 
-<div class="row container addcocktail-container z-depth-1 margin-top-large">
+<div class="row container cocktail-form-container z-depth-1 margin-top-large">
 	<form class="col s12" method="Post" action="{{url_for('add_cocktails')}}">
 
 		<h3 class="center-align">Add Cocktail</h3>
@@ -15,7 +15,7 @@
           <option value="{{type.alcohol_type}}">{{type.alcohol_type}}</option>
           {% endfor %}
         </select>
-				<label for="alcohol_type">Alcohol</label>
+				<label for="alcohol_type"><i class="fas fa-asterisk asterisk"></i>Alcohol</label>
 			</div>
 		</div>
 
@@ -30,14 +30,14 @@
           class="validate"
           required
         />
-				<label for="drink_name"> <i class="fas fa-asterisk asterisk"></i> Drink Name</label>
+				<label for="drink_name"> <i class="fas fa-asterisk asterisk tooltipped"></i> Drink Name</label>
 			</div>
 		</div>
 
 		<!-- Alcohol Element -->
 		<div class="row">
 			<div class="input-field col s4">
-				<i class="material-icons prefix">local_bar</i>
+				<i class="material-icons prefix tooltipped">local_bar</i>
 				<input
           id="alcohol_element"
           name="alcohol_element"
@@ -45,11 +45,11 @@
           class="validate"
           required
         />
-				<label for="alcohol_element"> <i class="fas fa-asterisk asterisk"></i> Alcohol </label>
+				<label for="alcohol_element"> <i class="fas fa-asterisk asterisk tooltipped"></i> Alcohol </label>
 			</div>
 
 			<!-- Alcohol Measure -->
-			<div class="input-field col s4">
+			<div class="input-field col s12 l4">
 				<i class="fas fa-sort-numeric-up-alt prefix"></i>
 				<input
           id="alcohol_measure"
@@ -58,7 +58,7 @@
           class="validate"
           required
         />
-				<label for="alcohol_measuret"> <i class="fas fa-asterisk asterisk"></i> Alcohol Measure</label>
+				<label for="alcohol_measuret"> <i class="fas fa-asterisk asterisk tooltipped"></i> Alcohol Measure</label>
 			</div>
 
 			<!-- Alcohol Measurement  -->
@@ -72,21 +72,21 @@
           >
           {% endfor %}
         </select>
-				<label for="measurement"><i class="fas fa-asterisk asterisk"></i>Measurment</label>
+				<label for="measurement"><i class="fas fa-asterisk asterisk tooltipped"></i>Measurment</label>
 			</div>
 		</div>
 
 		<!-- Alcohol Element 2 -->
 		<div class="row">
 			<div class="input-field col s4">
-				<i class="material-icons prefix tooltipped ">local_bar</i>
+				<i class="material-icons prefix">local_bar</i>
 				<input
           id="alcohol_element_2"
           name="alcohol_element_2"
           type="text"
           class="validate"
         />
-				<label for="alcohol_element_2">Alcohol</label>
+				<label for="alcohol_element_2 tooltipped">Alcohol</label>
 			</div>
 
 			<!-- Alcohol Measure 2 -->
@@ -98,7 +98,7 @@
           type="number"
           class="validate"
         />
-				<label for="alcohol_measure">Alcohol Measure</label>
+				<label for="alcohol_measure tooltipped">Alcohol Measure</label>
 			</div>
 
 			<!-- Alcohol Measurement 2 -->
@@ -112,7 +112,7 @@
           >
           {% endfor %}
         </select>
-				<label for="measurement"><i class="fas fa-asterisk asterisk"></i>Measurment</label>
+				<label for="measurement tooltipped">Measurment</label>
 			</div>
 		</div>
 
@@ -126,7 +126,7 @@
           type="text"
           class="validate"
         />
-				<label for="citrus_element">Citrus</label>
+				<label for="citrus_element tooltipped">Citrus</label>
 			</div>
 
 			<!-- Citrus Measure -->
@@ -138,7 +138,7 @@
           type="number"
           class="validate"
         />
-				<label for="citrus_measure">citrus_measure</label>
+				<label for="citrus_measure tooltipped">citrus_measure</label>
 			</div>
 
 			<!-- Citrus Measurement -->
@@ -166,7 +166,7 @@
           type="text"
           class="validate"
         />
-				<label for="sweet_element">sweet_element</label>
+				<label for="sweet_element tooltipped">sweet_element</label>
 			</div>
 
 			<!-- Sweet Measure -->
@@ -178,7 +178,7 @@
           type="text"
           class="validate"
         />
-				<label for="sweet_measure">Sweet Measure</label>
+				<label for="sweet_measure tooltipped">Sweet Measure</label>
 			</div>
 
 			<!-- Sweet Measurment-->
@@ -206,7 +206,7 @@
           type="text"
           class="validate"
         />
-				<label for="other_ingredients">Other Ingridients</label>
+				<label for="other_ingredients tooltipped">Other Ingridients</label>
 			</div>
 		</div>
 
@@ -227,7 +227,7 @@
 			<div class="input-field col s6">
 				<i class="fas fa-bone prefix"></i>
 				<input id="garnish" name="garnish" type="text" class="validate" />
-				<label for="garnish">Garnish</label>
+				<label for="garnish tooltipped">Garnish</label>
 			</div>
 		</div>
 
@@ -235,7 +235,7 @@
 		<div class="input-field col s12">
 			<i class="fas fa-list-ol prefix"></i>
 			<input id="method" name="method" type="text" class="validate" required />
-			<label for="method"><i class="fas fa-asterisk asterisk"></i>Method</label>
+			<label for="method"><i class="fas fa-asterisk asterisk tooltipped"></i>Method</label>
 		</div>
 
 		<!-- History -->
@@ -247,7 +247,7 @@
 
 		<!-- Notes -->
 		<div class="input-field col s12">
-			<i class="fas fa-sticky-note prefix"></i>
+			<i class="fas fa-sticky-note prefix tooltipped"></i>
 			<input id="notes" name="notes" type="text" class="validate" />
 			<label for="notes">Notes</label>
 		</div>

@@ -5,6 +5,16 @@
  
     <h2 class="cocktail-header">{{selected_cocktail.drink_name}}</h2>
     <div class="row">
+
+          <div class="col s12 l3">
+       
+        <img
+          class="image recipe-img"
+          src="{{selected_cocktail.image}}"
+          alt="cocktail image"
+        />
+       
+      </div>
     
       <!-- nested columns in order to get the instructions to lne up next to the picture. -->
       <div class="col s12 l9 instructions-col">
@@ -90,14 +100,14 @@
 
   <div class="row">  
     <div class="col s12 btns center-align drink-recipe-btns">
-       <a href="{{url_for('drinks_card', drink_id=selected_cocktail._id)}}" class="waves-effect waves-light btn grey drink-recipe-btns"
+       <a href="{{url_for('drinks_card', drink_id=selected_cocktail._id)}}" class="waves-effect waves-light btn blue drink-recipe-btns"
         >Back</a
       >
             {% if session.user|lower == selected_cocktail.created_by|lower %}
-      <a href="{{url_for('edit_cocktail', drink_id=selected_cocktail._id)}}" class="waves-effect waves-light btn blue drink-recipe-btns"
+      <a href="{{url_for('edit_cocktail', drink_id=selected_cocktail._id)}}" class="waves-effect waves-light btn green drink-recipe-btns"
         >Edit</a
       >
-      <a href="{{url_for('delete_cocktail', drink_id=selected_cocktail._id)}}" class="waves-effect waves-light btn drink-recipe-btns">Del</a>
+      <a href="{{url_for('delete_cocktail', drink_id=selected_cocktail._id)}}" class="waves-effect waves-light btn red drink-recipe-btns">Del</a>
             {% endif %} 
     </div>
  
