@@ -31,71 +31,8 @@
   </head>
 
   <body>
-    <header>
-      <!-- top nav -->
-      <nav class="nav-extended text-shadow black">
-        <div class="nav-wrapper">
-          <a href="{{url_for('drinks_card')}}" class="brand-logo"
-            ><img
-              src="{{ url_for('static', filename='images/cocktail-buddy logo.png') }}"
-              class="navabar-logo"
-              alt="Cocktail Buddy Logo"
-          /></a>
-          <a href="#" data-activates="mobile-demo" class="button-collapse"
-            ><i class="material-icons">menu</i></a
-          >
-          <ul class="right hide-on-med-and-down">
-            <li><a href="{{url_for('drinks_card')}}">Home</a></li>
-
-            {% if session.user %}
-            <li>
-              <a href="{{url_for('spirit_selection')}}">Spirit Categories</a>
-            </li>
-            <li><a href="{{url_for('add_cocktails')}}">Add Cocktails</a></li>
-            <li>
-              <a href="{{url_for('profile', username=session['user'])}}"
-                >Profile</a
-              >
- {% if session.user|lower == "admin"|lower %}
-            <li>
-              <a href="{{url_for('get_categories')}}">Manage Categories</a>
-            </li>
-            {% endif %}
-
-            </li>
-            <li><a href="{{url_for('logout')}}">Logout</a></li>
-            {% else %}
-            <li><a href="{{url_for('login')}}">Login</a></li>
-            <li><a href="{{url_for('register')}}">Register</a></li>
-            {% endif %}
-          </ul>
-
-          <!-- mobile sidenav -->
-          <ul class="side-nav" id="mobile-demo">
-            <li><a href="{{url_for('drinks_card')}}">Home</a></li>
-            {% if session.user %}
-            <li>
-              <a href="{{url_for('profile', username=session['user'])}}"
-                >Profile</a
-              >
-            </li>
-
-            <li><a href="{{url_for('spirit_selection')}}">Cocktails</a></li>
-
-            <li><a href="{{url_for('add_cocktails')}}">Add Cocktails</a></li>
-            {% if session.user|lower == "admin"|lower %}
-            <li>
-              <a href="{{url_for('get_categories')}}">Manage Categories</a>
-            </li>
-            {% endif %} {% else %}
-            <li><a href="{{url_for('login')}}">Login</a></li>
-            <li><a href="{{url_for('register')}}">Register</a></li>
-            {% endif %}
-            <li><a href="{{url_for('logout')}}">Logout</a></li>
-          </ul>
-        </div>
-      </nav>
-    </header>
+  
+   
     <main>
       {% if request.endpoint == 'login' %}
       <link
@@ -103,6 +40,13 @@
         type="text/css"
         href="{{ url_for('static', filename='css/background_pics.css') }}"
       />
+      {% elif request.endpoint == 'register' %}
+   <link
+        rel="stylesheet"
+        type="text/css"
+        href="{{ url_for('static', filename='css/background_pics.css') }}"
+      />
+
       {% endif %}
     </main>
 
@@ -117,11 +61,18 @@
     </section>
 
 
+    <header>
+    {% include "includes/_navbar.html" %}
+    </header>
 
-    {% block content %} {% endblock %} {% block footer %} {% endblock %}
+    <main>
+    {% block content %}{% endblock %}
+    </main>
 
+    <footer>
+    {% include "includes/_footer.html" %}
+    </footer>   
 
- 
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"

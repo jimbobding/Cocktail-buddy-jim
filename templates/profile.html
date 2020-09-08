@@ -9,7 +9,6 @@
 </div>
 
 
-
 <div class="row">
 	{% for drink in drinks %}
 
@@ -38,5 +37,5 @@
 	</div>
 	{% endfor %}
 </div>
-
-	{% endblock %} {% block footer %} {% include 'includes/_footer.html' %} {% endblock %}
+<div class="center-align">
+{{ pagination.links }}</div>	{% endblock %} {% block footer %} {% include 'includes/_footer.html' %} {% endblock %}

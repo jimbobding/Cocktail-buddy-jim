@@ -31,7 +31,7 @@ measurements_db = mongo.db.measurements
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template("home.html")
+    return render_template("drinks.html")
 
 
 @app.route('/cocktail_recipe/<drink_id>')
@@ -319,17 +319,24 @@ def login():
 def profile(username):
     # gets session username from the database
     drinks = drinks_db.find({"created_by": username})
-
     username = users_db.find_one(
     {"username": session["user"]})["username"]
 
+    page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+    per_page = 8
+    offset = (page -1 )* per_page
+    current_page = int(request.args.get('current_page', -1))
+    total = drinks_db.find().count()
+    paginatedDrinks = drinks[offset: offset + per_page]
+    pagination = Pagination(page=page, per_page=per_page, total=total)
+
     if session["user"]:
-        print(drinks)
-        return render_template("profile.html", username=username, drinks=drinks)
+        return render_template("profile.html", username=username,  drinks=paginatedDrinks, page=page, per_page=per_page,  
+                            pagination=pagination,   current_page=current_page)
 
     return redirect(url_for("login"))
 
-
+    
 # ---------- Logout ----------- #
 @app.route('/logout')
 def logout():
