@@ -53,9 +53,8 @@
 
 
 <div class="row">      
-{{ pagination.links }}
   {% for drink in drinks %}
-      
+
   <div class="col s12 m6 l3">
     <div class="card drink-card">
       <div class="card-image">
@@ -85,14 +84,16 @@
     </div>
   </div>
   {% endfor %}
-  {{ pagination.links }}
+
+  
 </div>
-
-
+<div class="center-align">
+{{ pagination.links }}
+</div>
 {% else %}
 <h3>No drinks match you search</h3>
 {% endif %}
 
 
 
-{% endblock %} {% block footer %} {% include 'includes/_footer.html' %} {% endblock %} 
+{% endblock %} {% block footer %} {% include 'includes/_footer.html' %} {% endblock %} {{ pagination.info }} 
