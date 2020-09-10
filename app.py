@@ -28,22 +28,16 @@ glassware_db = mongo.db.glassware
 measurements_db = mongo.db.measurements
 
 
-@app.route('/')
-@app.route('/home')
-def home():
-    return render_template("drinks.html")
-
-
 @app.route('/cocktail_recipe/<drink_id>')
 def cocktail_recipe(drink_id):
 
+    measurements = measurements_db.find()
     selected_cocktail = drinks_db.find_one({"_id": ObjectId(drink_id)})
     return render_template("cocktail_recipe.html",
-                           selected_cocktail=selected_cocktail
+                           selected_cocktail=selected_cocktail, measurements=measurements
                            )
 
-
-
+@app.route('/')
 @app.route('/drinks')
 def drinks_card():
     drinks = list(drinks_db.find())
@@ -246,7 +240,7 @@ def edit_categories_2(measurements_id):
         measurements_db.update({"_id": ObjectId(measurements_id)}, submit)
         flash("category Updated")
         return redirect(url_for("get_categories"))
-    measurement = measurements_db.find_one({"_id": ObjectId(measurements_id)})
+    measurements = measurements_db.find_one({"_id": ObjectId(measurements_id)})
     return render_template("edit_categories.html", measurements=measurements)
 
 
@@ -321,7 +315,8 @@ def profile(username):
     drinks = drinks_db.find({"created_by": username})
     username = users_db.find_one(
     {"username": session["user"]})["username"]
-
+    # This will count the logged in users number of drinks
+    number_drinks = drinks.count()
     page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
     per_page = 8
     offset = (page -1 )* per_page
@@ -332,7 +327,7 @@ def profile(username):
 
     if session["user"]:
         return render_template("profile.html", username=username,  drinks=paginatedDrinks, page=page, per_page=per_page,  
-                            pagination=pagination,   current_page=current_page)
+                            pagination=pagination,   current_page=current_page, number_drinks=number_drinks)
 
     return redirect(url_for("login"))
 
@@ -348,20 +343,20 @@ def logout():
 
 # ---------- Errors ----------- #
 @app.errorhandler(404)
-def error_404(e):
+def error_404(error):
     '''
     Handles 404 error (page not found)
     '''
-    return render_template('error-404.html', 
+    return render_template('errors/error-404.html', error=True,
                            title="Page not found"), 404
 
 
 @app.errorhandler(500)
-def error_500(e):
+def error_500(error):
     '''
     Handles 404 error (page not found)
     '''
-    return render_template('error-500.html', 
+    return render_template('errors/error-500.html', error=True,
                            title="Page not found"), 500
 
 

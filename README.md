@@ -406,13 +406,34 @@ https://
 5. Change the current working directory to the location where you want the cloned directory to be made.
 6. Type git clone and copy in your URL and press enter.
 
+You can clone this repository directly into the editor of your choice by pasting the following command into the terminal:
+git clone https://github.com/irinatu17/MyCookBook
+Alternatively, you can save a copy of this repository by clicking the green button "Clone or download" , then "Download Zip" button, and after extract the Zip file to your folder.
+In the terminal window change directory (CD) to the correct file location (directory that you have just created).
+Set up environment variables:
+Create .env file in the root directory.
+On the top of the file add import os to set the environment variables in the operating system.
+Set the connection to your MongoDB database(MONGO_URI) and a SECRET_KEY with the following syntax: os.environ["SECRET_KEY"] = "YourSecretKey"
+os.environ["MONGO_URI"] = "YourMongoURI"
+.
+Install all requirements from the requirements.txt file putting this command into your terminal:
+pip3 install -r requirements.txt
+Note: GitPod does not require sudo, so if you use another IDE, you will need to include sudo in the beginning of the command: sudo pip3 install -r requirements.txt.
+Create a new Database called "MyCookBook" in MongoDB Atlas.
+You can sign up for free account, if you do not have one.
+
+
 This information can be obtained from [Github](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
 
 ## Credits 
 
 ### Code
 For help 
-- Fo reference**Flask Tutorials** - [Corey Schafer](https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH) - package structure, custom error pages, WTForms,  hashing passwords
+- 
+- [Irina](https://github.com/irinatu17/MyCookBook)
+- The structure of the CRUD functionality and fra work for part of the app were taken from the code institution course
+- For the pagination used this to reference and the modify. [This](https://github.com/DarilliGames/flaskpaginate/blob/master/app.py#L88)
+- For reference**Flask Tutorials** - [Corey Schafer](https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH) - package structure, custom error pages, WTForms,  hashing passwords
 - The navigation bar, cards, modal and mobile-first framework all from [Materialize]()
 https://ibb.co/3k51S5K
 

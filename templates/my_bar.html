@@ -23,17 +23,22 @@
             alt="Image placeholder"
           />
           {% endif %}
-					<span class="card-title">{{drink.alcohol_type}}</span>
-				</a>
-			</div>
-			<div class="card-content">
-				<a href="">
-					<p>{{drink.drink_name}}</p>
-				</a>
-				<p>{{drink.created_by}}</p>
-			</div>
-		</div>
-	</div>
+	 <div class="card-content cocktail-card-content">
+        <span class="cocktail-card-title center-align"
+          ><h3>
+            {{drink.drink_name}}
+          </h3></span
+        >
+        <div class="row">
+          <div class="col l6">
+            <p class="sub-heading">{{drink.alcohol_type}}</p>
+          </div>
+          <div class="col l6">
+            <p class="sub-heading right-align">Drink by {{drink.created_by}}</p>
+          </div>
+        </div>
+    
+
 	{% endfor %}
 </div>
 

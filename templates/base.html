@@ -31,8 +31,6 @@
   </head>
 
   <body>
-  
-   
     <main>
       {% if request.endpoint == 'login' %}
       <link
@@ -41,13 +39,17 @@
         href="{{ url_for('static', filename='css/background_pics.css') }}"
       />
       {% elif request.endpoint == 'register' %}
-   <link
+      <link
         rel="stylesheet"
         type="text/css"
         href="{{ url_for('static', filename='css/background_pics.css') }}"
       />
 
-      {% endif %}
+          {% elif errors %}
+        <link rel="stylesheet" type="text/css" 
+        href="{{ url_for('static', filename='css/error.css') }}">
+    {% endif %}
+
     </main>
 
     <section>
@@ -60,19 +62,17 @@
       {% endfor %} {% endif %} {% endwith %}
     </section>
 
-
     <header>
-    {% include "includes/_navbar.html" %}
+      {% include "includes/_navbar.html" %}
     </header>
 
     <main>
-    {% block content %}{% endblock %}
+      {% block content %}{% endblock %}
     </main>
 
     <footer>
-    {% include "includes/_footer.html" %}
-    </footer>   
-
+      {% include "includes/_footer.html" %}
+    </footer>
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.min.js"
