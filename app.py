@@ -4,7 +4,7 @@ from flask_pymongo import PyMongo, pymongo
 from flask_paginate import Pagination, get_page_args, get_page_parameter
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-import math
+
 
 
 if os.path.exists("env.py"):
@@ -36,6 +36,7 @@ def cocktail_recipe(drink_id):
     return render_template("cocktail_recipe.html",
                            selected_cocktail=selected_cocktail, measurements=measurements
                            )
+
 
 @app.route('/')
 @app.route('/drinks')
@@ -77,7 +78,7 @@ def add_cocktails():
         if request.form.get("image"):
             image = request.form.get("image")
         else:
-            image = "static/images/Tom-cruise.jpeg"
+            image = "static/images/drink-placeholder.jpeg"
 
         # Dict with fields for new cocktail
         new_cocktail = {
@@ -129,6 +130,7 @@ def edit_cocktail(drink_id):
             'alcohol_measure': request.form.get('alcohol_measure'),
             'alcohol_element_2': request.form.get('alcohol_element_2'),
             'alcohol_measure_2': request.form.get('alcohol_measure_2'),
+            'citrus_element': request.form.get('citrus_element'),
             'citrus_measure': request.form.get('citrus_measure'),
             'sweet_element': request.form.get('sweet_element'),
             'sweet_measure': request.form.get('sweet_measure'),
@@ -174,20 +176,18 @@ def search():
 @app.route('/get_categories')
 def get_categories():
     glassware = list(glassware_db.find().sort("glass_type", 1))
-    measurements = list(measurements_db.find().sort("measurement", 1))
- 
-    return render_template("categories.html", glassware=glassware,
-                            measurements=measurements)
+    return render_template("categories.html", glassware=glassware
+                            )
 
 
 # ---------- Add Categories----------- #
 @app.route('/add_categories', methods=['GET', 'POST'])
 def add_categories():
     if request.method == "POST":
-        alcohol = {
+        glassware = {
             "glass_type": request.form.get("glass_type")
         }
-        alcohol_db.insert_one(alcohol)
+        glassware_db.insert_one(glassware)
         flash("New alcohol added")
         return redirect(url_for("get_categories"))
 
@@ -201,7 +201,7 @@ def edit_categories(glass_id):
         submit = {
             "glass_type": request.form.get("glass_type")
                  }
-        alcohol_db.update({"_id": ObjectId(glass_id)}, submit)
+        glassware_db.update({"_id": ObjectId(glass_id)}, submit)
         flash("category Updated")
         return redirect(url_for("get_categories"))
     glass = glassware_db.find_one({"_id": ObjectId(glass_id)})
@@ -215,41 +215,6 @@ def delete_categories(glass_id):
     flash("category successfully deleted")
     return redirect(url_for("get_categories"))
 
-
-# ---------- Add Categories Measurement----------- #
-@app.route('/add_categories_2', methods=['GET', 'POST'])
-def add_categories_2():
-    if request.method == "POST":
-        measurement = {
-            "measurement": request.form.get("measurement")
-        }
-        measurements_db.insert_one(measurement)
-        flash("New measurement added")
-        return redirect(url_for("get_categories"))
-
-    return render_template("add_categories.html")
-
-
-# ---------- Edit Categories----------- #
-@app.route('/edit_categories_2/<measurements_id>', methods=['GET', 'POST'])
-def edit_categories_2(measurements_id):
-    if request.method == "POST":
-        submit = {
-            "measurements": request.form.get("measurements")
-                 }
-        measurements_db.update({"_id": ObjectId(measurements_id)}, submit)
-        flash("category Updated")
-        return redirect(url_for("get_categories"))
-    measurements = measurements_db.find_one({"_id": ObjectId(measurements_id)})
-    return render_template("edit_categories.html", measurements=measurements)
-
-
-# ---------- Dlete Categories----------- #
-@app.route('/delete_categories_2/<measurements_id>')
-def delete_categories_2(measurements_id):
-    measurements_db.remove({"_id": ObjectId(measurements_id)})
-    flash("category successfully deleted")
-    return redirect(url_for("get_categories"))
 
 # ---------- Register----------- #
 @app.route('/register', methods=['GET', 'POST'])
@@ -326,12 +291,14 @@ def profile(username):
     pagination = Pagination(page=page, per_page=per_page, total=total)
 
     if session["user"]:
-        return render_template("profile.html", username=username,  drinks=paginatedDrinks, page=page, per_page=per_page,  
-                            pagination=pagination,   current_page=current_page, number_drinks=number_drinks)
+        return render_template("profile.html", username=username,
+                                drinks=paginatedDrinks, page=page, per_page=per_page,  
+                                pagination=pagination,   current_page=current_page, 
+                                number_drinks=number_drinks)
 
     return redirect(url_for("login"))
 
-    
+
 # ---------- Logout ----------- #
 @app.route('/logout')
 def logout():

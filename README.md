@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="100%" height="90%" src="https://github.com/jimbobding/Bar-Hop-Uk/blob/master/assets/images/Bar Hop UK Logo Guy.png">
+  <img width="100%" height="90%" src="https://github.com/jimbobding/Cocktail-buddy-jim/blob/master/static/assets/images/cocktail-buddy-logo2.png">
 </p>
 
 
@@ -99,8 +99,10 @@ I also wanted to use colours that would signify the use of functionality to user
 [flatui colorpicker](http://www.flatuicolorpicker.com)
 [Materialize Color](https://materializecss.com/color.html)
 
-### 0e9594 - Blue Chill 
-grey darken-4
+
+### Color Scheme
+
+ - ![#ff4242](https://placehold.it/15/ff4242/ff4242) `#ff4242` - **coral**
 
 Was used for both header and footer of the app. The main colour of the app as it opens and closes the index page.
  
@@ -320,6 +322,28 @@ off the app.
 ## Testing 
 
 I tested the functionality of the app throughout the entire development process and also had friends and family test it on various devices.
+
+
+### Register
+ 
+ - Tried to register with a username and password that were to short min legth being 5 letters. Tooltip response ("please match the format that is requested")
+ - Tried to register with empty fileds for username and password Tooltip response ("please fill in thies field")
+
+### Login
+
+- Tried to login with non existant credentials. Flash message  ("Incorect password and/or username")
+- Tried to login with empty fields. Tooltip response ("please fill in thies field")
+- Tried to login with non matching usernaem and password. Flash message ("Incorect password and/or username")
+
+### Add cocktails
+
+- Tried to add a cocktail wothout filling in the required fileds. Tooltip respose ("please select an item in the list" or "pleae fill in the valid field")
+
+### Edit cocktail
+
+- Clicked on the edit cocktail button, all field that were populated were still polulated.
+- Tried to remove  a required field in the testing form. Tooltip response ("please fill in thies field")
+
 
 
 

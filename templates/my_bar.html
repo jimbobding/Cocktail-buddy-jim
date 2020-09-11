@@ -4,40 +4,34 @@
 
 <div class="row">
 	{% for drink in drinks %}
-
-	<div class="col s12 m6 l3">
-		<div class="card cocktaiil-card">
-			<div class="card-image">
-				<a href="{{  url_for('cocktail_recipe', drink_id=drink._id) }}">
-					{% if drink.image %}
-
-					<img
-            class="image cocktail-card-img "
+  <div class="col s12 m6 l3">
+    <div class="card drink-card">
+      <div class="card-image">
+        <a href="{{  url_for('cocktail_recipe', drink_id=drink._id) }}">
+          <img
+            class="image cocktail-card-img"
             src="{{drink.image}}"
             alt="cocktail image"
           />
-          {% else %}
-					<img
-            src="static/images/drink-placeholder.jpeg"
-            class="cocktail-card-img z-depth-2"
-            alt="Image placeholder"
-          />
-          {% endif %}
-	 <div class="card-content cocktail-card-content">
+        </a>
+      </div>
+      <div class="card-content cocktail-card-content">
         <span class="cocktail-card-title center-align"
           ><h3>
             {{drink.drink_name}}
           </h3></span
         >
         <div class="row">
-          <div class="col l6">
+          <div class="col s12 l6">
             <p class="sub-heading">{{drink.alcohol_type}}</p>
           </div>
-          <div class="col l6">
+          <div class="col s12 l6">
             <p class="sub-heading right-align">Drink by {{drink.created_by}}</p>
           </div>
         </div>
-    
+      </div>
+    </div>
+  </div>
 
 	{% endfor %}
 </div>
