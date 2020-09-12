@@ -32,3 +32,9 @@
       });
     }
     });
+  
+// Fades out flash messages after 5 seconds //
+function fade_out() {
+  $(".flashes").fadeOut().empty();
+}
+  setTimeout(fade_out, 5000); 

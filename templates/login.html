@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %}
-
+<div class="container">
 <div class="row details-section">
-  <h3 class="center-align page-headers">Login</h3>
+  <h3 class="center-align page-head-margin header-padding ">Login</h3>
 
   <form
     class="col s12 m8 offset-m2"
@@ -45,10 +45,7 @@
       </div>
       <!-- Login -->
       <div class="row">
-        <button
-          type="submit"
-          class="col s12 btn-large details-btn text-shadow "
-        >
+        <button type="submit" class="col s12 btn-large details-btn text-shadow">
           Login
         </button>
       </div>
@@ -56,13 +53,13 @@
   </form>
 </div>
 
-<div class="row page-bottom">
+<div class="row page-bottom-margin">
   <div class="col s12">
-    <p class="center-align log-reg-link ">
+    <p class="center-align log-reg-link">
       If you dont have account click here
       <a href="{{url_for('register')}}">Register Here</a>
     </p>
   </div>
 </div>
-
+</div>
 {% endblock %}

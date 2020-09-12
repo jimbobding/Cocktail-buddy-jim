@@ -66,27 +66,24 @@
           type="number"
           value="{{ selected_cocktail.alcohol_measure }}"
           class="validate"
+          required
         />
         <label for="alcohol_measure">Alcohol Measure</label>
       </div>
 
       <!-- Alcohol Measurement  -->
-      <div class="input-field col s4">
+       <div class="input-field col s12 l4">
         <i class="fas fa-weight prefix"></i>
-        <select id="alcohol_measurement" name="measurement">
-          <option value="" selected>Choose measurment</option>
-          {% for measure in measurements %} {% if measure in measurements ==
-          selected_cocktail.measure %}
-          <option value="{{measure.measurement}}" selected
-            >{{measure.measurement}}</option
-          >
-          {% else %}
-          <option value="{{measure.measurement}}"
-            >{{measure.measurement}}</option
-          >
-          {% endif %} {% endfor %}
-        </select>
-        <label for="alcohol_measure">Measurment</label>
+        <input
+          id="alcohol_measurement"
+          name="alcohol_measurement"
+          type="text"
+          placeholder=" choose yurmeasure unit e/g mls'"
+          value="{{ selected_cocktail.alcohol_measurement }}"
+          class="validate"
+          required
+        />
+        <label for="measurement"><i class="fas fa-asterisk asterisk  tooltipped"></i>Measurment</label>
       </div>
     </div>
 
@@ -117,23 +114,60 @@
         <label for="alcohol_measure">Alcohol Measure</label>
       </div>
 
-      <!-- Alcohol Measurement 2 -->
-      <div class="input-field col s4">
+    <!-- Alcohol Measurement 2 -->
+      <div class="input-field col s12 l4">
         <i class="fas fa-weight prefix"></i>
-        <select id="alcohol_measurement_2" name="measurement">
-          <option value="" selected>Choose measurment</option>
-          {% for measure in measurements %} {% if measure in measurements ==
-          selected_cocktail.measure %}
-          <option value="{{measure.measurement}}" selected
-            >{{measure.measurement}}</option
-          >
-          {% else %}
-          <option value="{{measure.measurement}}"
-            >{{measure.measurement}}</option
-          >
-          {% endif %} {% endfor %}
-        </select>
-        <label for="alcohol_measure_2">Measurment</label>
+        <input
+          id="alcohol_measurement_2"
+          name="alcohol_measurement_2"
+          type="text"
+          placeholder=" choose your measure unit e/g mls'"
+          value="{{ selected_cocktail.alcohol_measurement_2 }}"
+          class="validate"
+        />
+        <label for="measurement ">Measurment</label>
+      </div>
+    </div>
+
+       <!-- Alcohol Element 3 -->
+    <div class="row">
+      <div class="input-field col s12 l4">
+        <i class="material-icons prefix">local_bar</i>
+        <input
+          id="alcohol_element_3"
+          name="alcohol_element_3"
+          type="text"
+          value="{{ selected_cocktail.alcohol_element_3 }}"
+          class="validate"
+        />
+        <label for="alcohol_element_3 ">Alcohol</label>
+      </div>
+
+      <!-- Alcohol Measure 3 -->
+      <div class="input-field col s12 l4">
+        <i class="fas fa-sort-numeric-up-alt prefix"></i>
+        <input
+          id="alcohol_measure_3"
+          name="alcohol_measure_3"
+          type="number"
+          value="{{ selected_cocktail.alcohol_measure_3 }}"
+          class="validate"
+        />
+        <label for="alcohol_measure">Alcohol Measure</label>
+      </div>
+
+      <!-- Alcohol Measurement 3 -->
+      <div class="input-field col s12 l4">
+        <i class="fas fa-weight prefix"></i>
+        <input
+          id="alcohol_measurement_3"
+          name="alcohol_measurement_3"
+          type="text"
+          placeholder=" choose yurmeasure unit e/g mls'"
+          value="{{ selected_cocktail.alcohol_measurement_3 }}"
+          class="validate"
+        />
+        <label for="measurement">Measurment</label>
       </div>
     </div>
 
@@ -165,22 +199,17 @@
       </div>
 
       <!-- Citrus Measurement -->
-      <div class="input-field col s4">
+      <div class="input-field col s12 l4">
         <i class="fas fa-weight prefix"></i>
-        <select id="citrus_measurement" name="measurement">
-          <option value="" selected>Choose measurment</option>
-          {% for measure in measurements %} {% if measure in measurements ==
-          selected_cocktail.measure %}
-          <option value="{{measure.measurement}}" selected
-            >{{measure.measurement}}</option
-          >
-          {% else %}
-          <option value="{{measure.measurement}}"
-            >{{measure.measurement}}</option
-          >
-          {% endif %}{% endfor %}
-        </select>
-        <label>Measurment</label>
+        <input
+          id="citrus_measurement"
+          name="citrus_measurement"
+          type="text"
+          placeholder="choose your measure unit e/g mls'"
+          value="{{ selected_cocktail.citrus_measurement }}"
+          class="validate"
+        />
+        <label for="citrus_measurement ">Measurment</label>
       </div>
     </div>
 
@@ -212,22 +241,32 @@
       </div>
 
       <!-- Sweet Measurment-->
-      <div class="input-field col s4">
+       <div class="input-field col s12 l4">
         <i class="fas fa-weight prefix"></i>
-        <select id="sweet_measurement" name="measurement">
-          <option value="" selected>Choose measurment</option>
-          {% for measure in measurements %} {% if measure.measurement ==
-          selected_cocktail.measurement %}
-          <option value="{{measure.measurement}}" selected
-            >{{measure.measurement}}</option
-          >
-          {% else %}
-          <option value="{{measure.measurement}}"
-            >{{measure.measurement}}</option
-          >
-          {% endif %}{% endfor %}
-        </select>
-        <label>Measurment</label>
+        <input
+          id="sweet_measurement"
+          name="sweet_measurement"
+          type="text"
+          placeholder=" choose yurmeasure unit e/g mls'"
+          class="validate"
+          value="{{ selected_cocktail.sweet_measurement }}"
+        />
+        <label for="measurement">Measurment</label>
+      </div>
+    </div>
+
+        <!-- Other Ingridients -->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="fas fa-th-list prefix"></i>
+        <input
+          id="other_ingredients"
+          name="other_ingredients"
+          type="text"
+          class="validate"
+          value="{{ selected_cocktail.other_ingredients }}"
+        />
+        <label for="other_ingredients">Other Ingridients</label>
       </div>
     </div>
 
@@ -322,12 +361,12 @@
     <!-- Button -->
     <div class="row">
       <div class="col s12 center-align">
-        <button class="btn-large blue text-shadow" type="submit">
+        <button class="edit-btn btn" type="submit">
           Edit Cocktail
           <i class="far fa-edit"></i>
         </button>
 
-        <a href="{{url_for('drinks_card')}}" class="btn-large red text-shadow"
+        <a href="{{url_for('drinks_card')}}" class="delete-btn btn"
           >Cancel Changes<i class="far fa-times-circle right prefix"></i
         ></a>
       </div>

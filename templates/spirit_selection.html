@@ -4,46 +4,44 @@
 <hr class="bdbdbd grey lighten-1" />
 <div class="container">
   <div class="row">
-    <div class="row">
+  
       <div class="col s12 m4">
         <div class="card z-depth-5">
-          <div class="card-image pic">
+          <div class="card-image ">
             <a href="{{url_for('show_categories', name='Gin' )}}">
               <img
-                class="recipe-img"
-                src="{{url_for('static', filename='images/juniper berries.jpg')}}"
+                class="spirit-img"
+                src="{{url_for('static', filename='images/juniper.jpeg')}}"
               />
-<div class="row">
-              <p><h3  class="card-title gin-heder" >Gin</h3></p>
-              </div>
+             <h3 class="card-title">Gin</h3>
             </a>
           </div>
         </div>
       </div>
 
       <div class="col s12 m4">
-        <div class="card">
+        <div class="card z-depth-5">
           <div class="card-image">
             <a href="{{url_for('show_categories', name='Tequilla' )}}">
               <img
-                class="recipe-img"
+                class="spirit-img"
                 src="{{url_for('static', filename='images/tromba6.jpg')}}"
               />
-              <span><h3>Tequilla</h3></span>
+              <span class="card-title">Tequilla</span>
             </a>
           </div>
         </div>
       </div>
 
       <div class="col s12 m4">
-        <div class="card">
+        <div class="card z-depth-5">
           <div class="card-image">
             <a href="{{url_for('show_categories', name='Scotch Whisky' )}}">
               <img
-                class="recipe-img"
-                src="{{url_for('static', filename='images/whisky.jpeg')}}"
+                class="spirit-img"
+                src="{{url_for('static', filename='images/bowmore.jpeg')}}"
               />
-              <span><h3 >Scotch Whisky</h3></span>
+              <span class="card-title">Scotch Whisky</span>
             </a>
           </div>
         </div>
@@ -52,57 +50,57 @@
 
     <div class="row">
       <div class="col s12 m4">
-        <div class="card">
+        <div class="card z-depth-5">
           <div class="card-image">
             <a href="{{url_for('show_categories', name='Vodka' )}}">
               <img
-                class="recipe-img"
-                src="{{url_for('static', filename='images/martini.jpg')}}"
+                class="spirit-img"
+                src="{{url_for('static', filename='images/vodka-drink.jpeg')}}"
               />
-              <span><h3>Vodka</h3></span>
+              <span class="card-title">Vodka</span>
             </a>
           </div>
         </div>
       </div>
 
       <div class="col s12 m4 ">
-        <div class="card">
+        <div class="card z-depth-5">
           <div class="card-image">
             <a href="{{url_for('show_categories', name='Bourbon Whiskey' )}}">
               <img
-                class="recipe-img"
+                class="spirit-img"
                 src="{{url_for('static', filename='images/whiskey-bourbon2.jpg')}}"
               />
-              <span><h3>Bourbon Whiskey</h3></span>
+              <span class="card-title center-align">Bourbon Whiskey</span>
             </a>
           </div>
         </div>
       </div>
 
       <div class="col s12 m4">
-        <div class="card">
+        <div class="card z-depth-5">
           <div class="card-image">
             <a href="{{url_for('show_categories', name='Rum' )}}">
               <img
-                class="recipe-img"
+                class="spirit-img"
                 src="{{url_for('static', filename='images/rum barrels.jpeg')}}"
               />
-              <span><h3>Rum</h3></span>
+              <span class="card-title">Rum</span>
             </a>
           </div>
         </div>
       </div>
-
+ 
       <div class="row">
         <div class="col s12 m4 offset-m4">
-          <div class="card">
+          <div class="card z-depth-5">
             <div class="card-image">
               <a href="{{url_for('show_categories', name='Other' )}}">
                 <img
-                  class="recipe-img"
+                  class="spirit-img"
                   src="{{url_for('static', filename='images/bottles.jpeg')}}"
                 />
-                <span ><h3>Other</h3></span>
+                <span class="card-title"><p class="center-align">Other</p></span>
               </a>
             </div>
           </div>
@@ -110,6 +108,6 @@
       </div>
     </div>
   </div>
-</div>
+
 
 {% endblock %}

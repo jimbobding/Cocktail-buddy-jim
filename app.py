@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, redirect, request, url_for, flash, session
-from flask_pymongo import PyMongo, pymongo
-from flask_paginate import Pagination, get_page_args, get_page_parameter
+from flask_pymongo import PyMongo
+from flask_paginate import Pagination, get_page_args
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -25,16 +25,15 @@ drinks_db = mongo.db.drinks
 users_db = mongo.db.users
 alcohol_db = mongo.db.alcohol
 glassware_db = mongo.db.glassware
-measurements_db = mongo.db.measurements
+
 
 
 @app.route('/cocktail_recipe/<drink_id>')
 def cocktail_recipe(drink_id):
 
-    measurements = measurements_db.find()
     selected_cocktail = drinks_db.find_one({"_id": ObjectId(drink_id)})
     return render_template("cocktail_recipe.html",
-                           selected_cocktail=selected_cocktail, measurements=measurements
+                           selected_cocktail=selected_cocktail
                            )
 
 
@@ -44,7 +43,7 @@ def drinks_card():
     drinks = list(drinks_db.find())
     page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
     per_page = 8
-    offset = (page -1 )* per_page
+    offset = (page - 1) * per_page
     current_page = int(request.args.get('current_page', -1))
     total = drinks_db.find().count()
     paginatedDrinks = drinks[offset: offset + per_page]
@@ -78,7 +77,7 @@ def add_cocktails():
         if request.form.get("image"):
             image = request.form.get("image")
         else:
-            image = "static/images/drink-placeholder.jpeg"
+            image = "https://images.unsplash.com/photo-1517163907682-7b3ad9fab4fb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
 
         # Dict with fields for new cocktail
         new_cocktail = {
@@ -86,12 +85,19 @@ def add_cocktails():
             'drink_name': request.form.get('drink_name'),
             'alcohol_element': request.form.get('alcohol_element'),
             'alcohol_measure': request.form.get('alcohol_measure'),
+            'alcohol_measurement': request.form.get('alcohol_measurement'),
             'alcohol_element_2': request.form.get('alcohol_element_2'),
             'alcohol_measure_2': request.form.get('alcohol_measure_2'),
+            'alcohol_measurement_2': request.form.get('alcohol_measurement_2'),
+            'alcohol_element_3': request.form.get('alcohol_element_3'),
+            'alcohol_measure_3': request.form.get('alcohol_measure_3'),
+            'alcohol_measurement_3': request.form.get('alcohol_measurement_3'),
             'citrus_element': request.form.get('citrus_element'),
             'citrus_measure': request.form.get('citrus_measure'),
+            'citrus_measurement': request.form.get('citrus_measurement'),
             'sweet_element': request.form.get('sweet_element'),
             'sweet_measure': request.form.get('sweet_measure'),
+            'sweet_measurement': request.form.get('sweet_measurement'),
             'other_ingredients': request.form.get('other_ingredients'),
             'garnish': request.form.get('garnish'),
             'glass_type': request.form.get('glass_type'),
@@ -110,12 +116,10 @@ def add_cocktails():
    list so it could be used multiple times in the dropdowns on the
    add cocktail form  """ 
    
-    measurements = list(measurements_db.find())
     alcohol = alcohol_db.find()
     glassware = glassware_db.find()
     return render_template("add_cocktails.html",
-                           alcohol=alcohol, glassware=glassware,
-                           measurements=measurements)
+                           alcohol=alcohol, glassware=glassware)
 
 
 # ---------- Edit Cocktail----------- #
@@ -128,12 +132,19 @@ def edit_cocktail(drink_id):
             'drink_name': request.form.get('drink_name'),
             'alcohol_element': request.form.get('alcohol_element'),
             'alcohol_measure': request.form.get('alcohol_measure'),
+            'alcohol_measurement': request.form.get('alcohol_measurement'),
             'alcohol_element_2': request.form.get('alcohol_element_2'),
             'alcohol_measure_2': request.form.get('alcohol_measure_2'),
+            'alcohol_measurement_2': request.form.get('alcohol_measurement_2'),
+            'alcohol_element_3': request.form.get('alcohol_element_3'),
+            'alcohol_measure_3': request.form.get('alcohol_measure_3'),
+            'alcohol_measurement_3': request.form.get('alcohol_measurement_3'),
             'citrus_element': request.form.get('citrus_element'),
             'citrus_measure': request.form.get('citrus_measure'),
+            'citrus_measurement': request.form.get('citrus_measurement'),
             'sweet_element': request.form.get('sweet_element'),
             'sweet_measure': request.form.get('sweet_measure'),
+            'sweet_measurement': request.form.get('sweet_measurement'),
             'other_ingredients': request.form.get('other_ingredients'),
             'garnish': request.form.get('garnish'),
             'glass_type': request.form.get('glass_type'),
@@ -146,14 +157,13 @@ def edit_cocktail(drink_id):
         }
         drinks_db.update({"_id": ObjectId(drink_id)}, edit_cocktail)
         flash("Drink has been successfully edited")
-
+       
     glassware = glassware_db.find()
-    measurements = list(measurements_db.find())
     selected_cocktail = drinks_db.find_one({"_id": ObjectId(drink_id)})
     alcohol = alcohol_db.find()
     return render_template("edit_cocktail.html",
                            alcohol=alcohol, glassware=glassware,
-                            selected_cocktail=selected_cocktail, measurements=measurements)
+                            selected_cocktail=selected_cocktail)
 
 
 # ---------- Delete Cocktail ----------- #
@@ -169,7 +179,14 @@ def delete_cocktail(drink_id):
 def search():
     query = request.form.get("query")
     drinks = list(drinks_db.find({"$text": {"$search": query}}))
-    return render_template("drinks.html", drinks=drinks)
+    page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+    per_page = 8
+    offset = (page -  1) * per_page
+    current_page = int(request.args.get('current_page', -1))
+    total = drinks_db.find().count()
+    paginatedDrinks = drinks[offset: offset + per_page]
+    pagination = Pagination(page=page, per_page=per_page, total=total)
+    return render_template("drinks.html", drinks=drinks, pagination=pagination, page=page, per_page=per_page)
 
 
 # ---------- Get Categories----------- #
@@ -279,21 +296,21 @@ def profile(username):
     # gets session username from the database
     drinks = drinks_db.find({"created_by": username})
     username = users_db.find_one(
-    {"username": session["user"]})["username"]
+        {"username": session["user"]})["username"]
     # This will count the logged in users number of drinks
     number_drinks = drinks.count()
-    page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+    page, per_page, offset = get_page_args(page_parameter='page',
+                                            per_page_parameter='per_page')
     per_page = 8
-    offset = (page -1 )* per_page
+    offset = (page - 1) * per_page
     current_page = int(request.args.get('current_page', -1))
     total = drinks_db.find().count()
     paginatedDrinks = drinks[offset: offset + per_page]
     pagination = Pagination(page=page, per_page=per_page, total=total)
-
     if session["user"]:
         return render_template("profile.html", username=username,
                                 drinks=paginatedDrinks, page=page, per_page=per_page,  
-                                pagination=pagination,   current_page=current_page, 
+                                pagination=pagination, current_page=current_page, 
                                 number_drinks=number_drinks)
 
     return redirect(url_for("login"))

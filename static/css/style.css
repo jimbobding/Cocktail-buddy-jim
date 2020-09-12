@@ -2,8 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Slabo+27px:100,300,400,700&display=swap");
 
 
-body{
-min-height: 100vh;
+html, body{
+
+width: 100%;
 flex-direction: column;
 margin: 0;
 padding: 0; 
@@ -14,7 +15,9 @@ line-height: 2rem;
 overflow-x: hidden;
 }
 
+
 /* ----------------------------------------nav bar */
+
 
 .navabar-logo {
     height: 65px;
@@ -78,15 +81,14 @@ nav li a:hover {
 }
 
 .cocktail-card-img {
-    border: 1px solid hsla(0, 100%, 50%, 0.3);
     width: 300px;
     height: 300px;
+    border-radius: 25%;
 }
 
 .cocktail-card-title {
     font-size: 20px;
 }
-
 
 .pic {
   object-fit: cover;
@@ -97,12 +99,16 @@ nav li a:hover {
     box-shadow: 5px 10px 8px grey;
 }
 
-.card .card-image img {
+.card-image  {
 border-radius: 25px;
 }
 
 .card {
 border-radius: 25px;
+}
+
+.card .card-image img {
+    border-radius: 25px;
 }
 
 .drink-card {
@@ -124,13 +130,15 @@ height: 220px;
 }
 
 /* ----------------------------------------images */
-.recipe-img {
+.spirit-img {
   height: 300px;
   width: 300px;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 25%;
 }
+
 .home-image {
     background-image: radial-gradient(rgba(249, 238, 238, 0.91), rgba(152, 142, 142, 0.04)), url(../images/cocktails-above.jpeg);
     background-repeat: no-repeat;
@@ -140,6 +148,16 @@ height: 220px;
     border-radius: 15px;
     width: 100%;
     height: 100%;
+}
+
+.cocktail-recipe-img {
+  height: 300px;
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25%;
+  margin-top: 50px;
 }
 
 .hr-cocktail-recipe {
@@ -152,12 +170,13 @@ hr {
 }
 
 /* ----------------------------------------Headings */
+/* ---- Recipe page */
 .spirit-headings {
   font-family: "Fredericka the Great", cursive;
   text-align: center;
 }
 
-.glassware-heading, .garnish-heading, .method-heading, .ingredient-heading {
+.recipe-procedure-heading {
     font-size: 15px;
     font-weight: bold;
     text-align: center;
@@ -168,51 +187,38 @@ hr {
     font-family: 'Courgette', cursive;
 }
 
-.drinkcard-heading {
-  font-size: 18px;
-}
-
-.drinkcard-title {
-  text-align: center;
-}
-
-.recipe-center-items, .ingredients-list, .method-instructions, .cocktail-history {
+.recipe-center-items, .ingredients-list  {
     text-align: center;
 }
 
-.section-heading {
-    text-align: center;
-}
+/* ---- Login/Register */
 
-.home-heading{
-    position: absolute;
-    
-}
-
-.page-headers {
-    margin-top: 0px;
-    font-weight: bold;
-    padding-top: 20px;
-}
-
-.page-bottom {
+.page-bottom-margin {
     margin-bottom: 0px;
 }
-
-h3 {
-    
-text-shadow: 0px 15px 5px rgba(0,0,0,0.1),
-                 10px 20px 5px rgba(0,0,0,0.05),
-                 -10px 20px 5px rgba(0,0,0,0.05);
+.page-head-margin {
+    margin-top: 0px;
 }
 
-.text-block-home {
+.header-padding {
+    padding-top: 2rem;
+}
+
+/* ---- All pages */
+h3 {  
+text-shadow: 0px 15px 5px rgba(0,0,0,0.1),
+             10px 20px 5px rgba(0,0,0,0.05),
+            -10px 20px 5px rgba(0,0,0,0.05);
+}
+ /* ---- drinks-page */
+.drinks-image-text {
 position: absolute;
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
 width: inherit;
 padding: 9px; 
+letter-spacing: 12px;
 }
 
 .sub-heading {
@@ -224,10 +230,6 @@ padding: 9px;
 }
 
 .short-text { display: none; 
-}
-
-.spirit-header, .card-title {
-    text-align: center !important; 
 }
 
 /* ----------------------------------------Profile */
@@ -261,8 +263,6 @@ padding: 9px;
     height: 350px;
     margin-top: 2em;
 }
-
-
 
 .details-card {
     background-color:hsla(0, 100%, 50%, 0.3);
@@ -355,3 +355,6 @@ padding: 9px;
     height: 230px;
 }
     }
+
+
+

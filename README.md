@@ -76,7 +76,6 @@ Adam R, a financial consultant from Melbourne, Aus - "I enjoy the weekends where
 7. The user wants to be able to log out quickly and have the session terminated.
 8. The user wants to be able to view the app on multiple platforms.
 
- 
 # Design
 
 I wanted the look of the app to be simplistic but have the vibe of a classy cocktail menu.
@@ -102,10 +101,10 @@ I also wanted to use colours that would signify the use of functionality to user
 
 ### Color Scheme
 
- - ![#ff4242](https://placehold.it/15/ff4242/ff4242) `#ff4242` - **coral**
+ - I used a red colour with a hsla to gve it an opaque colour
 
 Was used for both header and footer of the app. The main colour of the app as it opens and closes the index page.
- 
+
 ### Logo
 
 The logo was used in the nav-bar as a route back to the home page. The logo itself is the face of a bar tender with the site name underneath.
@@ -229,6 +228,10 @@ The user would click on the manage categories section which would take the user 
 Delete will remove the category from the dropdowns and database and displayed a message your category has been deleted, edit will take you to a separate card that will have two buttons and an input box that allows the user to change the name of the category.
 After the user has changed the name in the input box they can either click edit which will take them back to the manage categories page with a flash displaying that your category has been successfully edited, or you can click cancel which will cancel the operation and take you back to the manage categories section.
 
+#### pagination
+
+This is used in the drinks section and also the profile page. It allows only 8 cocktail recipes per page and gives a page turning system so you can go back and forth bettween pages ech displaying 8 recip cards.
+
 
 ### Features to add
 
@@ -338,11 +341,26 @@ I tested the functionality of the app throughout the entire development process 
 ### Add cocktails
 
 - Tried to add a cocktail wothout filling in the required fileds. Tooltip respose ("please select an item in the list" or "pleae fill in the valid field")
+- Tried adding a cocktail with no image url. The place holder pictire which I was adding in on the add cocktail app.proute worked for the drinks page but I notoced it did
+not appear on the profile page or the spirit selection queries.
+
+#### Resoltions
+
+- In the add cocktial app.route the picture was being added as an image that I had saved in my staic images file, this meant that when it came through to my drin fiel it was fine 
+but as a user would go to other pages on teh app e/g the profile page the url for the profile page would get called foisst an dnot allwow the staic image to be displayed. I got around 
+this by usong teh url for the image so it was being called externally. This fixed the issue an the image now displays on all pages.
+
+
 
 ### Edit cocktail
 
 - Clicked on the edit cocktail button, all field that were populated were still polulated.
 - Tried to remove  a required field in the testing form. Tooltip response ("please fill in thies field")
+- Tried to remove the seelcted the url for the image address and save the change. The place holder iage did not appear in the drinks card or cocktail recipe page.
+
+#### Resoltions
+
+- This issue is currently unresolved
 
 
 
@@ -429,23 +447,6 @@ https://
 4. Open IDE Terminal.
 5. Change the current working directory to the location where you want the cloned directory to be made.
 6. Type git clone and copy in your URL and press enter.
-
-You can clone this repository directly into the editor of your choice by pasting the following command into the terminal:
-git clone https://github.com/irinatu17/MyCookBook
-Alternatively, you can save a copy of this repository by clicking the green button "Clone or download" , then "Download Zip" button, and after extract the Zip file to your folder.
-In the terminal window change directory (CD) to the correct file location (directory that you have just created).
-Set up environment variables:
-Create .env file in the root directory.
-On the top of the file add import os to set the environment variables in the operating system.
-Set the connection to your MongoDB database(MONGO_URI) and a SECRET_KEY with the following syntax: os.environ["SECRET_KEY"] = "YourSecretKey"
-os.environ["MONGO_URI"] = "YourMongoURI"
-.
-Install all requirements from the requirements.txt file putting this command into your terminal:
-pip3 install -r requirements.txt
-Note: GitPod does not require sudo, so if you use another IDE, you will need to include sudo in the beginning of the command: sudo pip3 install -r requirements.txt.
-Create a new Database called "MyCookBook" in MongoDB Atlas.
-You can sign up for free account, if you do not have one.
-
 
 This information can be obtained from [Github](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
 

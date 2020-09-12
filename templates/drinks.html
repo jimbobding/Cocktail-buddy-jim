@@ -4,12 +4,12 @@
   <div class="home-image">
     <div class="row">
       <div class="col s21 center-align">
-        <div class="text-block-home">
+        <div class="drinks-image-text">
           <h1>Cocktail Buddy</h1>
           {% if session.user %}
           <a href="{{url_for('add_cocktails')}}" class=" btn drink-recipe-btns"><span class="full-text" >  Start adding cocktails now</span><span class="short-text" > Add Cocktails</span></a>
           {% else %}
-          <a href="{{url_for('login')}}" class=" btn  drink-recipe-btns">Sign up to start adding your own cocktails</a>
+          <a href="{{url_for('login')}}" class=" btn  drink-recipe-btns"><span class="full-text" >Sign up to start adding your own cocktails</span><span class="short-text" > Register</span></a>
           {% endif %}
         </div>
       </div>
@@ -56,26 +56,29 @@
 {% if drinks| length > 0 %}
 
 
-<div class="row">      
-  {% for drink in drinks %}
-
+<div class="row">    
+   {% for drink in drinks %}
   <div class="col s12 m6 l3">
     <div class="card drink-card">
+  
       <div class="card-image">
-        <a href="{{  url_for('cocktail_recipe', drink_id=drink._id) }}">
+          <a href="{{  url_for('cocktail_recipe', drink_id=drink._id) }}">
           <img
             class="image cocktail-card-img"
             src="{{drink.image}}"
             alt="cocktail image"
           />
-        </a>
+         </a>
       </div>
+      
       <div class="card-content cocktail-card-content">
+       <a href="{{  url_for('cocktail_recipe', drink_id=drink._id) }}">
         <span class="cocktail-card-title center-align"
           ><h3>
             {{drink.drink_name}}
           </h3></span
         >
+         </a>
         <div class="row">
           <div class="col s12 l6">
             <p class="sub-heading">{{drink.alcohol_type}}</p>
@@ -95,8 +98,8 @@
 {{ pagination.links }}
 </div>
 {% else %}
-<h3>No drinks match you search</h3>
+<h3 class="center-align">Sorry no drinks match you search</h3>
 {% endif %}
 
 
-{% endblock %} {% block footer %} {% include 'includes/_footer.html' %}{% endblock %} {% block navbar %} {% include 'includes/_navbar.html' %} {% endblock %} {{ pagination.info }} 
+{% endblock %} {% block footer %} {% include 'includes/_footer.html' %}{% endblock %} {% block navbar %} {% include 'includes/_navbar.html' %} {% endblock %} 
