@@ -2,7 +2,7 @@
   <img width="100%" height="90%" src="https://github.com/jimbobding/Cocktail-buddy-jim/blob/master/static/images/cocktail-buddy-logo2.png">
 </p>
 
-- <img src="https://i.ibb.co/kJBb49T/Screenshot-2020-09-13-at-11-28-24.png" alt="All devices" target="_blank" rel="noopener">
+<img src="https://i.ibb.co/kJBb49T/Screenshot-2020-09-13-at-11-28-24.png"  alt="All devices" target="_blank" rel="noopener">
 
 ## Table of Contents
 1. [My Idea](#myidea)
@@ -43,7 +43,7 @@
 
 **Demo**
 ----------
-A live demo can be found [here](https://8000-e35317c9-c729-49c7-bdd6-a14b63318364.ws-eu01.gitpod.io/)
+A live demo can be found [here](https://cocktail-buddy-jim.herokuapp.com/add_cocktails)
 
 # My Idea
 
@@ -90,17 +90,35 @@ this was used on the cocktail headings to give a slightly classier look, in keep
 
 ### Colours
 
-The main colour scheme was to be of white, black and red being the look of old school bartenders, White shirt with a black waistcoat and a red bow tie.
-I also wanted to use colours that would signify the use of the functionality to the user’s red being danger green being a success and blue being neutral.
+
+
+
+
+The colour of white and black are used for the main body of the app. The navbar and footer are black which wrap the body which has a background of white, i felt I wanted to keep this clean and simple as here would be a fair bit going on in the body 
+with different cards having differnet colours on them. 
+I also wanted to use colours that would signify the use of the functionality to the user’s red being danger green beI also used a red colour ing a success and blue being neutral.
+
+
+
+
+
+
+
 [flatui colorpicker](http://www.flatuicolorpicker.com)
 [Materialize Color](https://materializecss.com/color.html)
 
 
 ### Color Scheme
 
- - I used a red colour with a hsla to give it an opaque colour
+<img src="https://ibb.co/CK917PF"  alt="ALogin screen on mac" target="_blank" rel="noopener">
 
-Was used for both header and footer of the app. The main colour of the app as it opens and closes the index page.
+ - I used a red colour with a hsla to give it an opaque colour and a forest green colour to give the app some colour, aswell as on alot of the buttons
+
+<img width="100%" height="90%" src="https://github.com/jimbobding/Cocktail-buddy-jim/blob/master/static/Screenshot 2020-09-11 at 11.43.17.png">
+<img width="100%" height="90%" src="https://github.com/jimbobding/Cocktail-buddy-jim/blob/master/static/images/Screenshot 2020-09-13 at 19.52.37.png">
+ 
+
+<img src="https://i.ibb.co/kJBb49T/Screenshot-2020-09-13-at-11-28-24.png" alt="All devices" target="_blank" rel="noopener">
 
 ### Logo
 
