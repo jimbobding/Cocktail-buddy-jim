@@ -1,379 +1,350 @@
 {% extends 'base.html'%} {% block content %}
-
 <div class="row container cocktail-form-container margin-top z-depth-1">
-  <form
-    class="col s12"
-    method="Post"
-    action="{{url_for('edit_cocktail', drink_id=selected_cocktail._id)}}"
-  >
-    <h3 class="center-align">Edit Cocktail</h3>
-
-    <div class="row">
+   <form
+      class="col s12"
+      method="Post"
+      action="{{url_for('edit_cocktail', drink_id=selected_cocktail._id)}}"
+      >
+      <h3 class="center-align">Edit Cocktail</h3>
+      <div class="row">
+         <div class="input-field col s12">
+            <i class="material-icons prefix">local_bar</i>
+            <select id="alcohol_type" name="alcohol_type" class="validate" required>
+               <option value="" selected>Choose Alcohol</option>
+               {% for type in alcohol %} {% if type.alcohol_type ==
+               selected_cocktail.alcohol_type %}
+               <option value="{{type.alcohol_type}}" selected
+                  >{{type.alcohol_type}}</option
+                  >
+               {% else %}
+               <option value="{{type.alcohol_type}}">{{type.alcohol_type}}</option>
+               {% endif %} {% endfor %}
+            </select>
+            <label for="alcohol_type">Alcohol</label>
+         </div>
+      </div>
+      <!-- Drink Name -->
+      <div class="row">
+         <div class="input-field col s12">
+            <i class="material-icons prefix">account_circle</i>
+            <input
+               id="drink_name"
+               name="drink_name"
+               type="text"
+               class="validate"
+               value="{{selected_cocktail.drink_name}}"
+               required
+               />
+            <label for="drink_name">Drink Name</label>
+         </div>
+      </div>
+      <!-- Alcohol Element -->
+      <div class="row">
+         <div class="input-field col s12 l4">
+            <i class="material-icons prefix">local_bar</i>
+            <input
+               id="alcohol_element"
+               name="alcohol_element"
+               type="text"
+               class="validate"
+               value="{{ selected_cocktail.alcohol_element }}"
+               required
+               />
+            <label for="alcohol_element">Alcohol</label>
+         </div>
+         <!-- Alcohol Measure -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-sort-numeric-up-alt prefix"></i>
+            <input
+               id="alcohol_measure"
+               name="alcohol_measure"
+               type="number"
+               value="{{ selected_cocktail.alcohol_measure }}"
+               class="validate"
+               required
+               />
+            <label for="alcohol_measure">Alcohol Measure</label>
+         </div>
+         <!-- Alcohol Measurement  -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-weight prefix"></i>
+            <input
+               id="alcohol_measurement"
+               name="alcohol_measurement"
+               type="text"
+               placeholder="choose unit e/g mls"
+               value="{{ selected_cocktail.alcohol_measurement }}"
+               class="validate"
+               required
+               />
+            <label for="measurement"><i class="fas fa-asterisk asterisk  tooltipped"></i>Measurment</label>
+         </div>
+      </div>
+      <!-- Alcohol Element 2 -->
+      <div class="row">
+         <div class="input-field col s12 l4">
+            <i class="material-icons prefix">local_bar</i>
+            <input
+               id="alcohol_element_2"
+               name="alcohol_element_2"
+               type="text"
+               value="{{ selected_cocktail.alcohol_element_2 }}"
+               class="validate"
+               />
+            <label for="alcohol_element_2">Alcohol</label>
+         </div>
+         <!-- Alcohol Measure 2 -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-sort-numeric-up-alt prefix"></i>
+            <input
+               id="alcohol_measure_2"
+               name="alcohol_measure_2"
+               type="number"
+               value="{{ selected_cocktail.alcohol_measure_2 }}"
+               class="validate"
+               />
+            <label for="alcohol_measure">Alcohol Measure</label>
+         </div>
+         <!-- Alcohol Measurement 2 -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-weight prefix"></i>
+            <input
+               id="alcohol_measurement_2"
+               name="alcohol_measurement_2"
+               type="text"
+               placeholder="choose unit e/g mls"
+               value="{{ selected_cocktail.alcohol_measurement_2 }}"
+               class="validate"
+               />
+            <label for="measurement ">Measurment</label>
+         </div>
+      </div>
+      <!-- Alcohol Element 3 -->
+      <div class="row">
+         <div class="input-field col s12 l4">
+            <i class="material-icons prefix">local_bar</i>
+            <input
+               id="alcohol_element_3"
+               name="alcohol_element_3"
+               type="text"
+               value="{{ selected_cocktail.alcohol_element_3 }}"
+               class="validate"
+               />
+            <label for="alcohol_element_3 ">Alcohol</label>
+         </div>
+         <!-- Alcohol Measure 3 -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-sort-numeric-up-alt prefix"></i>
+            <input
+               id="alcohol_measure_3"
+               name="alcohol_measure_3"
+               type="number"
+               value="{{ selected_cocktail.alcohol_measure_3 }}"
+               class="validate"
+               />
+            <label for="alcohol_measure">Alcohol Measure</label>
+         </div>
+         <!-- Alcohol Measurement 3 -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-weight prefix"></i>
+            <input
+               id="alcohol_measurement_3"
+               name="alcohol_measurement_3"
+               type="text"
+               placeholder="choose unit e/g mls"
+               value="{{ selected_cocktail.alcohol_measurement_3 }}"
+               class="validate"
+               />
+            <label for="measurement">Measurment</label>
+         </div>
+      </div>
+      <!-- Citrus Element -->
+      <div class="row">
+         <div class="input-field col s12 l4">
+            <i class="fas fa-lemon prefix"></i>
+            <input
+               id="citrus_element"
+               name="citrus_element"
+               type="text"
+               value="{{ selected_cocktail.citrus_element }}"
+               class="validate"
+               />
+            <label for="citrus_element">Citrus</label>
+         </div>
+         <!-- Citrus Measure -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-sort-numeric-up-alt prefix"></i>
+            <input
+               id="citrus_measure"
+               name="citrus_measure"
+               type="number"
+               value="{{ selected_cocktail.citrus_measure }}"
+               class="validate"
+               />
+            <label for="citrus_measure">citrus_measure</label>
+         </div>
+         <!-- Citrus Measurement -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-weight prefix"></i>
+            <input
+               id="citrus_measurement"
+               name="citrus_measurement"
+               type="text"
+               placeholder="choose unit e/g mls"
+               value="{{ selected_cocktail.citrus_measurement }}"
+               class="validate"
+               />
+            <label for="citrus_measurement ">Measurment</label>
+         </div>
+      </div>
+      <!-- Sweet Element-->
+      <div class="row">
+         <div class="input-field col s12 l4">
+            <i class="material-icons prefix">account_circle</i>
+            <input
+               id="sweet_element"
+               name="sweet_element"
+               type="text"
+               value="{{ selected_cocktail.sweet_element }}"
+               class="validate"
+               />
+            <label for="sweet_element">sweet_element</label>
+         </div>
+         <!-- Sweet Measure -->
+         <div class="input-field col s12 l4">
+            <i class="material-icons prefix">account_circle</i>
+            <input
+               id="sweet_measure"
+               name="sweet_measure"
+               type="number"
+               class="validate"
+               value="{{ selected_cocktail.sweet_measure }}"
+               />
+            <label for="sweet_measure">Sweet Measure</label>
+         </div>
+         <!-- Sweet Measurment-->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-weight prefix"></i>
+            <input
+               id="sweet_measurement"
+               name="sweet_measurement"
+               type="text"
+               placeholder="choose unit e/g mls'"
+               class="validate"
+               value="{{ selected_cocktail.sweet_measurement }}"
+               />
+            <label for="measurement">Measurment</label>
+         </div>
+      </div>
+      <!-- Other Ingridients -->
+      <div class="row">
+         <div class="input-field col s12">
+            <i class="fas fa-th-list prefix"></i>
+            <input
+               id="other_ingredients"
+               name="other_ingredients"
+               type="text"
+               class="validate"
+               minlength="0"
+               maxlength="40"
+               value="{{ selected_cocktail.other_ingredients }}"
+               />
+            <label for="other_ingredients">Other Ingridients</label>
+         </div>
+      </div>
+      <!-- Glassware -->
+      <div class="row">
+         <div class="input-field col s12 l6">
+            <i class="fas fa-glass-whiskey prefix"></i>
+            <select id="glass_type" name="glass_type" required>
+               <option value="" disabled selected>Choose Glassware</option>
+               {% for glass in glassware %} {% if glass.glass_type ==
+               selected_cocktail.glass_type %}
+               <option value="{{glass.glass_type}}" selected
+                  >{{glass.glass_type}}</option
+                  >
+               {% else %}
+               <option value="{{glass.glass_type}}">{{glass.glass_type}}</option>
+               {% endif %}{% endfor %}
+            </select>
+            <label>Glasswarare</label>
+         </div>
+         <!-- Garnish -->
+         <div class="input-field col s12 l6">
+            <i class="fas fa-bone prefix"></i>
+            <input
+               id="garnish"
+               name="garnish"
+               type="text"
+               value="{{ selected_cocktail.garnish }}"
+               class="validate"
+               />
+            <label for="garnish">Garnish</label>
+         </div>
+      </div>
+      <!-- Method -->
       <div class="input-field col s12">
-        <i class="material-icons prefix">local_bar</i>
-        <select id="alcohol_type" name="alcohol_type" class="validate" required>
-          <option value="" selected>Choose Alcohol</option>
-          {% for type in alcohol %} {% if type.alcohol_type ==
-          selected_cocktail.alcohol_type %}
-          <option value="{{type.alcohol_type}}" selected
-            >{{type.alcohol_type}}</option
-          >
-          {% else %}
-          <option value="{{type.alcohol_type}}">{{type.alcohol_type}}</option>
-          {% endif %} {% endfor %}
-        </select>
-        <label for="alcohol_type">Alcohol</label>
+         <i class="fas fa-list-ol prefix"></i>
+         <input
+            id="method"
+            name="method"
+            type="text"
+            value="{{ selected_cocktail.method }}"
+            class="validate"
+            required
+            />
+         <label for="method">Method</label>
       </div>
-    </div>
-
-    <!-- Drink Name -->
-    <div class="row">
+      <!-- History -->
       <div class="input-field col s12">
-        <i class="material-icons prefix">account_circle</i>
-        <input
-          id="drink_name"
-          name="drink_name"
-          type="text"
-          class="validate"
-          value="{{selected_cocktail.drink_name}}"
-          required
-        />
-        <label for="drink_name">Drink Name</label>
+         <i class="fas fa-clipboard-list prefix"></i>
+         <input
+            id="history"
+            name="history"
+            type="text"
+            value="{{ selected_cocktail.history }}"
+            class="validate"
+            />
+         <label for="history">History</label>
       </div>
-    </div>
-
-    <!-- Alcohol Element -->
-    <div class="row">
-      <div class="input-field col s12 l4">
-        <i class="material-icons prefix">local_bar</i>
-        <input
-          id="alcohol_element"
-          name="alcohol_element"
-          type="text"
-          class="validate"
-          value="{{ selected_cocktail.alcohol_element }}"
-          required
-        />
-        <label for="alcohol_element">Alcohol</label>
-      </div>
-
-      <!-- Alcohol Measure -->
-      <div class="input-field col s12 l4">
-        <i class="fas fa-sort-numeric-up-alt prefix"></i>
-        <input
-          id="alcohol_measure"
-          name="alcohol_measure"
-          type="number"
-          value="{{ selected_cocktail.alcohol_measure }}"
-          class="validate"
-          required
-        />
-        <label for="alcohol_measure">Alcohol Measure</label>
-      </div>
-
-      <!-- Alcohol Measurement  -->
-       <div class="input-field col s12 l4">
-        <i class="fas fa-weight prefix"></i>
-        <input
-          id="alcohol_measurement"
-          name="alcohol_measurement"
-          type="text"
-          placeholder="choose unit e/g mls"
-          value="{{ selected_cocktail.alcohol_measurement }}"
-          class="validate"
-          required
-        />
-        <label for="measurement"><i class="fas fa-asterisk asterisk  tooltipped"></i>Measurment</label>
-      </div>
-    </div>
-
-    <!-- Alcohol Element 2 -->
-    <div class="row">
-       <div class="input-field col s12 l4">
-        <i class="material-icons prefix">local_bar</i>
-        <input
-          id="alcohol_element_2"
-          name="alcohol_element_2"
-          type="text"
-          value="{{ selected_cocktail.alcohol_element_2 }}"
-          class="validate"
-        />
-        <label for="alcohol_element_2">Alcohol</label>
-      </div>
-
-      <!-- Alcohol Measure 2 -->
-     <div class="input-field col s12 l4">
-        <i class="fas fa-sort-numeric-up-alt prefix"></i>
-        <input
-          id="alcohol_measure_2"
-          name="alcohol_measure_2"
-          type="number"
-          value="{{ selected_cocktail.alcohol_measure_2 }}"
-          class="validate"
-        />
-        <label for="alcohol_measure">Alcohol Measure</label>
-      </div>
-
-    <!-- Alcohol Measurement 2 -->
-      <div class="input-field col s12 l4">
-        <i class="fas fa-weight prefix"></i>
-        <input
-          id="alcohol_measurement_2"
-          name="alcohol_measurement_2"
-          type="text"
-          placeholder="choose unit e/g mls"
-          value="{{ selected_cocktail.alcohol_measurement_2 }}"
-          class="validate"
-        />
-        <label for="measurement ">Measurment</label>
-      </div>
-    </div>
-
-       <!-- Alcohol Element 3 -->
-    <div class="row">
-      <div class="input-field col s12 l4">
-        <i class="material-icons prefix">local_bar</i>
-        <input
-          id="alcohol_element_3"
-          name="alcohol_element_3"
-          type="text"
-          value="{{ selected_cocktail.alcohol_element_3 }}"
-          class="validate"
-        />
-        <label for="alcohol_element_3 ">Alcohol</label>
-      </div>
-
-      <!-- Alcohol Measure 3 -->
-      <div class="input-field col s12 l4">
-        <i class="fas fa-sort-numeric-up-alt prefix"></i>
-        <input
-          id="alcohol_measure_3"
-          name="alcohol_measure_3"
-          type="number"
-          value="{{ selected_cocktail.alcohol_measure_3 }}"
-          class="validate"
-        />
-        <label for="alcohol_measure">Alcohol Measure</label>
-      </div>
-
-      <!-- Alcohol Measurement 3 -->
-      <div class="input-field col s12 l4">
-        <i class="fas fa-weight prefix"></i>
-        <input
-          id="alcohol_measurement_3"
-          name="alcohol_measurement_3"
-          type="text"
-          placeholder="choose unit e/g mls"
-          value="{{ selected_cocktail.alcohol_measurement_3 }}"
-          class="validate"
-        />
-        <label for="measurement">Measurment</label>
-      </div>
-    </div>
-
-    <!-- Citrus Element -->
-    <div class="row">
-       <div class="input-field col s12 l4">
-        <i class="fas fa-lemon prefix"></i>
-        <input
-          id="citrus_element"
-          name="citrus_element"
-          type="text"
-          value="{{ selected_cocktail.citrus_element }}"
-          class="validate"
-        />
-        <label for="citrus_element">Citrus</label>
-      </div>
-
-      <!-- Citrus Measure -->
-      <div class="input-field col s12 l4">
-        <i class="fas fa-sort-numeric-up-alt prefix"></i>
-        <input
-          id="citrus_measure"
-          name="citrus_measure"
-          type="number"
-          value="{{ selected_cocktail.citrus_measure }}"
-          class="validate"
-        />
-        <label for="citrus_measure">citrus_measure</label>
-      </div>
-
-      <!-- Citrus Measurement -->
-      <div class="input-field col s12 l4">
-        <i class="fas fa-weight prefix"></i>
-        <input
-          id="citrus_measurement"
-          name="citrus_measurement"
-          type="text"
-          placeholder="choose unit e/g mls"
-          value="{{ selected_cocktail.citrus_measurement }}"
-          class="validate"
-        />
-        <label for="citrus_measurement ">Measurment</label>
-      </div>
-    </div>
-
-    <!-- Sweet Element-->
-    <div class="row">
-      < <div class="input-field col s12 l4">
-        <i class="material-icons prefix">account_circle</i>
-        <input
-          id="sweet_element"
-          name="sweet_element"
-          type="text"
-          value="{{ selected_cocktail.sweet_element }}"
-          class="validate"
-        />
-        <label for="sweet_element">sweet_element</label>
-      </div>
-
-      <!-- Sweet Measure -->
-    <div class="input-field col s12 l4">
-        <i class="material-icons prefix">account_circle</i>
-        <input
-          id="sweet_measure"
-          name="sweet_measure"
-          type="number"
-          class="validate"
-          value="{{ selected_cocktail.sweet_measure }}"
-        />
-        <label for="sweet_measure">Sweet Measure</label>
-      </div>
-
-      <!-- Sweet Measurment-->
-       <div class="input-field col s12 l4">
-        <i class="fas fa-weight prefix"></i>
-        <input
-          id="sweet_measurement"
-          name="sweet_measurement"
-          type="text"
-          placeholder="choose unit e/g mls'"
-          class="validate"
-          value="{{ selected_cocktail.sweet_measurement }}"
-        />
-        <label for="measurement">Measurment</label>
-      </div>
-    </div>
-
-        <!-- Other Ingridients -->
-    <div class="row">
+      <!-- Notes -->
       <div class="input-field col s12">
-        <i class="fas fa-th-list prefix"></i>
-        <input
-          id="other_ingredients"
-          name="other_ingredients"
-          type="text"
-          class="validate"
-          minlength="0"
-          maxlength="40"
-          value="{{ selected_cocktail.other_ingredients }}"
-        />
-        <label for="other_ingredients">Other Ingridients</label>
+         <i class="fas fa-sticky-note prefix"></i>
+         <input
+            id="notes"
+            name="notes"
+            type="text"
+            value="{{ selected_cocktail.notes }}"
+            class="validate"
+            />
+         <label for="notes">Notes</label>
       </div>
-    </div>
-
-    <!-- Glassware -->
-    <div class="row">
-      <div class="input-field col s12 l6">
-        <i class="fas fa-glass-whiskey prefix"></i>
-        <select id="glass_type" name="glass_type" required>
-          <option value="" disabled selected>Choose Glassware</option>
-          {% for glass in glassware %} {% if glass.glass_type ==
-          selected_cocktail.glass_type %}
-          <option value="{{glass.glass_type}}" selected
-            >{{glass.glass_type}}</option
-          >
-          {% else %}
-          <option value="{{glass.glass_type}}">{{glass.glass_type}}</option>
-           {% endif %}{% endfor %}
-        </select>
-        <label>Glasswarare</label>
+      <!-- Image -->
+      <div class="input-field col s12">
+         <i class="far fa-images prefix"></i>
+         <input
+            id="image"
+            name="image"
+            type="text"
+            value="{{ selected_cocktail.image }}"
+            class="validate"
+            placeholder="Provide URL for your
+            cocktail image"
+            />
+         <label for="image">Image</label>
       </div>
-
-
-      <!-- Garnish -->
-       <div class="input-field col s12 l6">
-        <i class="fas fa-bone prefix"></i>
-        <input
-          id="garnish"
-          name="garnish"
-          type="text"
-          value="{{ selected_cocktail.garnish }}"
-          class="validate"
-        />
-        <label for="garnish">Garnish</label>
+      <!-- Button -->
+      <div class="row">
+         <div class="col s12 center-align">
+            <button class="edit-btn btn" type="submit">
+            Edit Cocktail
+            <i class="far fa-edit"></i>
+            </button>
+            <a href="{{url_for('drinks_card')}}" class="delete-btn btn"
+               >Cancel Changes<i class="far fa-times-circle right prefix"></i
+               ></a>
+         </div>
       </div>
-    </div>
-
-    <!-- Method -->
-    <div class="input-field col s12">
-      <i class="fas fa-list-ol prefix"></i>
-      <input
-        id="method"
-        name="method"
-        type="text"
-        value="{{ selected_cocktail.method }}"
-        class="validate"
-        required
-      />
-      <label for="method">Method</label>
-    </div>
-
-    <!-- History -->
-    <div class="input-field col s12">
-      <i class="fas fa-clipboard-list prefix"></i>
-      <input
-        id="history"
-        name="history"
-        type="text"
-        value="{{ selected_cocktail.history }}"
-        class="validate"
-      />
-      <label for="history">History</label>
-    </div>
-
-    <!-- Notes -->
-    <div class="input-field col s12">
-      <i class="fas fa-sticky-note prefix"></i>
-      <input
-        id="notes"
-        name="notes"
-        type="text"
-        value="{{ selected_cocktail.notes }}"
-        class="validate"
-      />
-      <label for="notes">Notes</label>
-    </div>
-
-    <!-- Image -->
-    <div class="input-field col s12">
-      <i class="far fa-images prefix"></i>
-      <input
-        id="image"
-        name="image"
-        type="text"
-        value="{{ selected_cocktail.image }}"
-        class="validate"
-        placeholder="Provide URL for your
-          cocktail image"
-      />
-      <label for="image">Image</label>
-    </div>
-
-    <!-- Button -->
-    <div class="row">
-      <div class="col s12 center-align">
-        <button class="edit-btn btn" type="submit">
-          Edit Cocktail
-          <i class="far fa-edit"></i>
-        </button>
-
-        <a href="{{url_for('drinks_card')}}" class="delete-btn btn"
-          >Cancel Changes<i class="far fa-times-circle right prefix"></i
-        ></a>
-      </div>
-    </div>
-
-    {% endblock %}
-  </form>
+      {% endblock %}
+   </form>
 </div>

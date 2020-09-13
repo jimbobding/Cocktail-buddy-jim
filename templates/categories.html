@@ -1,40 +1,37 @@
 {% extends 'base.html'%} {% block content %}
 <h3 class="center-align">Manage Categories</h3>
-
 <div class="row">
-  <div class="col s12 center-align">
-    <a href="{{ url_for('add_categories')}}" class="btn-large dark-blue"
-      >Add Category <i class="fas fa-plus-square right"></i
-    ></a>
-  </div>
+   <div class="col s12 center-align">
+      <a href="{{ url_for('add_categories')}}" class="btn-large dark-blue"
+         >Add Category <i class="fas fa-plus-square right"></i
+         ></a>
+   </div>
 </div>
-
 <div class="row">
-  {% for glass in glassware %}
-  <div class="col s12 m6">
-    <ul class="collapsible">
-      <li>
-        <div class="collapsible-header">
-          <i class="material-icons">filter_drama</i> {{ glass.glass_type }}
-        </div>
-        <div class="collapsible-body">
-          <span>
-            <a
-              href="{{url_for('edit_categories', glass_id=glass._id)}}"
-              class="btn edit-btn text-shadow"
-              >Edit</a
-            >
-            <a
-              href="{{url_for('delete_categories', glass_id=glass._id)}}"
-              class="btn delete-btn text-shadow"
-              >Delete</a
-            >.</span
-          >
-        </div>
-      </li>
-    </ul>
-  </div>
-  {% endfor %}
+   {% for glass in glassware %}
+   <div class="col s12 m6">
+      <ul class="collapsible">
+         <li>
+            <div class="collapsible-header">
+               <i class="material-icons">filter_drama</i> {{ glass.glass_type }}
+            </div>
+            <div class="collapsible-body">
+               <span>
+               <a
+                  href="{{url_for('edit_categories', glass_id=glass._id)}}"
+                  class="btn edit-btn text-shadow"
+                  >Edit</a
+                  >
+               <a
+                  href="{{url_for('delete_categories', glass_id=glass._id)}}"
+                  class="btn delete-btn text-shadow"
+                  >Delete</a
+                  >.</span
+                  >
+            </div>
+         </li>
+      </ul>
+   </div>
+   {% endfor %}
 </div>
-
 {% endblock %}

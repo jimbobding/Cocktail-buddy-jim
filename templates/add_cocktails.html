@@ -1,334 +1,308 @@
 {% extends 'base.html' %} {% block content %}
-
 <div
-  class=" container cocktail-form-container margin-top z-depth-1 white header-padding"
->
-  <form class="col s12" method="Post" action="{{url_for('add_cocktails')}}">
-    <h3 class="center-align">Add Cocktail</h3>
-
-    <!-- Alcohol Type -->
-    <div class="row">
-      <div class="input-field alcohol-input col s12">
-        <i class="material-icons prefix">local_bar</i>
-        <select id="alcohol_type" name="alcohol_type" class="validate" required>
-          <option value="" disabled selected>Choose Alcohol</option>
-          {% for type in alcohol %}
-          <option value="{{type.alcohol_type}}">{{type.alcohol_type}}</option>
-          {% endfor %}
-        </select>
-        <label for="alcohol_type"
-          ><i class="fas fa-asterisk asterisk"></i>Alcohol</label
-        >
+   class=" container cocktail-form-container margin-top z-depth-1 white header-padding"
+   >
+   <form class="col s12" method="Post" action="{{url_for('add_cocktails')}}">
+      <h3 class="center-align">Add Cocktail</h3>
+      <!-- Alcohol Type -->
+      <div class="row">
+         <div class="input-field alcohol-input col s12">
+            <i class="material-icons prefix">local_bar</i>
+            <select id="alcohol_type" name="alcohol_type" class="validate" required>
+               <option value="" disabled selected>Choose Alcohol</option>
+               {% for type in alcohol %}
+               <option value="{{type.alcohol_type}}">{{type.alcohol_type}}</option>
+               {% endfor %}
+            </select>
+            <label for="alcohol_type"
+               ><i class="fas fa-asterisk asterisk"></i>Alcohol</label
+               >
+         </div>
       </div>
-    </div>
-
-    <!-- Drink Name -->
-    <div class="row">
+      <!-- Drink Name -->
+      <div class="row">
+         <div class="input-field col s12">
+            <i class="material-icons prefix tooltipped">account_circle</i>
+            <input
+               id="drink_name"
+               name="drink_name"
+               type="text"
+               class="validate"
+               minlength="3"
+               maxlength="20"
+               required
+               />
+            <label for="drink_name">
+            <i class="fas fa-asterisk asterisk tooltipped"></i> Drink Name</label
+               >
+         </div>
+      </div>
+      <!-- Alcohol Element -->
+      <div class="row">
+         <div class="input-field col s12 l4">
+            <i class="material-icons prefix tooltipped">local_bar</i>
+            <input
+               id="alcohol_element"
+               name="alcohol_element"
+               type="text"
+               class="validate"
+               required
+               />
+            <label for="alcohol_element">
+            <i class="fas fa-asterisk asterisk tooltipped"></i> Alcohol
+            </label>
+         </div>
+         <!-- Alcohol Measure -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-sort-numeric-up-alt prefix"></i>
+            <input
+               id="alcohol_measure"
+               name="alcohol_measure"
+               type="number"
+               class="validate"
+               required
+               />
+            <label for="alcohol_measure">
+            <i class="fas fa-asterisk asterisk tooltipped"></i> Alcohol
+            Measure</label
+               >
+         </div>
+         <!-- Alcohol Measurement  -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-weight prefix"></i>
+            <input
+               id="alcohol_measurement"
+               name="alcohol_measurement"
+               type="text"
+               placeholder=" choose unit e/g mls'"
+               class="validate"
+               required
+               />
+            <label for="measurement"><i class="fas fa-asterisk asterisk  tooltipped"></i>Measurment</label>
+         </div>
+      </div>
+      <!-- Alcohol Element 2 -->
+      <div class="row">
+         <div class="input-field col s12 l4">
+            <i class="material-icons prefix">local_bar</i>
+            <input
+               id="alcohol_element_2"
+               name="alcohol_element_2"
+               type="text"
+               class="validate"
+               />
+            <label for="alcohol_element_2 ">Alcohol</label>
+         </div>
+         <!-- Alcohol Measure 2 -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-sort-numeric-up-alt prefix"></i>
+            <input
+               id="alcohol_measure_2"
+               name="alcohol_measure_2"
+               type="number"
+               class="validate"
+               />
+            <label for="alcohol_measure ">Alcohol Measure</label>
+         </div>
+         <!-- Alcohol Measurement 2 -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-weight prefix"></i>
+            <input
+               id="alcohol_measurement_2"
+               name="alcohol_measurement_2"
+               type="text"
+               placeholder="choose unit e/g mls'"
+               class="validate"
+               />
+            <label for="measurement ">Measurment</label>
+         </div>
+      </div>
+      <!-- Alcohol Element 3 -->
+      <div class="row">
+         <div class="input-field col s12 l4">
+            <i class="material-icons prefix">local_bar</i>
+            <input
+               id="alcohol_element_3"
+               name="alcohol_element_3"
+               type="text"
+               class="validate"
+               />
+            <label for="alcohol_element_3 ">Alcohol</label>
+         </div>
+         <!-- Alcohol Measure 3 -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-sort-numeric-up-alt prefix"></i>
+            <input
+               id="alcohol_measure_3"
+               name="alcohol_measure_3"
+               type="number"
+               class="validate"
+               />
+            <label for="alcohol_measure">Alcohol Measure</label>
+         </div>
+         <!-- Alcohol Measurement 3 -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-weight prefix"></i>
+            <input
+               id="alcohol_measurement_3"
+               name="alcohol_measurement_3"
+               type="text"
+               placeholder="choose unit e/g mls'"
+               class="validate"
+               />
+            <label for="measurement">Measurment</label>
+         </div>
+      </div>
+      <!-- Citrus Element -->
+      <div class="row">
+         <div class="input-field col s12 l4">
+            <i class="fas fa-lemon prefix"></i>
+            <input
+               id="citrus_element"
+               name="citrus_element"
+               type="text"
+               class="validate"
+               />
+            <label for="citrus_element ">Citrus</label>
+         </div>
+         <!-- Citrus Measure -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-sort-numeric-up-alt prefix"></i>
+            <input
+               id="citrus_measure"
+               name="citrus_measure"
+               type="number"
+               class="validate"
+               />
+            <label for="citrus_measure">citrus_measure</label>
+         </div>
+         <!-- Citrus Measurement -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-weight prefix"></i>
+            <input
+               id="citrus_measurement"
+               name="citrus_measurement"
+               type="text"
+               placeholder="choose unit e/g mls'"
+               class="validate"
+               />
+            <label for="measurement ">Measurment</label>
+         </div>
+      </div>
+      <!-- Sweet Element-->
+      <div class="row">
+         <div class="input-field col s12 l4">
+            <i class="fas fa-candy-cane prefix"></i>
+            <input
+               id="sweet_element"
+               name="sweet_element"
+               type="text"
+               class="validate"
+               />
+            <label for="sweet_element">sweet_element</label>
+         </div>
+         <!-- Sweet Measure -->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-sort-numeric-up-alt prefix"></i>
+            <input
+               id="sweet_measure"
+               name="sweet_measure"
+               type="text"
+               class="validate"
+               />
+            <label for="sweet_measure">Sweet Measure</label>
+         </div>
+         <!-- Sweet Measurment-->
+         <div class="input-field col s12 l4">
+            <i class="fas fa-weight prefix"></i>
+            <input
+               id="sweet_measurement"
+               name="sweet_measurement"
+               type="text"
+               placeholder="choose unit e/g mls'"
+               class="validate"
+               />
+            <label for="measurement">Measurment</label>
+         </div>
+      </div>
+      <!-- Other Ingridients -->
+      <div class="row">
+         <div class="input-field col s12">
+            <i class="fas fa-th-list prefix"></i>
+            <input
+               id="other_ingredients"
+               name="other_ingredients"
+               type="text"
+               class="validate"
+               minlength="0"
+               maxlength="40"
+               />
+            <label for="other_ingredients">Other Ingridients</label>
+         </div>
+      </div>
+      <!-- Glassware -->
+      <div class="row">
+         <div class="input-field col s12 l6 required">
+            <i class="fas fa-glass-whiskey prefix"></i>
+            <select id="glass_type" name="glass_type" required>
+               <option value="" disabled selected>Choose Glassware</option>
+               {% for glass in glassware %}
+               <option value="{{glass.glass_type}}">{{glass.glass_type}} </option>
+               {% endfor %}
+            </select>
+            <label
+               ><i class="fas fa-asterisk asterisk tooltipped"></i>Glasswarare</label
+               >
+         </div>
+         <!-- Garnish -->
+         <div class="input-field col s12 l6">
+            <i class="fas fa-bone prefix"></i>
+            <input id="garnish" name="garnish" type="text" class="validate" />
+            <label for="garnish ">Garnish</label>
+         </div>
+      </div>
+      <!-- Method -->
       <div class="input-field col s12">
-        <i class="material-icons prefix tooltipped">account_circle</i>
-        <input
-          id="drink_name"
-          name="drink_name"
-          type="text"
-          class="validate"
-          minlength="3"
-          maxlength="20"
-          required
-        />
-        <label for="drink_name">
-          <i class="fas fa-asterisk asterisk tooltipped"></i> Drink Name</label
-        >
+         <i class="fas fa-list-ol prefix"></i>
+         <input id="method" name="method" type="text" class="validate" required />
+         <label for="method"
+            ><i class="fas fa-asterisk asterisk tooltipped"></i>Method</label
+            >
       </div>
-    </div>
-
-    <!-- Alcohol Element -->
-    <div class="row">
-      <div class="input-field col s12 l4">
-        <i class="material-icons prefix tooltipped">local_bar</i>
-        <input
-          id="alcohol_element"
-          name="alcohol_element"
-          type="text"
-          class="validate"
-          required
-        />
-        <label for="alcohol_element">
-          <i class="fas fa-asterisk asterisk tooltipped"></i> Alcohol
-        </label>
-      </div>
-
-      <!-- Alcohol Measure -->
-      <div class="input-field col s12 l4">
-        <i class="fas fa-sort-numeric-up-alt prefix"></i>
-        <input
-          id="alcohol_measure"
-          name="alcohol_measure"
-          type="number"
-          class="validate"
-          required
-        />
-        <label for="alcohol_measure">
-          <i class="fas fa-asterisk asterisk tooltipped"></i> Alcohol
-          Measure</label
-        >
-      </div>
-
-      <!-- Alcohol Measurement  -->
-      <div class="input-field col s12 l4">
-        <i class="fas fa-weight prefix"></i>
-        <input
-          id="alcohol_measurement"
-          name="alcohol_measurement"
-          type="text"
-          placeholder=" choose unit e/g mls'"
-          class="validate"
-          required
-        />
-        <label for="measurement"><i class="fas fa-asterisk asterisk  tooltipped"></i>Measurment</label>
-      </div>
-    </div>
-
-    <!-- Alcohol Element 2 -->
-    <div class="row">
-      <div class="input-field col s12 l4">
-        <i class="material-icons prefix">local_bar</i>
-        <input
-          id="alcohol_element_2"
-          name="alcohol_element_2"
-          type="text"
-          class="validate"
-        />
-        <label for="alcohol_element_2 ">Alcohol</label>
-      </div>
-
-      <!-- Alcohol Measure 2 -->
-      <div class="input-field col s12 l4">
-        <i class="fas fa-sort-numeric-up-alt prefix"></i>
-        <input
-          id="alcohol_measure_2"
-          name="alcohol_measure_2"
-          type="number"
-          class="validate"
-        />
-        <label for="alcohol_measure ">Alcohol Measure</label>
-      </div>
-
-      <!-- Alcohol Measurement 2 -->
-      <div class="input-field col s12 l4">
-        <i class="fas fa-weight prefix"></i>
-        <input
-          id="alcohol_measurement_2"
-          name="alcohol_measurement_2"
-          type="text"
-          placeholder="choose unit e/g mls'"
-          class="validate"
-        />
-        <label for="measurement ">Measurment</label>
-      </div>
-    </div>
-
-    <!-- Alcohol Element 3 -->
-    <div class="row">
-      <div class="input-field col s12 l4">
-        <i class="material-icons prefix">local_bar</i>
-        <input
-          id="alcohol_element_3"
-          name="alcohol_element_3"
-          type="text"
-          class="validate"
-        />
-        <label for="alcohol_element_3 ">Alcohol</label>
-      </div>
-
-      <!-- Alcohol Measure 3 -->
-      <div class="input-field col s12 l4">
-        <i class="fas fa-sort-numeric-up-alt prefix"></i>
-        <input
-          id="alcohol_measure_3"
-          name="alcohol_measure_3"
-          type="number"
-          class="validate"
-        />
-        <label for="alcohol_measure">Alcohol Measure</label>
-      </div>
-
-      <!-- Alcohol Measurement 3 -->
-      <div class="input-field col s12 l4">
-        <i class="fas fa-weight prefix"></i>
-        <input
-          id="alcohol_measurement_3"
-          name="alcohol_measurement_3"
-          type="text"
-          placeholder="choose unit e/g mls'"
-          class="validate"
-        />
-        <label for="measurement">Measurment</label>
-      </div>
-    </div>
-
-    <!-- Citrus Element -->
-    <div class="row">
-      <div class="input-field col s12 l4">
-        <i class="fas fa-lemon prefix"></i>
-        <input
-          id="citrus_element"
-          name="citrus_element"
-          type="text"
-          class="validate"
-        />
-        <label for="citrus_element ">Citrus</label>
-      </div>
-
-      <!-- Citrus Measure -->
-      <div class="input-field col s12 l4">
-        <i class="fas fa-sort-numeric-up-alt prefix"></i>
-        <input
-          id="citrus_measure"
-          name="citrus_measure"
-          type="number"
-          class="validate"
-        />
-        <label for="citrus_measure">citrus_measure</label>
-      </div>
-
-      <!-- Citrus Measurement -->
-      <div class="input-field col s12 l4">
-        <i class="fas fa-weight prefix"></i>
-        <input
-          id="citrus_measurement"
-          name="citrus_measurement"
-          type="text"
-          placeholder="choose unit e/g mls'"
-          class="validate"
-        />
-        <label for="measurement ">Measurment</label>
-      </div>
-    </div>
-
-    <!-- Sweet Element-->
-    <div class="row">
-      <div class="input-field col s12 l4">
-        <i class="fas fa-candy-cane prefix"></i>
-        <input
-          id="sweet_element"
-          name="sweet_element"
-          type="text"
-          class="validate"
-        />
-        <label for="sweet_element">sweet_element</label>
-      </div>
-
-      <!-- Sweet Measure -->
-      <div class="input-field col s12 l4">
-        <i class="fas fa-sort-numeric-up-alt prefix"></i>
-        <input
-          id="sweet_measure"
-          name="sweet_measure"
-          type="text"
-          class="validate"
-        />
-        <label for="sweet_measure">Sweet Measure</label>
-      </div>
-
-      <!-- Sweet Measurment-->
-      <div class="input-field col s12 l4">
-        <i class="fas fa-weight prefix"></i>
-        <input
-          id="sweet_measurement"
-          name="sweet_measurement"
-          type="text"
-          placeholder="choose unit e/g mls'"
-          class="validate"
-        />
-        <label for="measurement">Measurment</label>
-      </div>
-    </div>
-
-    <!-- Other Ingridients -->
-    <div class="row">
+      <!-- History -->
       <div class="input-field col s12">
-        <i class="fas fa-th-list prefix"></i>
-        <input
-          id="other_ingredients"
-          name="other_ingredients"
-          type="text"
-          class="validate"
-          minlength="0"
-          maxlength="40"
-        />
-        <label for="other_ingredients">Other Ingridients</label>
+         <i class="fas fa-clipboard-list prefix"></i>
+         <input id="history" name="history" type="text" class="validate" />
+         <label for="history">History</label>
       </div>
-    </div>
-
-    <!-- Glassware -->
-    <div class="row">
-      <div class="input-field col s12 l6 required">
-        <i class="fas fa-glass-whiskey prefix"></i>
-        <select id="glass_type" name="glass_type" required>
-          <option value="" disabled selected>Choose Glassware</option>
-          {% for glass in glassware %}
-          <option value="{{glass.glass_type}}">{{glass.glass_type}} </option>
-          {% endfor %}
-        </select>
-        <label
-          ><i class="fas fa-asterisk asterisk tooltipped"></i>Glasswarare</label
-        >
+      <!-- Notes -->
+      <div class="input-field col s12">
+         <i class="fas fa-sticky-note prefix tooltipped"></i>
+         <input id="notes" name="notes" type="text" class="validate" />
+         <label for="notes">Notes</label>
       </div>
-
-      <!-- Garnish -->
-      <div class="input-field col s12 l6">
-        <i class="fas fa-bone prefix"></i>
-        <input id="garnish" name="garnish" type="text" class="validate" />
-        <label for="garnish ">Garnish</label>
+      <!-- Image -->
+      <div class="input-field col s12">
+         <i class="far fa-images prefix"></i>
+         <input
+            id="image"
+            name="image"
+            type="text"
+            class="validate"
+            placeholder="Provide URL for your cocktail image"
+            />
+         <label for="image">Image</label>
       </div>
-    </div>
-
-    <!-- Method -->
-    <div class="input-field col s12">
-      <i class="fas fa-list-ol prefix"></i>
-      <input id="method" name="method" type="text" class="validate" required />
-      <label for="method"
-        ><i class="fas fa-asterisk asterisk tooltipped"></i>Method</label
-      >
-    </div>
-
-    <!-- History -->
-    <div class="input-field col s12">
-      <i class="fas fa-clipboard-list prefix"></i>
-      <input id="history" name="history" type="text" class="validate" />
-      <label for="history">History</label>
-    </div>
-
-    <!-- Notes -->
-    <div class="input-field col s12">
-      <i class="fas fa-sticky-note prefix tooltipped"></i>
-      <input id="notes" name="notes" type="text" class="validate" />
-      <label for="notes">Notes</label>
-    </div>
-
-    <!-- Image -->
-    <div class="input-field col s12">
-      <i class="far fa-images prefix"></i>
-      <input
-        id="image"
-        name="image"
-        type="text"
-        class="validate"
-        placeholder="Provide URL for your cocktail image"
-      />
-      <label for="image">Image</label>
-    </div>
-
-    <!-- Button -->
-    <div class="row">
-      <div class="col s12 center-align">
-        <button class="btn addcocktail-btn" type="submit" name="action">
-          <i class="far fa-edit right prefix"></i>
-          Add Cocktail
-          <i class="material-icons right">send</i>
-        </button>
+      <!-- Button -->
+      <div class="row">
+         <div class="col s12 center-align">
+            <button class="btn addcocktail-btn" type="submit" name="action">
+            <i class="far fa-edit right prefix"></i>
+            Add Cocktail
+            <i class="material-icons right">send</i>
+            </button>
+         </div>
       </div>
-    </div>
-  </form>
+   </form>
 </div>
 {% endblock %}

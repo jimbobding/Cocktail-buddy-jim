@@ -1,19 +1,19 @@
 {% extends 'base.html' %} {% block content %}
 <!-- 404 Error handler, for easy navigation if a user enters incorrect URL-->
 <div class="container">
-  <div class="row">
-  <div class="contaner margin-top-large  error-container">
-    <div class="col s12 center-align margin-top-large">
-      <h1 class="uppercase bold error-heading"> 
-        <span class="text-black"> 404</span> error
-      </h1>
-      <h3 class="">
-       Looks like we have broken connection here, lets get you back on track
-      </h3>
-      <a href="{{ url_for('drinks_card')}}" class="btn  text-shadow-small 
-     uppercase z-depth-3 error-btn btn-large">Back Home</a>
-    </div>
-  </div>
-</div>
+   <div class="row">
+      <div class="contaner margin-top-large  error-container">
+         <div class="col s12 center-align margin-top-large">
+            <h1 class="uppercase bold error-heading"> 
+               <span class="text-black"> 404</span> error
+            </h1>
+            <h3 class="">
+               Looks like we have broken connection here, lets get you back on track
+            </h3>
+            <a href="{{ url_for('drinks_card')}}" class="btn  text-shadow-small 
+               uppercase z-depth-3 error-btn btn-large">Back Home</a>
+         </div>
+      </div>
+   </div>
 </div>
 {% endblock %}

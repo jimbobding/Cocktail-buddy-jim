@@ -1,105 +1,96 @@
 {% extends "base.html" %} {% block content %}
-
 <div class="container container-home">
-  <div class="home-image">
-    <div class="row">
-      <div class="col s21 center-align">
-        <div class="drinks-image-text">
-          <h1>Cocktail Buddy</h1>
-          {% if session.user %}
-          <a href="{{url_for('add_cocktails')}}" class=" btn drink-recipe-btns"><span class="full-text" >  Start adding cocktails now</span><span class="short-text" > Add Cocktails</span></a>
-          {% else %}
-          <a href="{{url_for('login')}}" class=" btn  drink-recipe-btns"><span class="full-text" >Sign up to start adding your own cocktails</span><span class="short-text" > Register</span></a>
-          {% endif %}
-        </div>
+   <div class="home-image">
+      <div class="row">
+         <div class="col s21 center-align">
+            <div class="drinks-image-text">
+               <h1>Cocktail Buddy</h1>
+               {% if session.user %}
+               <a href="{{url_for('add_cocktails')}}" class=" btn drink-recipe-btns"><span class="full-text" >  Start adding cocktails now</span><span class="short-text" > Add Cocktails</span></a>
+               {% else %}
+               <a href="{{url_for('login')}}" class=" btn  drink-recipe-btns"><span class="full-text" >Sign up to start adding your own cocktails</span><span class="short-text" > Register</span></a>
+               {% endif %}
+            </div>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
 </div>
 <!-- Search query -->
 <div class="container search-container">
-<div class="row card-panel search-card">
-  <form
-    action="{{url_for('search') }}"
-    method="post"
-    class="col s12 m8 offset-m2"
-  >
-     <h3 class="center-align" >Find your cocktail now!</h3>
-        <p class="center-align" >Search our database for a particular cocoktail</p>
-    <div class="row valign-wrapper center-align">
-      <div class="input-field col s12 m8">
-        <i class="fa fas serch prefix light-blue"></i>
-        <input
-          type="text"
-          name="query"
-          id="query"
-          class="validate"
-          minlength="3"
-          required
-        />
-     
-        <label for="query">Search</label>
-      </div>
-      <div class="col s12 m4">
-        <a
-          href="{{ url_for('drinks_card') }}"
-          class="red-button text-shadow"
-        ></a>
-        <button type="submit" class="details-btn darken-1 btn">
-          <i class="fa fas search left"></i> Search
-        </button>
-      </div>
-    </div>
-  </form>
-</div>
+   <div class="row card-panel search-card">
+      <form
+         action="{{url_for('search') }}"
+         method="post"
+         class="col s12 m8 offset-m2"
+         >
+         <h3 class="center-align" >Find your cocktail now!</h3>
+         <p class="center-align" >Search our database for a particular cocoktail</p>
+         <div class="row valign-wrapper center-align">
+            <div class="input-field col s12 m8">
+               <i class="fa fas serch prefix light-blue"></i>
+               <input
+                  type="text"
+                  name="query"
+                  id="query"
+                  class="validate"
+                  minlength="3"
+                  required
+                  />
+               <label for="query">Search</label>
+            </div>
+            <div class="col s12 m4">
+               <a
+                  href="{{ url_for('drinks_card') }}"
+                  class="red-button text-shadow"
+                  ></a>
+               <button type="submit" class="details-btn darken-1 btn">
+               <i class="fa fas search left"></i> Search
+               </button>
+            </div>
+         </div>
+      </form>
+   </div>
 </div>
 {% if drinks| length > 0 %}
-
-
-<div class="row">    
+<div class="row">
    {% for drink in drinks %}
-  <div class="col s12 m6 l3">
-    <div class="card drink-card">
-  
-      <div class="card-image">
-          <a href="{{  url_for('cocktail_recipe', drink_id=drink._id) }}">
-          <img
-            class="image cocktail-card-img"
-            src="{{drink.image}}"
-            alt="cocktail image"
-          />
-         </a>
+   <div class="col s12 m6 l3">
+      <div class="card drink-card">
+         <div class="card-image">
+            <a href="{{  url_for('cocktail_recipe', drink_id=drink._id) }}">
+            <img
+               class="image cocktail-card-img"
+               src="{{drink.image}}"
+               alt="cocktail image"
+               />
+            </a>
+         </div>
+         <div class="card-content cocktail-card-content">
+            <a href="{{  url_for('cocktail_recipe', drink_id=drink._id) }}">
+               <span >
+                  <h3 class="cocktail-card-title center-align" >
+                     {{drink.drink_name}}
+                  </h3>
+               </span
+                  >
+            </a>
+            <div class="row">
+               <div class="col s12 l6">
+                  <p class="sub-heading">{{drink.alcohol_type}}</p>
+               </div>
+               <div class="col s12 l6">
+                  <p class="sub-heading right-align">Drink by {{drink.created_by}}</p>
+               </div>
+            </div>
+         </div>
       </div>
-      
-      <div class="card-content cocktail-card-content">
-       <a href="{{  url_for('cocktail_recipe', drink_id=drink._id) }}">
-        <span > 
-          <h3 class="cocktail-card-title center-align" >
-            {{drink.drink_name}}
-          </h3></span
-        >
-         </a>
-        <div class="row">
-          <div class="col s12 l6">
-            <p class="sub-heading">{{drink.alcohol_type}}</p>
-          </div>
-          <div class="col s12 l6">
-            <p class="sub-heading right-align">Drink by {{drink.created_by}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
-
-  
+   </div>
+   {% endfor %}
 </div>
 <div class="center-align">
-{{ pagination.links }}
+   {{ pagination.links }}
 </div>
 {% else %}
 <h3 class="center-align">Sorry no drinks match you search</h3>
 {% endif %}
-
-
-{% endblock %} {% block footer %} {% include 'includes/_footer.html' %}{% endblock %} {% block navbar %} {% include 'includes/_navbar.html' %} {% endblock %} 
+{% endblock %} {% block footer %} {% include 'includes/_footer.html' %}{% endblock %} {% block navbar %} {% include 'includes/_navbar.html' %} {% endblock %}

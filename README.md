@@ -94,7 +94,7 @@ For the framework of the app, I used [Materialize](https://materializecss.com/).
 
 ### Fonts
 
-The main fonts I settled on was [Cinzel]((https://fonts.google.com/specimen/Cinzel?preview.text=cinzel&preview.text_type=custom&query=cin")) which was used for the main body 
+The main fonts I settled on was [Ubunto](hhttps://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap") which was used for the main body 
 of the app, I choose this as I wanted it to look stylish but still approachable easy to read and with character.
 
 ### Colours
@@ -506,9 +506,6 @@ Then send them to the mongo database as a string, so when they were returned the
 17. It will take a minute and display a message that Your app was successfully deployed.
 18. Click on View to launch your deployed app.
 
-My website is now deployed and lives here
-
-https://cocktail-buddy-jim.herokuapp.com/
 
 ### Clone 
 

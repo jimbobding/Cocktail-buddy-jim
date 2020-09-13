@@ -1,113 +1,105 @@
 {% extends "base.html" %} {% block content %}
-
 <h3 class="center-align">Spirit Selection</h3>
 <hr class="bdbdbd grey lighten-1" />
 <div class="container">
-  <div class="row">
-  
+   <div class="row">
       <div class="col s12 m4">
-        <div class="card z-depth-5">
-          <div class="card-image ">
-            <a href="{{url_for('show_categories', name='Gin' )}}">
-              <img
-                class="spirit-img"
-                src="{{url_for('static', filename='images/juniper.jpeg')}}"
-              />
-             <h3 class="card-title">Gin</h3>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="card z-depth-5">
-          <div class="card-image">
-            <a href="{{url_for('show_categories', name='Tequilla' )}}">
-              <img
-                class="spirit-img"
-                src="{{url_for('static', filename='images/tromba6.jpg')}}"
-              />
-              <span class="card-title">Tequilla</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="card z-depth-5">
-          <div class="card-image">
-            <a href="{{url_for('show_categories', name='Scotch Whisky' )}}">
-              <img
-                class="spirit-img"
-                src="{{url_for('static', filename='images/bowmore.jpeg')}}"
-              />
-              <span class="card-title">Scotch Whisky</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col s12 m4">
-        <div class="card z-depth-5">
-          <div class="card-image">
-            <a href="{{url_for('show_categories', name='Vodka' )}}">
-              <img
-                class="spirit-img"
-                src="{{url_for('static', filename='images/vodka-drink.jpeg')}}"
-              />
-              <span class="card-title">Vodka</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col s12 m4 ">
-        <div class="card z-depth-5">
-          <div class="card-image">
-            <a href="{{url_for('show_categories', name='Bourbon Whiskey' )}}">
-              <img
-                class="spirit-img"
-                src="{{url_for('static', filename='images/whiskey-bourbon2.jpg')}}"
-              />
-              <span class="card-title center-align">Bourbon Whiskey</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col s12 m4">
-        <div class="card z-depth-5">
-          <div class="card-image">
-            <a href="{{url_for('show_categories', name='Rum' )}}">
-              <img
-                class="spirit-img"
-                src="{{url_for('static', filename='images/rum.jpeg')}}"
-              />
-              <span class="card-title">Rum</span>
-            </a>
-          </div>
-        </div>
-      </div>
- 
-      <div class="row">
-        <div class="col s12 m4 offset-m4">
-          <div class="card z-depth-5">
-            <div class="card-image">
-              <a href="{{url_for('show_categories', name='Other' )}}">
-                <img
-                  class="spirit-img"
-                  src="{{url_for('static', filename='images/bottles.jpeg')}}"
-                />
-                <span class="card-title"><p class="center-align">Other</p></span>
-              </a>
+         <div class="card z-depth-5">
+            <div class="card-image ">
+               <a href="{{url_for('show_categories', name='Gin' )}}">
+                  <img
+                     class="spirit-img"
+                     src="{{url_for('static', filename='images/juniper.jpeg')}}"
+                     />
+                  <h3 class="card-title">Gin</h3>
+               </a>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
-  </div>
-
-
+      <div class="col s12 m4">
+         <div class="card z-depth-5">
+            <div class="card-image">
+               <a href="{{url_for('show_categories', name='Tequilla' )}}">
+               <img
+                  class="spirit-img"
+                  src="{{url_for('static', filename='images/tromba6.jpg')}}"
+                  />
+               <span class="card-title">Tequilla</span>
+               </a>
+            </div>
+         </div>
+      </div>
+      <div class="col s12 m4">
+         <div class="card z-depth-5">
+            <div class="card-image">
+               <a href="{{url_for('show_categories', name='Scotch Whisky' )}}">
+               <img
+                  class="spirit-img"
+                  src="{{url_for('static', filename='images/bowmore.jpeg')}}"
+                  />
+               <span class="card-title">Scotch Whisky</span>
+               </a>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col s12 m4">
+         <div class="card z-depth-5">
+            <div class="card-image">
+               <a href="{{url_for('show_categories', name='Vodka' )}}">
+               <img
+                  class="spirit-img"
+                  src="{{url_for('static', filename='images/vodka-drink.jpeg')}}"
+                  />
+               <span class="card-title">Vodka</span>
+               </a>
+            </div>
+         </div>
+      </div>
+      <div class="col s12 m4 ">
+         <div class="card z-depth-5">
+            <div class="card-image">
+               <a href="{{url_for('show_categories', name='Bourbon Whiskey' )}}">
+               <img
+                  class="spirit-img"
+                  src="{{url_for('static', filename='images/whiskey-bourbon2.jpg')}}"
+                  />
+               <span class="card-title center-align">Bourbon Whiskey</span>
+               </a>
+            </div>
+         </div>
+      </div>
+      <div class="col s12 m4">
+         <div class="card z-depth-5">
+            <div class="card-image">
+               <a href="{{url_for('show_categories', name='Rum' )}}">
+               <img
+                  class="spirit-img"
+                  src="{{url_for('static', filename='images/rum.jpeg')}}"
+                  />
+               <span class="card-title">Rum</span>
+               </a>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col s12 m4 offset-m4">
+            <div class="card z-depth-5">
+               <div class="card-image">
+                  <a href="{{url_for('show_categories', name='Other' )}}">
+                     <img
+                        class="spirit-img"
+                        src="{{url_for('static', filename='images/bottles.jpeg')}}"
+                        />
+                     <span class="card-title">
+                        <p class="center-align">Other</p>
+                     </span>
+                  </a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
 {% endblock %}
