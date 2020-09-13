@@ -1,8 +1,8 @@
 <p align="center">
-  <img width="100%" height="90%" src="https://github.com/jimbobding/Cocktail-buddy-jim/blob/master/static/assets/images/cocktail-buddy-logo2.png">
+  <img width="100%" height="90%" src="https://github.com/jimbobding/Cocktail-buddy-jim/blob/master/static/images/cocktail-buddy-logo2.png">
 </p>
 
-
+- <img src="https://i.ibb.co/kJBb49T/Screenshot-2020-09-13-at-11-28-24.png" alt="All devices" target="_blank" rel="noopener">
 
 ## Table of Contents
 1. [My Idea](#myidea)
@@ -480,7 +480,7 @@ This information can be obtained from [Github](https://help.github.com/en/github
 ### Code
 For help 
 - 
-- [Irina](https://github.com/irinatu17/MyCookBook)
+- [Irina](https://github.com/irinatu17/MyCookBook) - I took the idea of the error page sand some inspiration form this excellent project
 - The structure of the CRUD functionality and fra work for part of the app were taken from the code institution course
 - For the pagination used this to reference and the modify. [This](https://github.com/DarilliGames/flaskpaginate/blob/master/app.py#L88)
 - For reference**Flask Tutorials** - [Corey Schafer](https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH) - package structure, custom error pages, WTForms,  hashing passwords
@@ -505,6 +505,3 @@ All websites I used for reference and guidance.
 
 - I would like to give a special mention to all the people on slack and all the people Code Institute, in particular, the Tutor support team and my Mentor Aaron Sinnot.
 
-### Disclaimer 
-
-This app/site was made for a project f

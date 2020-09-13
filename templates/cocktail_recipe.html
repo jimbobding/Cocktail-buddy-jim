@@ -1,50 +1,150 @@
 {% extends 'base.html'%} {% block content %}
 
 <div class="container">
-    <div class="row">
-      <div class="col s12">
-    <div
-          style="background-image: url{{selected_cocktail.image}}; width:80vw; height:80vh;"
-         
-    
-        > <div class="col l6 s12 recipe-center-items">
-							<h3 class="recipe-procedure-heading">Ingredients</h3>
-							<i class="fas fa-list"></i>
-							<hr class="hr-cocktail-recipe" />
-							<ul>
-								<li class="ingredients-list">
-									{{selected_cocktail.alcohol_element}}
-									{{selected_cocktail.alcohol_measure}}
-									{{selected_cocktail.alcohol_measurement}}
-								</li>
-								<li class="ingredients-list">
-									{{selected_cocktail.alcohol_element_2}}
-									{{selected_cocktail.alcohol_measure_2}}
-									{{selected_cocktail.alcohol_measurement_2}}
-								</li>
-								<li class="ingredients-list">
-									{{selected_cocktail.alcohol_element_3}}
-									{{selected_cocktail.alcohol_measure_3}}
-									{{selected_cocktail.alcohol_measurement_3}}
-								</li>
-								<li class="ingredients-list">
-									{{selected_cocktail.citrus_element}}
-									{{selected_cocktail.citrus_measure}}
-									{{selected_cocktail.citrus_measurement}}
-								</li>
-								<li class="ingredients-list">
-									{{selected_cocktail.sweet_element}}
-									{{selected_cocktail.sweet_measure}}
-									{{selected_cocktail.sweet_measurement}}
-								</li>
-								<li>
-									{{selected_cocktail.other_ingredients}}
-								</li>
-							</ul>
-						</div>
-</div>
-        
-    </div>
+  <div class="row">
+    <h2 class="cocktail-header">{{selected_cocktail.drink_name}}</h2>
+    <hr />
   </div>
 </div>
-{% endblock %}
+
+<div class="container">
+  <div class="row">
+    <div
+      style="background-image:  radial-gradient(rgba(249, 238, 238, 0.91), rgba(152, 142, 142, 0.04)), url( {{selected_cocktail.image}}); "
+      class="cocktail-recipe-img"
+    >
+     <div class="row">
+        <div class="col s12 l10 offset-l1">
+          <div class="card  opacity div">
+            <div class="card-content ">
+           
+             
+            <div class="row">
+              <div class="col l6 s12 recipe-center-items">
+                <h3 class="recipe-procedure-heading">Ingredients</h3>
+                <i class="fas fa-list"></i>
+                <hr class="hr-cocktail-recipe" />
+                <ul>
+                  <li class="ingredients-list">
+                    {{selected_cocktail.alcohol_element}}
+                    {{selected_cocktail.alcohol_measure}}
+                    {{selected_cocktail.alcohol_measurement}}
+                  </li>
+                  <li class="ingredients-list">
+                    {{selected_cocktail.alcohol_element_2}}
+                    {{selected_cocktail.alcohol_measure_2}}
+                    {{selected_cocktail.alcohol_measurement_2}}
+                  </li>
+                  <li class="ingredients-list">
+                    {{selected_cocktail.alcohol_element_3}}
+                    {{selected_cocktail.alcohol_measure_3}}
+                    {{selected_cocktail.alcohol_measurement_3}}
+                  </li>
+                  <li class="ingredients-list">
+                    {{selected_cocktail.citrus_element}}
+                    {{selected_cocktail.citrus_measure}}
+                    {{selected_cocktail.citrus_measurement}}
+                  </li>
+                  <li class="ingredients-list">
+                    {{selected_cocktail.sweet_element}}
+                    {{selected_cocktail.sweet_measure}}
+                    {{selected_cocktail.sweet_measurement}}
+                  </li>
+                </ul>
+              </div>
+
+              <div class="col l6 s12 recipe-center-items">
+                <h3 class="recipe-procedure-heading">Method</h3>
+                <i class="fas fa-blender"></i>
+                <hr class="hr-cocktail-recipe" />
+                <ul>
+                  <li>{{selected_cocktail.method}}</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col l6 s12 recipe-center-items">
+                <h3 class="recipe-procedure-heading">Glassware</h3>
+                <i class="fas fa-glass-whiskey"></i>
+                <hr class="hr-cocktail-recipe" />
+                <ul>
+                  <li class="glassware-list">
+                    {{selected_cocktail.glass_type}}
+                  </li>
+                </ul>
+              </div>
+              <div class="col l6 s12 recipe-center-items">
+                <h3 class="recipe-procedure-heading">Garnish</h3>
+                <i class="fas fa-bone"></i>
+                <hr class="hr-cocktail-recipe" />
+                <ul>
+                  <li class="garnish-list">{{selected_cocktail.garnish}}</li>
+                </ul>
+              </div>
+          
+                <div class="col s12 ingredients-list">
+            <h3 class="recipe-procedure-heading">Extra Ingredients</h3>
+            <ul>
+              <li>
+                {{selected_cocktail.other_ingredients}}
+              </li>
+            </ul>
+          </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+ </div>
+      
+
+
+    <div class="row">
+      <div class="col s12">
+        <div class="recipe-center-items">
+          <h3 class="recipe-procedure-heading">Notes</h3>
+          {{selected_cocktail.notes}}
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="row">
+      <div class="col s12">
+        <div class="recipe-center-items">
+          <h4 class="cocktail-recipe-header">History</h4>
+          <hr class="hr-cocktail-recipe center-align" />
+          {{selected_cocktail.history}}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 btns center-align">
+        <a
+          href="{{url_for('drinks_card', drink_id=selected_cocktail._id)}}"
+          class="back-btn btn"
+          >Back</a
+        >
+        {% if session.user|lower == selected_cocktail.created_by|lower %}
+        <a
+          href="{{url_for('edit_cocktail', drink_id=selected_cocktail._id)}}"
+          class="edit-btn btn"
+          >Edit</a
+        >
+        <a
+          href="{{url_for('delete_cocktail', drink_id=selected_cocktail._id)}}"
+          class="delete-btn btn"
+          >Del</a
+        >
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+</div>
