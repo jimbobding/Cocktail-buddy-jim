@@ -1,6 +1,6 @@
 {% extends 'base.html'%} {% block content %}
 
-<div class="row container cocktail-form-container margin-top-large z-depth-1">
+<div class="row container cocktail-form-container margin-top z-depth-1">
   <form
     class="col s12"
     method="Post"
@@ -44,7 +44,7 @@
 
     <!-- Alcohol Element -->
     <div class="row">
-      <div class="input-field col s4">
+      <div class="input-field col s12 l4">
         <i class="material-icons prefix">local_bar</i>
         <input
           id="alcohol_element"
@@ -58,7 +58,7 @@
       </div>
 
       <!-- Alcohol Measure -->
-      <div class="input-field col s4">
+      <div class="input-field col s12 l4">
         <i class="fas fa-sort-numeric-up-alt prefix"></i>
         <input
           id="alcohol_measure"
@@ -78,7 +78,7 @@
           id="alcohol_measurement"
           name="alcohol_measurement"
           type="text"
-          placeholder=" choose yurmeasure unit e/g mls'"
+          placeholder="choose unit e/g mls"
           value="{{ selected_cocktail.alcohol_measurement }}"
           class="validate"
           required
@@ -89,7 +89,7 @@
 
     <!-- Alcohol Element 2 -->
     <div class="row">
-      <div class="input-field col s4">
+       <div class="input-field col s12 l4">
         <i class="material-icons prefix">local_bar</i>
         <input
           id="alcohol_element_2"
@@ -102,7 +102,7 @@
       </div>
 
       <!-- Alcohol Measure 2 -->
-      <div class="input-field col s4">
+     <div class="input-field col s12 l4">
         <i class="fas fa-sort-numeric-up-alt prefix"></i>
         <input
           id="alcohol_measure_2"
@@ -121,7 +121,7 @@
           id="alcohol_measurement_2"
           name="alcohol_measurement_2"
           type="text"
-          placeholder=" choose your measure unit e/g mls'"
+          placeholder="choose unit e/g mls"
           value="{{ selected_cocktail.alcohol_measurement_2 }}"
           class="validate"
         />
@@ -163,7 +163,7 @@
           id="alcohol_measurement_3"
           name="alcohol_measurement_3"
           type="text"
-          placeholder=" choose yurmeasure unit e/g mls'"
+          placeholder="choose unit e/g mls"
           value="{{ selected_cocktail.alcohol_measurement_3 }}"
           class="validate"
         />
@@ -173,7 +173,7 @@
 
     <!-- Citrus Element -->
     <div class="row">
-      <div class="input-field col s4">
+       <div class="input-field col s12 l4">
         <i class="fas fa-lemon prefix"></i>
         <input
           id="citrus_element"
@@ -186,7 +186,7 @@
       </div>
 
       <!-- Citrus Measure -->
-      <div class="input-field col s4">
+      <div class="input-field col s12 l4">
         <i class="fas fa-sort-numeric-up-alt prefix"></i>
         <input
           id="citrus_measure"
@@ -205,7 +205,7 @@
           id="citrus_measurement"
           name="citrus_measurement"
           type="text"
-          placeholder="choose your measure unit e/g mls'"
+          placeholder="choose unit e/g mls"
           value="{{ selected_cocktail.citrus_measurement }}"
           class="validate"
         />
@@ -215,7 +215,7 @@
 
     <!-- Sweet Element-->
     <div class="row">
-      <div class="input-field col s4">
+      < <div class="input-field col s12 l4">
         <i class="material-icons prefix">account_circle</i>
         <input
           id="sweet_element"
@@ -228,7 +228,7 @@
       </div>
 
       <!-- Sweet Measure -->
-      <div class="input-field col s4">
+    <div class="input-field col s12 l4">
         <i class="material-icons prefix">account_circle</i>
         <input
           id="sweet_measure"
@@ -247,7 +247,7 @@
           id="sweet_measurement"
           name="sweet_measurement"
           type="text"
-          placeholder=" choose yurmeasure unit e/g mls'"
+          placeholder="choose unit e/g mls'"
           class="validate"
           value="{{ selected_cocktail.sweet_measurement }}"
         />
@@ -274,7 +274,7 @@
 
     <!-- Glassware -->
     <div class="row">
-      <div class="input-field col s6">
+      <div class="input-field col s12 l6">
         <i class="fas fa-glass-whiskey prefix"></i>
         <select id="glass_type" name="glass_type" required>
           <option value="" disabled selected>Choose Glassware</option>
@@ -292,7 +292,7 @@
 
 
       <!-- Garnish -->
-      <div class="input-field col s6">
+       <div class="input-field col s12 l6">
         <i class="fas fa-bone prefix"></i>
         <input
           id="garnish"

@@ -12,6 +12,7 @@ margin: 0;
 padding: 0; 
 background-color:white;
 font-family: 'Cinzel', serif;
+font-size: 26px;
 font-weight: 400;
 line-height: 2rem;
 overflow-x: hidden;
@@ -42,7 +43,8 @@ overflow-x: hidden;
 
 nav li a {
     font-size: 18px; 
-    transition-timing-function: ease-in-out
+    transition-timing-function: ease-in-out;
+    margin-right: 10px;
 }
 
 nav li a:hover {
@@ -151,20 +153,16 @@ height: 220px;
 
   display: block;
   margin-top: 50px;
-
   width: auto;
   background-repeat: no-repeat;
   background-size: cover;
  
 }
-.div {
- 
+.recipe-overlay {
   margin-top: 20px;
   width: auto;
-  background-color: hsla(0, 100%, 30%, 0.3);
-  
+  background-color: hsla(0, 100%, 30%, 0.3); 
 }
-
 
 .home-image {
     background-image: radial-gradient(rgba(249, 238, 238, 0.91), rgba(152, 142, 142, 0.04)), url(../images/cocktails-above.jpeg);
@@ -351,10 +349,7 @@ letter-spacing: 12px;
     background-color: #86e2d5
 }
 
-.asterisk{
-    color: red;
-    font-size: 10px;
-}  
+
 
 .search-container {
     padding-top: 10px;
@@ -369,6 +364,13 @@ letter-spacing: 12px;
     font-size: 20px;
     font-weight: bold;
 }
+
+
+/*----add cocktail form*/
+.asterisk{
+    color: red;
+    font-size: 10px;
+}  
 
 /* ----------------------------------------Login/Register */
 
@@ -394,6 +396,10 @@ letter-spacing: 12px;
 
     .short-text { display: inline-block; }
     .full-text { display: none; }
+
+    .edit-btn {
+        scroll-margin-bottom: 4px;
+    }
     
     }
 
