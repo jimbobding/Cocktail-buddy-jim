@@ -55,19 +55,19 @@ I would like to design an application that allows users to create, read, edit an
 ### User stories
 
 ### First Time Visitor Goals
-1. As a First Time Visitor, I want to easily navigate the app using the nav bar.
-2. As a First Time Visitor, I want to be able to easily find and look through the different drink cards with out th eobligation of registering an account.
-3. As a First Time Visitor, I want to be able to open up the drink cards and view th erecipes inside them.
+1. As a First Time Visitor, I want to easily navigate the app using the navbar.
+2. As a First Time Visitor, I want to be able to easily find and look through the different drink cards without the obligation of registering an account.
+3. As a First Time Visitor, I want to be able to open up the drink cards and view the recipes inside them.
 
 ### Returning Visitor Goals
 1. As a Returning Visitor, I want to be able to register an account with the app.
-2. As a Returning Visitor, I want to be able add my own content in terms of drink recipes.
-3. As a Returning Visitor, I want to be able to use the search engine t find my drink or any other drinks taht I would like to try.
+2. As a Returning Visitor, I want to be able to add my content in terms of drink recipes.
+3. As a Returning Visitor, I want to be able to use the search engine t find my drink or any other drinks that I would like to try.
 
 ### Frequent User Goals
-1. As a Frequent User, I want to be able to login easily to the app with my login detals.
-2. As a Frequent User, I want to be able to edita and or delete  any recipes I may hae created.
-3. As a Frequent User, I want to be able to view my own content readily an deasily through a profile page.
+1. As a Frequent User, I want to be able to log in easily to the app with my login details.
+2. As a Frequent User, I want to be able to edit and or delete any recipes I may have created.
+3. As a Frequent User, I want to be able to view my content readily and easily through a profile page.
 4. As a Frequent User, I want to be able to easily and safely exit the app.
 5. As a Frequent User, I want to be able to view the app easily on different devices.
 
@@ -96,9 +96,9 @@ of the app, I choose this as I wanted it to look stylish but still approachable 
 
 ### Colours
 
-The colour of white and black are used for the main body of the app. The navbar and footer are black which wrap the body which has a background of white, i felt I wanted to keep this clean and simple as here would be a fair bit going on in the body 
-with different cards having differnet colours on them. 
-I also wanted to use colours that would signify the use of the functionality to the user’s red being danger green beI also used a red colour ing a success and blue being neutral.
+The colour of white and black are used for the main body of the app. The navbar and footer are black which wraps the body which has a background of white, I felt I wanted to keep this clean and simple as here would be a fair bit going on in the body 
+with different cards having different colours on them. 
+I also wanted to use colours that would signify the use of the functionality to the user’s red being danger green beI also used a red colouring a success and blue being neutral.
 
 
 [flatui colorpicker](http://www.flatuicolorpicker.com)
@@ -109,7 +109,7 @@ I also wanted to use colours that would signify the use of the functionality to 
 
 <img src="https://ibb.co/CK917PF"  alt="ALogin screen on mac" target="_blank" rel="noopener">
 
- - I used a red colour with a hsla to give it an opaque colour and a forest green colour to give the app some colour, aswell as on alot of the buttons
+ - I used a red colour with a hsla to give it an opaque colour and a forest green colour to give the app some colour, as well as on a lot of the buttons
 
 <img width="200px" height="100%px" src="https://github.com/jimbobding/Cocktail-buddy-jim/blob/master/static/images/Screenshot 2020-09-11 at 11.43.17.png">
 <img width="200px" height="100px" src="https://github.com/jimbobding/Cocktail-buddy-jim/blob/master/static/images/Screenshot 2020-09-13 at 19.52.37.png">
@@ -129,7 +129,7 @@ For my wireframes I first used pen and paper to jot down my original thoughts an
 how I wanted the app to look I used [Balsamiq](https://balsamiq.com/) to mock it up. The design did change from the pen and pad to Balsamiq
 to actual coding as certain things did not look at good as I hoped, but overall it stayed pretty much the same.
 
- [wireframes](https://github.com/jimbobding/Cocktail-buddy-jim/blob/master/static/wireframes/New Project.pdf)
+ [wireframes](https://github.com/jimbobding/Cocktail-buddy-jim/blob/master/static/wireframes)
 
 ## Features
 ### Existing Features
@@ -153,7 +153,7 @@ If the user is not logged in
 
 1. Home.
 2. Login - Takes the user to the login page where they can log in if they are already registered.
-3. register - Takes the user to the register page allowing them to create an account.
+3. register - Takes the user to the registration page allowing them to create an account.
 
 If the user is logged in as Admin
 
@@ -329,31 +329,40 @@ This would be used in conjunction in the like system it would collect all the us
 - [PyMongo] - Used to connect MongoDB and Python
 - [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/) - Secuirty use for password hashing
 
-
+### Testing User Stories from User Experience (UX) 
 ### First Time Visitor Goals
-1. As a First Time Visitor, I want to easily navigate the app using the nav bar.
-- The Nav bar is clearly located at the top off the screen and stands out from the body of the page. The links on the navbar change color when they are hovred over
+1. As a First Time Visitor, I want to easily navigate the app using the navbar.
+- The Navbar is located at the top off the screen and stands out from the body of the page. The links on the navbar change colour when they are hovered over
 to show responsiveness. If the user is not logged in only certain parts of the application will be open to them.
-2. As a First Time Visitor, I want to be able to easily find and look through the different drink cards with out the obligation of registering an account.
-- Using the Navbar thhe user can easily navigate to the home page where they can browse through all of the drinks that are currently on the app, the serach engin is also
+2. As a First Time Visitor, I want to be able to easily find and look through the different drink cards without the obligation of registering an account.
+- Using the Navbar the user can easily navigate to the home page where they can browse through all of the drinks that are currently on the app, the search engine is also
 available and useable for users who are not logged in.
 3. As a First Time Visitor, I want to be able to open up the drink cards and view the recipes inside them.
-- Again without being logged in a user may browse through all thed rink cards and cn click on any of them to see the content. 
+- Again without being logged in a user may browse through all the drink cards and can click on any of them to see the content. 
 
 ### Returning Visitor Goals
-1. As a First Time Visitor, I want to be able to register an account with the app.
-2. As a Returning Visitor, I want to be able add my own content in terms of drink recipes.
-3. As a Returning Visitor, I want to be able to use the search engine t find my drink or any other drinks taht I would like to try.
+1. As a Returning Visitor, I want to be able to register an account with the app.
+- The register page is marked on the navbar and is also marked in the login page. The username and password are hashed after they are input and the fields themselves are 
+tool tipped to inform the user if they are not meeting the criteria for the fields or if they are choosing details that have already been chosen.
+2. As a Returning Visitor, I want to be able to add my content in terms of drink recipes.
+- On the home page and the navbar, the add cocktail button is marked. Upon clicking this link you will be taken to the add cocktail form in which you are given fields to fill in regarding your recipe. All the mandatory fields are marked clearly in red and are tool tipped to advise the user that they have not filled in the field.
+3. As a Returning Visitor, I want to be able to use the search engine to find my drink or any other drinks that I would like to try.
+- On the homepage and marked in a coloured box is a search bar with a call to action button. There is a brief paragraph advising the user on the use of this search engine. The user will
+be prompted if the search returns no results.
 
 ### Frequent User Goals
-1. As a Returning Visitor, I want to be able to login easily to the app with my login detals.
-2. As a Frequent User, I want to be able to edita and or delete  any recipes I may hae created.
-3. As a Frequent User, I want to be able to view my own content readily an deasily through a profile page.
+1. As a Frequent User, I want to be able to log in easily to the app with my login details.
+- The login field is marked clearly on the navbar and again marked in the register page. It has icons next to the fields to prompt users to fill them in and they are also
+tool tipped to let users know of any mistakes.
+2. As a Frequent User, I want to be able to edit and or delete any recipes I may have created.
+- The user can find his recipes by either looking through all the drinks on the database, using the search engine to find their recipes or if they click on the profile page all there own drink-recipes 
+will be displayed here. If they click on any of these recipes they will take taken to a page with the ingredients, method etc but there will also be three calls to action buttons. The back button will take the user back to the previous page, the edit button will open the cocktail recipe in the cocktail form with all the fields pre-populated with what the user originally input here the user can change any of the fields they choose and then click the edit cocktail button at the bottom of the form, if the user changes there mind they can click the cancel button and all changes will be cancelled. The third button is the delete cocktail button in which the user can delete the cocktail from the database. These edit and delete the call to action buttons are only available on the users drink recipes.
+3. As a Frequent User, I want to be able to view my content readily and easily through a profile page.
+- If the user clicks on the profile page they will be taken to their profile page which will display their name, the number of drinks they have as well as all of their drink recipes.
 4. As a Frequent User, I want to be able to easily and safely exit the app.
+- The logout function located clearly on the navbar takes the user out of the session and does not leave any hint or clue in the login section about their details.
 5. As a Frequent User, I want to be able to view the app easily on different devices.
-
-
-
+- The app was built on the materialize framework which uses a very easy to use grid layout system allowing for a smooth transition into various devices. The app was tested on various devices to ensure good user experience. 
 
 
 ## Testing
@@ -373,7 +382,7 @@ I tested the functionality of the app throughout the entire development process 
 
 ### Drinks/Home page
 
-When I click on the home page in the navbar I am taken to a page that displays an image with a button giving me the option to login, if I a not logged in and to add a cocktail
+When I click on the home page in the navbar I am taken to a page that displays an image with a button giving me the option to log in, if I a not logged in and to add a cocktail
 if I am logged in. It also shows a search query which will find a drink searching the in fields of alcohol_element_text_glass_type_text_drink_name_text three fields in the drink collection of my cocktail database in Mongo DB. It also displays the first 8 cocktails in my drink collection with pagination buttons to take you to a further 8.
 
 
@@ -385,7 +394,7 @@ if I am logged in. It also shows a search query which will find a drink searchin
 
 ### Login
 
-- Tried to login with non-existant credentials. Flash message  ("Incorrect password and/or username")
+- Tried to login with non-existent credentials. Flash message  ("Incorrect password and/or username")
 - Tried to login with empty fields. Tooltip response ("please fill in this field")
 - Tried to login with non-matching username and password. Flash message ("Incorrect password and/or username")
 
@@ -430,7 +439,6 @@ I had three separate people test it across different formats.
 - I choose to get rid of the measurement collection as I did not think it was majorly important and it allowed users to tye in their measurements. I would like to implement the measurement collection but with better user use in the future.
 
 
-
 ### Validators
 
 - [The-W3c-Markup-Validation-Service](https://jigsaw.w3.org/css-validator/) - Validates/checks for mistakes CSS
@@ -462,14 +470,12 @@ I had three separate people test it across different formats.
 
  #### Browswers 
 
- some of the browsers were tested on [Lambdatest](https://app.lambdatest.com/console/realtime) which allowed me to test in real-time across different browsers.
-
 - Chrome
 - Safari
 - Internet explorer - windows 8.1 & 10
 - firefox windows - windows 8.1
 - Edge - Windows 10 
-�
+
 #### Problems
 
 I had a problem with the measure fields taking numbers, which I wanted to do to minimalize mistakes when people are inputting data as they would only be able to input numbers rather than text. 
@@ -499,7 +505,7 @@ Then send them to the mongo database as a string, so when they were returned the
 17. It will take a minute and display a message that Your app was successfully deployed.
 18. Click on View to launch your deployed app.
 
-My website is now deployed and live here
+My website is now deployed and lives here
 
 https://
 
@@ -513,7 +519,7 @@ https://
 6. Type git clone and copy in your URL and press enter.
 
 This information can be obtained from [Github](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
-
+                                                    
 ## Credits 
 
 ### Code
@@ -542,5 +548,5 @@ All websites I used for reference and guidance.
 
 ### Special Thanks
 
-- I would like to give a special mention to all the people on slack and all the people Code Institute, in particular, the Tutor support team and my Mentor Aaron Sinnot.
+- I would like to give a special mention to all the people on slack and all the people Code Institute, in particular, the Tutor support team and my Mentor Aaron Sinnot
 
