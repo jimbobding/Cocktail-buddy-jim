@@ -52,8 +52,27 @@ I would like to design an application that allows users to create, read, edit an
 1. This app would serve the user who likes to drink cocktails but does not know the recipes to allow them to make them at home. In the current climate of people not going out as much but still wanting to enjoy cocktails I the comfort of their home.
 2. This App would also serve to hospitality staff as it would hold an ever-growing library of recipes they could call up =on if they cannot remember how something is mad. It would also serve as a place to house their creations.
 
-
 ### User stories
+
+### First Time Visitor Goals
+1. As a First Time Visitor, I want to easily navigate the app using the nav bar.
+2. As a First Time Visitor, I want to be able to easily find and look through the different drink cards with out th eobligation of registering an account.
+3. As a First Time Visitor, I want to be able to open up the drink cards and view th erecipes inside them.
+
+### Returning Visitor Goals
+1. As a Returning Visitor, I want to be able to register an account with the app.
+2. As a Returning Visitor, I want to be able add my own content in terms of drink recipes.
+3. As a Returning Visitor, I want to be able to use the search engine t find my drink or any other drinks taht I would like to try.
+
+### Frequent User Goals
+1. As a Frequent User, I want to be able to login easily to the app with my login detals.
+2. As a Frequent User, I want to be able to edita and or delete  any recipes I may hae created.
+3. As a Frequent User, I want to be able to view my own content readily an deasily through a profile page.
+4. As a Frequent User, I want to be able to easily and safely exit the app.
+5. As a Frequent User, I want to be able to view the app easily on different devices.
+
+
+
 
 Jake T, a bartender from Wales, UK - "I work in a cocktail bar and am constantly making cocktails for customers, I have a lot of recipes stored in my head but sometimes customers ask for cocktails, I don’t quite know how to make I generally google the wanted cocktail to find the recipe. I would love to be able to have an ever-growing
                                       recipe book that I could consult for recipes and a place in which I can store my creations"
@@ -62,17 +81,6 @@ Adam R, a financial consultant from Melbourne, Aus - "I enjoy the weekends where
                                                       a database of drinks with the steps that allow me to recreate them at home."
 
 
-### What the user wants
-
-1. The user wants to easily navigate across all areas of the app. Users will bore quickly if they can find their way around from the moment they start
-   interaction with the app.
-2. The user wants to be able to view cocktail recipes without having to register.
-3. The user wants to be able to register an account and have the information stored safely.
-4. The user wants to be able to login into their account and see their recipes stored in a user page.
-5. The user wants to be able to edit and delete their recipes.
-6. The user wants to be able to view all aspects of a recipe e/g not only the ingredient but also the amounts of said ingredient.
-7. The user wants to be able to log out quickly and have the session terminated.
-8. The user wants to be able to view the app on multiple platforms.
 
 # Design
 
@@ -83,25 +91,14 @@ For the framework of the app, I used [Materialize](https://materializecss.com/).
 
 ### Fonts
 
-The main fonts I settled on was [Slabo](("https://fonts.googleapis.com/css2?family=Slabo+27px:100,300,400,700&display=swap")) which was used for the main body 
-of the app, I choose this as I wanted it to look stylish but still approachable easy to read but with character.
-The other font I used was [Fredericka the Great]("https://fonts.googleapis.com/css?family=Fredericka+the+Great:100,300,400,700&display=swap"),
-this was used on the cocktail headings to give a slightly classier look, in keeping with an old school cocktail menu heading.
+The main fonts I settled on was [Cinzel]((https://fonts.google.com/specimen/Cinzel?preview.text=cinzel&preview.text_type=custom&query=cin")) which was used for the main body 
+of the app, I choose this as I wanted it to look stylish but still approachable easy to read and with character.
 
 ### Colours
-
-
-
-
 
 The colour of white and black are used for the main body of the app. The navbar and footer are black which wrap the body which has a background of white, i felt I wanted to keep this clean and simple as here would be a fair bit going on in the body 
 with different cards having differnet colours on them. 
 I also wanted to use colours that would signify the use of the functionality to the user’s red being danger green beI also used a red colour ing a success and blue being neutral.
-
-
-
-
-
 
 
 [flatui colorpicker](http://www.flatuicolorpicker.com)
@@ -114,11 +111,11 @@ I also wanted to use colours that would signify the use of the functionality to 
 
  - I used a red colour with a hsla to give it an opaque colour and a forest green colour to give the app some colour, aswell as on alot of the buttons
 
-<img width="100%" height="90%" src="https://github.com/jimbobding/Cocktail-buddy-jim/blob/master/static/Screenshot 2020-09-11 at 11.43.17.png">
-<img width="100%" height="90%" src="https://github.com/jimbobding/Cocktail-buddy-jim/blob/master/static/images/Screenshot 2020-09-13 at 19.52.37.png">
+<img width="200px" height="100%px" src="https://github.com/jimbobding/Cocktail-buddy-jim/blob/master/static/images/Screenshot 2020-09-11 at 11.43.17.png">
+<img width="200px" height="100px" src="https://github.com/jimbobding/Cocktail-buddy-jim/blob/master/static/images/Screenshot 2020-09-13 at 19.52.37.png">
  
 
-<img src="https://i.ibb.co/kJBb49T/Screenshot-2020-09-13-at-11-28-24.png" alt="All devices" target="_blank" rel="noopener">
+<img src="https://i.ibb.co/GQMx2Hj/Screenshot-2020-09-13-at-19-46-25.png" alt="Login" target="_blank" rel="noopener">
 
 ### Logo
 
@@ -132,7 +129,7 @@ For my wireframes I first used pen and paper to jot down my original thoughts an
 how I wanted the app to look I used [Balsamiq](https://balsamiq.com/) to mock it up. The design did change from the pen and pad to Balsamiq
 to actual coding as certain things did not look at good as I hoped, but overall it stayed pretty much the same.
 
- [wireframes]()
+ [wireframes](https://github.com/jimbobding/Cocktail-buddy-jim/blob/master/static/wireframes/New Project.pdf)
 
 ## Features
 ### Existing Features
@@ -331,6 +328,30 @@ This would be used in conjunction in the like system it would collect all the us
 - [MongoDB](https://cloud.mongodb.com/)- NoSQL database for storing back-end data.
 - [PyMongo] - Used to connect MongoDB and Python
 - [Werkzeug](https://werkzeug.palletsprojects.com/en/1.0.x/) - Secuirty use for password hashing
+
+
+### First Time Visitor Goals
+1. As a First Time Visitor, I want to easily navigate the app using the nav bar.
+- The Nav bar is clearly located at the top off the screen and stands out from the body of the page. The links on the navbar change color when they are hovred over
+to show responsiveness. If the user is not logged in only certain parts of the application will be open to them.
+2. As a First Time Visitor, I want to be able to easily find and look through the different drink cards with out the obligation of registering an account.
+- Using the Navbar thhe user can easily navigate to the home page where they can browse through all of the drinks that are currently on the app, the serach engin is also
+available and useable for users who are not logged in.
+3. As a First Time Visitor, I want to be able to open up the drink cards and view the recipes inside them.
+- Again without being logged in a user may browse through all thed rink cards and cn click on any of them to see the content. 
+
+### Returning Visitor Goals
+1. As a First Time Visitor, I want to be able to register an account with the app.
+2. As a Returning Visitor, I want to be able add my own content in terms of drink recipes.
+3. As a Returning Visitor, I want to be able to use the search engine t find my drink or any other drinks taht I would like to try.
+
+### Frequent User Goals
+1. As a Returning Visitor, I want to be able to login easily to the app with my login detals.
+2. As a Frequent User, I want to be able to edita and or delete  any recipes I may hae created.
+3. As a Frequent User, I want to be able to view my own content readily an deasily through a profile page.
+4. As a Frequent User, I want to be able to easily and safely exit the app.
+5. As a Frequent User, I want to be able to view the app easily on different devices.
+
 
 
 
