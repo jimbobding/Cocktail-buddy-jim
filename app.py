@@ -208,7 +208,7 @@ def add_categories():
             "glass_type": request.form.get("glass_type")
         }
         glassware_db.insert_one(glassware)
-        flash("New alcohol added")
+        flash("New glassware added")
         return redirect(url_for("get_categories"))
 
     return render_template("add_categories.html")
