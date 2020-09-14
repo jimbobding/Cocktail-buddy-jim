@@ -42,12 +42,20 @@ overflow-x: hidden;
 nav li a {
     font-size: 18px; 
     transition-timing-function: ease-in-out;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 nav li a:hover {
     color: #3498db;
 	transition: 500ms;
+}
+
+.copyright {
+    font-size: 16px;
+}
+
+.social-links {
+    font-size: 18px;
 }
 
 /* ----------------------------------------Footer */
@@ -132,6 +140,12 @@ transform: scale(1.03);
 height: 220px;
 }
 
+.details-card {
+    background-color:hsla(0, 100%, 50%, 0.3);
+    border-radius: 5%;
+    
+}
+
 /* ----------------------------------------images */
 .spirit-img {
   height: 300px;
@@ -153,7 +167,7 @@ height: 220px;
 .recipe-overlay {
   margin-top: 20px;
   width: auto;
-  background-color: hsla(0, 100%, 30%, 0.3); 
+  background-color: hsla(0, 100%, 50%, 0.3); 
 }
 
 .home-image {
@@ -190,12 +204,6 @@ height: 220px;
     min-height: 80vh;
 }
 
-.back-img {
-    position: relative;
-    border-radius: 15px;
-    width: 100%;
-    min-height: 80vh;
-}
 
 .hr-cocktail-recipe {
     width: 50%;
@@ -213,7 +221,6 @@ hr {
 /* ----------------------------------------Headings */
 /* ---- Recipe page */
 .spirit-headings {
-  font-family: "Fredericka the Great", cursive;
   text-align: center;
 }
 
@@ -237,6 +244,7 @@ hr {
 .page-bottom-margin {
     margin-bottom: 0px;
 }
+
 .page-head-margin {
     margin-top: 0px;
 }
@@ -288,8 +296,6 @@ letter-spacing: 12px;
     padding-right: 20px;
 }
 
-
-
 .alcohol-input {
     margin-top: 3rem;
 }   
@@ -303,11 +309,7 @@ letter-spacing: 12px;
     margin-top: 2em;
 }
 
-.details-card {
-    background-color:hsla(0, 100%, 50%, 0.3);
-    border-radius: 5%;
-    
-}
+
 
 /* ----------------------------------------Buttons */
 .details-btn, .drink-recipe-btns, .addcocktail-btn, .edit-btn, .error-btn{
@@ -339,8 +341,6 @@ letter-spacing: 12px;
 .edit-btn:hover {
     background-color: #86e2d5
 }
-
-
 
 .search-container {
     padding-top: 10px;

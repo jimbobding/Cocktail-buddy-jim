@@ -235,7 +235,7 @@
                type="text"
                class="validate"
                minlength="0"
-               maxlength="40"
+               maxlength="80"
                />
             <label for="other_ingredients">Other Ingridients</label>
          </div>
@@ -244,7 +244,7 @@
       <div class="row">
          <div class="input-field col s12 l6 required">
             <i class="fas fa-glass-whiskey prefix"></i>
-            <select id="glass_type" name="glass_type" required>
+            <select id="glass_type" name="glass_type" class="validate" required>
                <option value="" disabled selected>Choose Glassware</option>
                {% for glass in glassware %}
                <option value="{{glass.glass_type}}">{{glass.glass_type}} </option>

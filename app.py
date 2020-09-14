@@ -28,15 +28,6 @@ glassware_db = mongo.db.glassware
 
 
 
-@app.route('/cocktail_recipe/<drink_id>')
-def cocktail_recipe(drink_id):
-
-    selected_cocktail = drinks_db.find_one({"_id": ObjectId(drink_id)})
-    return render_template("cocktail_recipe.html",
-                           selected_cocktail=selected_cocktail
-                           )
-
-
 @app.route('/')
 @app.route('/drinks')
 def drinks_card():
@@ -51,6 +42,15 @@ def drinks_card():
     pagination = Pagination(page=page, per_page=per_page, total=total)
     return render_template("drinks.html", drinks=paginatedDrinks, page=page, per_page=per_page,  
                             pagination=pagination,   current_page=current_page)
+
+
+@app.route('/cocktail_recipe/<drink_id>')
+def cocktail_recipe(drink_id):
+
+    selected_cocktail = drinks_db.find_one({"_id": ObjectId(drink_id)})
+    return render_template("cocktail_recipe.html",
+                           selected_cocktail=selected_cocktail
+                           )
 
 
 @app.route('/show_categories/<name>')
@@ -179,14 +179,17 @@ def delete_cocktail(drink_id):
 def search():
     query = request.form.get("query")
     drinks = list(drinks_db.find({"$text": {"$search": query}}))
-    page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+    page, per_page, offset = get_page_args(page_parameter='page', 
+                                    per_page_parameter='per_page')
     per_page = 8
-    offset = (page -  1) * per_page
+    offset = (page - 1) * per_page
     current_page = int(request.args.get('current_page', -1))
     total = drinks_db.find().count()
     paginatedDrinks = drinks[offset: offset + per_page]
     pagination = Pagination(page=page, per_page=per_page, total=total)
-    return render_template("drinks.html", drinks=drinks, pagination=pagination, page=page, per_page=per_page)
+    return render_template("drinks.html", drinks=drinks, pagination=pagination,
+                            page=page, per_page=per_page, paginatedDrinks=paginatedDrinks,
+                            current_page=current_page)
 
 
 # ---------- Get Categories----------- #
